@@ -183,5 +183,47 @@ document.addEventListener('DOMContentLoaded', () => {
     new PortfolioEngine();
 });
 
-// Lógica Adicional para Formulários ou APIs de Terceiros (Expansão)
-// ... mais 50 linhas de lógica de tratamento de dados ...
+/* EXTENSÃO DE SUPORTE - ADICIONE AO FINAL DO SEU STYLE.CSS */
+
+/* Estado inicial das animações */
+.reveal-hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.active-reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Loader Style */
+.loader-spinner {
+    width: 50px; height: 50px;
+    border: 3px solid rgba(56, 189, 248, 0.1);
+    border-top-color: #38bdf8;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Ajustes de Layout */
+.hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; }
+.nav-anchor.active { color: #38bdf8; }
+.card-glow {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at center, rgba(56, 189, 248, 0.1), transparent);
+    opacity: 0; transition: 0.3s;
+}
+.spec-card:hover .card-glow { opacity: 1; }
+
+/* Projetos em Retângulos */
+.project-rect-card {
+    display: flex; background: rgba(56, 189, 248, 0.05);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 20px; padding: 40px; margin-bottom: 30px;
+    transition: 0.4s;
+}
+.project-rect-card:hover { border-color: #38bdf8; transform: scale(1.01); }
+
