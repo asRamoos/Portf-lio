@@ -1,22 +1,27 @@
-/* PORTFOLIO STYLE - ANDREY 
-    Arquitetura de CSS Modular e Robusta 
+/* PORTFOLIO STYLE CORE - ANDREY 
+    Arquitetura: Glassmorphism / Space Tech / High Performance
+    Total: +200 linhas de estilização estruturada
 */
 
 :root {
-    --bg-deep: #050a18;
-    --bg-darker: #020610;
-    --primary-cyan: #00d2ff;
-    --primary-blue: #0072ff;
-    --accent-pink: #ff007a;
-    --glass-white: rgba(255, 255, 255, 0.12);
-    --glass-white-border: rgba(255, 255, 255, 0.25);
-    --glass-blue: rgba(0, 210, 255, 0.08);
-    --glass-blue-border: rgba(0, 210, 255, 0.3);
-    --text-main: #f0f0f0;
-    --text-dim: #a0a0a0;
-    --transition-smooth: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-    --ff-inter: 'Inter', sans-serif;
+    /* Paleta de Cores (Deep Space) */
+    --clr-deep: #020617;
+    --clr-space: #0f172a;
+    --clr-primary: #38bdf8;
+    --clr-secondary: #818cf8;
+    --clr-accent: #f472b6;
+    
+    /* Variáveis de Vidro (Glassmorphism) */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-blur: blur(12px);
+    
+    /* Tipografia */
+    --ff-main: 'Inter', sans-serif;
     --ff-mono: 'JetBrains Mono', monospace;
+    
+    /* Transições e Animações */
+    --transit: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* 1. RESET E BASE */
@@ -25,493 +30,279 @@
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
 }
 
 body {
-    background-color: var(--bg-deep);
-    color: var(--text-main);
-    font-family: var(--ff-inter);
-    overflow-x: hidden;
+    background-color: var(--clr-deep);
+    color: #f8fafc;
+    font-family: var(--ff-main);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* 2. LOADER */
-#loader-wrapper {
+/* 2. SISTEMA DE BACKGROUND (COSMOS) */
+.cosmos-background {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: var(--bg-darker);
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.8s ease;
-}
-
-.loader-content {
-    text-align: center;
-}
-
-.loader-text {
-    font-size: 2rem;
-    font-weight: 900;
-    letter-spacing: 10px;
-    display: block;
-    margin-bottom: 20px;
-    color: var(--primary-cyan);
-}
-
-.loader-bar {
-    width: 0;
-    height: 2px;
-    background: var(--primary-cyan);
-    animation: loading 2s forwards;
-}
-
-@keyframes loading {
-    to { width: 100%; }
-}
-
-/* 3. SISTEMA DE FUNDO (ESTRELAS) */
-.space-container {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: -1;
+    background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
     overflow: hidden;
 }
 
-#stars-layer-1, #stars-layer-2, #stars-layer-3 {
+#stars-small, #stars-medium, #stars-large {
     position: absolute;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 2px;
     background: transparent;
 }
 
-#stars-layer-1 {
-    width: 1px; height: 1px;
-    box-shadow: 174px 122px #FFF, 800px 300px #FFF, 1200px 100px #FFF, 450px 900px #FFF, 1600px 400px #FFF, 200px 1500px #FFF;
-    animation: starMove 150s linear infinite;
-}
-
-#stars-layer-2 {
-    width: 2px; height: 2px;
-    box-shadow: 100px 500px #FFF, 1500px 800px #FFF, 300px 1200px #FFF, 900px 100px #FFF, 600px 1600px #FFF;
-    animation: starMove 100s linear infinite;
-}
-
-.nebula-glow {
+.nebula {
     position: absolute;
-    top: -20%; right: -10%;
-    width: 800px; height: 800px;
-    background: radial-gradient(circle, rgba(0, 210, 255, 0.05) 0%, transparent 70%);
-    filter: blur(100px);
-    pointer-events: none;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+    filter: blur(80px);
+    top: 20%;
+    right: -10%;
+    z-index: -1;
+    animation: pulse 10s infinite alternate;
 }
 
-@keyframes starMove {
-    from { transform: translateY(0); }
-    to { transform: translateY(-2000px); }
+@keyframes pulse {
+    from { transform: scale(1); opacity: 0.5; }
+    to { transform: scale(1.3); opacity: 0.8; }
 }
 
-/* 4. HEADER DINÂMICO */
+/* 3. HEADER E NAVEGAÇÃO */
 #main-nav {
     position: fixed;
-    top: 0; left: 0; width: 100%;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: var(--transit);
     padding: 20px 0;
-    z-index: 2000;
-    transition: var(--transition-smooth);
-    background: transparent;
 }
 
-#main-nav.nav-hidden {
-    transform: translateY(-100%);
-    opacity: 0;
+.header-fixed {
+    background: rgba(2, 6, 23, 0.8);
+    backdrop-filter: var(--glass-blur);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 12px 0 !important;
 }
 
-#main-nav.scrolled {
-    background: rgba(5, 10, 24, 0.85);
-    backdrop-filter: blur(12px);
-    padding: 12px 0;
-    transform: translateY(0);
-    opacity: 1;
-    border-bottom: 1px solid var(--glass-white-border);
+.header-hidden {
+    transform: translateY(-5px);
 }
 
-.nav-wrapper {
-    max-width: 1400px;
+.nav-container {
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 50px;
+    padding: 0 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .nav-brand {
-    font-weight: 900;
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-    color: var(--primary-cyan);
+    display: flex;
+    flex-direction: column;
 }
 
-.nav-list {
+.brand-name {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--clr-primary);
+}
+
+.brand-role {
+    font-family: var(--ff-mono);
+    font-size: 0.7rem;
+    color: var(--clr-secondary);
+    text-transform: uppercase;
+}
+
+.nav-menu ul {
     display: flex;
     list-style: none;
     gap: 30px;
 }
 
-.nav-item {
+.nav-link {
     text-decoration: none;
-    color: var(--text-main);
-    font-weight: 400;
+    color: #94a3b8;
     font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: 0.3s;
+    font-weight: 500;
+    transition: var(--transit);
 }
 
-.nav-item:hover {
-    color: var(--primary-cyan);
+.nav-link:hover {
+    color: var(--clr-primary);
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
 }
 
-.nav-btn {
-    text-decoration: none;
-    background: transparent;
-    border: 1px solid var(--primary-cyan);
-    color: var(--primary-cyan);
-    padding: 8px 25px;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.nav-btn:hover {
-    background: var(--primary-cyan);
-    color: var(--bg-deep);
-    box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
-}
-
-/* 5. HERO SECTION */
-#hero-screen {
-    height: 100vh;
+/* 4. SEÇÕES E LAYOUT */
+.fullscreen-section {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 20px;
-    position: relative;
+    padding: 100px 25px;
 }
 
-.hero-center-box {
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 25px;
+}
+
+/* 5. HERO E TEXTO DINÂMICO */
+.hero-main-title {
     text-align: center;
-    z-index: 10;
+    margin-bottom: 40px;
 }
 
-#main-title {
-    font-size: clamp(4rem, 10vw, 8rem);
+.hero-main-title h1 {
+    font-size: clamp(3rem, 10vw, 6rem);
     font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: -4px;
-    line-height: 0.9;
-    background: linear-gradient(180deg, #fff 0%, #777 100%);
+    background: linear-gradient(to right, #fff, var(--clr-primary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 10px;
+    line-height: 1;
 }
 
-.title-underline {
-    width: 100px;
-    height: 4px;
-    background: var(--primary-cyan);
-    margin: 0 auto 20px;
-}
-
-#main-subtitle {
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    letter-spacing: 12px;
-    color: var(--primary-cyan);
-    font-weight: 300;
-    margin-bottom: 40px;
-}
-
-/* ABOUT ME BOX */
-.about-me-box {
-    max-width: 800px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--glass-white-border);
-    border-radius: 12px;
-    overflow: hidden;
-    backdrop-filter: blur(5px);
-}
-
-.about-header {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 8px 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.hero-typewriter {
     font-family: var(--ff-mono);
-    font-size: 0.8rem;
-    border-bottom: 1px solid var(--glass-white-border);
+    color: var(--clr-secondary);
+    font-size: 1.2rem;
+    margin-top: 10px;
 }
 
-.about-text {
-    padding: 30px;
-    font-size: 1.05rem;
-    color: var(--text-dim);
-    line-height: 1.8;
-}
-
-.highlight {
-    color: var(--text-main);
-    font-weight: 600;
-    border-bottom: 1px solid var(--primary-cyan);
-}
-
-/* 6. ESPECIALIDADES */
-.sub-section-title {
-    margin-top: 80px;
-    font-size: 2.5rem;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    color: var(--text-main);
-}
-
-.specialties-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-    max-width: 1400px;
-    width: 100%;
-    margin-top: 50px;
-    padding: 0 40px;
-}
-
-.glass-card {
-    position: relative;
-    background: var(--glass-white);
-    backdrop-filter: blur(15px);
-    border: 1px solid var(--glass-white-border);
+/* 6. GLASSMORPHISM CARDS */
+.glass-morphism {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
     border-radius: 24px;
-    padding: 40px 30px;
-    transition: var(--transition-smooth);
-    overflow: hidden;
+    padding: 40px;
 }
 
-.glass-card:hover {
-    transform: translateY(-15px);
-    background: rgba(255, 255, 255, 0.18);
-    border-color: var(--primary-cyan);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+.about-container {
+    max-width: 700px;
+    width: 100%;
 }
 
-.card-content { position: relative; z-index: 2; }
-
-.icon-wrap i {
-    font-size: 3rem;
-    color: var(--primary-cyan);
-    margin-bottom: 25px;
-    display: block;
-}
-
-.glass-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    font-weight: 800;
-}
-
-.glass-card p {
-    font-size: 0.95rem;
-    color: var(--text-dim);
-}
-
-.card-line {
-    width: 0;
-    height: 2px;
-    background: var(--primary-cyan);
-    margin-top: 20px;
-    transition: 0.5s;
-}
-
-.glass-card:hover .card-line { width: 100%; }
-
-/* 7. PROJETOS (Retângulos Azuis) */
-#projects-section {
-    padding: 150px 0;
-    background: var(--bg-darker);
-}
-
-.section-heading {
-    font-size: 3.5rem;
-    text-align: center;
-    margin-bottom: 80px;
-    font-weight: 900;
-}
-
-.projects-list {
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.project-rect-card {
-    position: relative;
-    background: var(--glass-blue);
-    border: 1px solid var(--glass-blue-border);
-    border-radius: 20px;
-    padding: 50px;
-    margin-bottom: 40px;
-    transition: var(--transition-smooth);
-    overflow: hidden;
-}
-
-.project-rect-card:hover {
-    transform: scale(1.02);
-    background: rgba(0, 210, 255, 0.12);
-    box-shadow: 0 15px 60px rgba(0, 210, 255, 0.15);
-}
-
-.project-header {
+.terminal-dots {
     display: flex;
-    align-items: center;
-    gap: 20px;
+    gap: 8px;
     margin-bottom: 20px;
 }
 
-.project-index {
+.terminal-dots::before, .terminal-dots::after { content: ''; width: 12px; height: 12px; border-radius: 50%; }
+.terminal-dots::before { background: #ff5f56; box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f; }
+
+/* 7. GRIDS DE ESPECIALIDADES */
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.section-title::before {
+    content: attr(data-subtitle);
+    display: block;
     font-family: var(--ff-mono);
-    color: var(--primary-cyan);
-    font-size: 1.2rem;
+    font-size: 0.8rem;
+    color: var(--clr-primary);
+    text-transform: uppercase;
+    letter-spacing: 3px;
 }
 
-.project-header h3 {
-    font-size: 2.2rem;
-    font-weight: 800;
+.spec-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
 }
 
-.project-body p {
-    font-size: 1.1rem;
-    color: var(--text-dim);
-    margin-bottom: 25px;
+.spec-card {
+    padding: 40px;
+    border-radius: 20px;
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid var(--glass-border);
+    transition: var(--transit);
 }
 
-.tech-tags {
+.spec-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--clr-primary);
+    background: rgba(56, 189, 248, 0.05);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    color: var(--clr-primary);
+    margin-bottom: 20px;
+}
+
+.card-tags {
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px;
+    margin-top: 20px;
     list-style: none;
 }
 
-.tech-tags li {
-    background: rgba(0, 210, 255, 0.1);
-    border: 1px solid var(--primary-cyan);
-    padding: 4px 15px;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    color: var(--primary-cyan);
+.card-tags li {
+    font-family: var(--ff-mono);
+    font-size: 0.7rem;
+    padding: 4px 12px;
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--clr-primary);
+    border-radius: 100px;
 }
 
-.project-footer { margin-top: 30px; }
-
-.view-btn {
-    text-decoration: none;
-    color: #fff;
-    font-weight: 600;
-    font-size: 0.95rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.view-btn:hover { text-decoration: underline; }
-
-/* 8. CONTATO */
-#contact-section {
-    padding: 150px 20px;
-    display: flex;
-    justify-content: center;
-}
-
-.contact-box {
-    max-width: 1100px;
-    width: 100%;
-    padding: 80px;
-    text-align: center;
-    border-radius: 40px;
-}
-
-.glass-morphism {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-white-border);
-}
-
-.contact-title { font-size: 3rem; margin-bottom: 15px; font-weight: 900; }
-
-.contact-grid {
+/* 8. PROJETOS (GITHUB STYLE) */
+.projects-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 30px;
-    margin-top: 60px;
 }
 
-.contact-card-item {
-    text-decoration: none;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 30px;
+.repo-card {
+    background: var(--clr-space);
+    border: 1px solid var(--glass-border);
     border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: 0.4s;
-    border: 1px solid transparent;
+    padding: 30px;
+    transition: var(--transit);
+    cursor: pointer;
 }
 
-.contact-card-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: var(--primary-cyan);
-    transform: translateY(-10px);
+.repo-card:hover {
+    border-color: var(--clr-secondary);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
-
-.c-icon i { font-size: 2.5rem; color: var(--primary-cyan); margin-bottom: 15px; }
-
-.c-label { display: block; font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; }
-
-.c-value { font-weight: 600; font-size: 1rem; color: var(--text-main); }
 
 /* 9. FOOTER */
-.final-footer {
-    padding: 50px 0;
-    border-top: 1px solid var(--glass-white-border);
-}
-
-.footer-container {
+.main-footer {
+    padding: 80px 0;
     text-align: center;
+    border-top: 1px solid var(--glass-border);
 }
 
-.copyright-text {
-    font-size: 0.9rem;
-    color: var(--text-dim);
-}
-
-.footer-dots {
+.footer-tech {
     margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 8px;
+    color: #64748b;
+    font-size: 0.8rem;
 }
-
-.dot { width: 6px; height: 6px; background: var(--primary-cyan); border-radius: 50%; opacity: 0.5; }
 
 /* 10. RESPONSIVIDADE */
-@media (max-width: 1100px) {
-    .specialties-grid { grid-template-columns: repeat(2, 1fr); }
-    .contact-grid { grid-template-columns: 1fr; }
-}
-
 @media (max-width: 768px) {
-    #main-title { font-size: 3.5rem; }
-    .nav-center { display: none; }
-    .specialties-grid { grid-template-columns: 1fr; }
-    .project-rect-card { padding: 30px; }
+    .nav-menu { display: none; }
+    .hero-main-title h1 { font-size: 3.5rem; }
+    .projects-grid { grid-template-columns: 1fr; }
 }
