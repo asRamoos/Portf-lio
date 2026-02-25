@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Andrey | Full Stack Developer</title>
     
-    <meta name="description" content="Portfolio de Andrey, desenvolvedor Full Stack especializado em Python e Java.">
+    <link rel="stylesheet" href="style.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
@@ -31,8 +31,8 @@
             <nav class="nav-menu">
                 <ul>
                     <li><a href="#hero" class="nav-link">Home</a></li>
-                    <li><a href="#especialidades" class="nav-link">Expertise</a></li>
-                    <li><a href="#projetos" class="nav-link">Portfolio</a></li>
+                    <li><a href="#especialidades" class="nav-link">Especialidades</a></li>
+                    <li><a href="#projetos" class="nav-link">Projetos</a></li>
                     <li><a href="#contato" class="nav-link">Contato</a></li>
                 </ul>
             </nav>
@@ -49,76 +49,76 @@
             <div class="about-container glass-morphism">
                 <div class="about-header">
                     <span class="terminal-dots"></span>
-                    <h2 style="font-family: var(--ff-mono); font-size: 1.1rem; color: var(--clr-primary);">root@andrey:~$ whoami</h2>
+                    <span style="font-family: var(--ff-mono); color: var(--clr-primary); font-size: 0.9rem;">portfolio.py</span>
                 </div>
-                <div class="about-text">
-                    <p>Desenvolvedor Full Stack apaixonado por criar sistemas de alto desempenho e interfaces imersivas. Especialista em resolver problemas complexos através de código limpo e arquiteturas escaláveis.</p>
+                <div class="about-body">
+                    <p>Desenvolvedor focado em construir ecossistemas digitais de alta performance. Com expertise em <strong>Python</strong> e <strong>Java</strong>, transformo lógica complexa em experiências fluidas e seguras.</p>
                 </div>
             </div>
         </section>
 
         <section id="especialidades" class="content-section container">
-            <h2 class="section-title" data-subtitle="O que eu domino">Especialidades</h2>
+            <h2 class="section-title" data-subtitle="Hard Skills">Especialidades</h2>
             <div class="spec-grid">
                 <div class="spec-card glass">
                     <i class="fab fa-python card-icon"></i>
-                    <h3>Python Core</h3>
-                    <p>Desenvolvimento de APIs robustas e automação de fluxos de dados.</p>
+                    <h3>Back-end Python</h3>
+                    <p>Criação de APIs robustas com FastAPI e automação de processos.</p>
                     <ul class="card-tags">
-                        <li>FastAPI</li>
                         <li>Django</li>
+                        <li>Pandas</li>
                     </ul>
                 </div>
                 <div class="spec-card glass">
                     <i class="fab fa-java card-icon"></i>
-                    <h3>Java Enterprise</h3>
-                    <p>Arquitetura de microsserviços e sistemas backend seguros.</p>
+                    <h3>Enterprise Java</h3>
+                    <p>Arquitetura de microsserviços e sistemas backend escaláveis.</p>
                     <ul class="card-tags">
-                        <li>Spring</li>
-                        <li>Hibernate</li>
+                        <li>Spring Boot</li>
+                        <li>Docker</li>
                     </ul>
                 </div>
                 <div class="spec-card glass">
                     <i class="fas fa-database card-icon"></i>
-                    <h3>Databases</h3>
-                    <p>Modelagem SQL e NoSQL para aplicações de larga escala.</p>
+                    <h3>Data Architecture</h3>
+                    <p>Modelagem SQL e NoSQL para grandes volumes de informação.</p>
                     <ul class="card-tags">
                         <li>PostgreSQL</li>
-                        <li>MongoDB</li>
+                        <li>Redis</li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <section id="projetos" class="content-section container">
-            <h2 class="section-title" data-subtitle="Código Real">Projetos</h2>
+            <h2 class="section-title" data-subtitle="Case Studies">Projetos</h2>
             <div class="projects-grid">
                 <article class="repo-card">
-                    <h3 style="color: var(--clr-primary); margin-bottom: 10px;">BigStreet</h3>
-                    <p>Plataforma estratégica para geolocalização de eventos esportivos urbanos em tempo real.</p>
-                    <div class="card-tags" style="justify-content: flex-start; margin-top: 15px;">
+                    <h3 style="color: var(--clr-primary); margin-bottom: 15px;">BigStreet Ecosystem</h3>
+                    <p>Plataforma de geolocalização para esportes urbanos, integrando mapas em tempo real e gestão de usuários.</p>
+                    <div class="card-tags" style="justify-content: flex-start; margin-top: 20px;">
                         <li>Java</li>
                         <li>Python</li>
                         <li>SQL</li>
                     </div>
                 </article>
                 <article class="repo-card">
-                    <h3 style="color: var(--clr-secondary); margin-bottom: 10px;">Space Metrics</h3>
-                    <p>Dashboard analítico para monitoramento de infraestrutura cloud com visualização de dados.</p>
-                    <div class="card-tags" style="justify-content: flex-start; margin-top: 15px;">
+                    <h3 style="color: var(--clr-secondary); margin-bottom: 15px;">Cloud Dashboard</h3>
+                    <p>Painel administrativo para monitoramento de infraestrutura com visualização de dados via WebSockets.</p>
+                    <div class="card-tags" style="justify-content: flex-start; margin-top: 20px;">
                         <li>JavaScript</li>
-                        <li>Docker</li>
+                        <li>PostgreSQL</li>
                     </div>
                 </article>
             </div>
         </section>
 
         <section id="contato" class="content-section container">
-            <div class="glass-morphism" style="text-align: center;">
-                <h2 class="section-title" data-subtitle="Vamos trabalhar juntos?">Contato</h2>
-                <div class="contact-links" style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
-                    <a href="https://instagram.com/as.ramoos_" class="nav-link" target="_blank"><i class="fab fa-instagram"></i> @as.ramoos_</a>
-                    <a href="https://wa.me/5531991544778" class="nav-link" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <div class="glass-morphism" style="text-align: center; padding: 60px 20px;">
+                <h2 class="section-title" data-subtitle="Vamos Conversar?">Contato</h2>
+                <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                    <a href="https://instagram.com/as.ramoos_" target="_blank" class="nav-link"><i class="fab fa-instagram"></i> @as.ramoos_</a>
+                    <a href="https://wa.me/5531991544778" target="_blank" class="nav-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                     <a href="mailto:andreyrafaselsr@gmail.com" class="nav-link"><i class="far fa-envelope"></i> Email</a>
                 </div>
             </div>
@@ -126,8 +126,10 @@
     </main>
 
     <footer class="main-footer">
-        <p>Andrey &copy; 2026 | Full Stack Developer</p>
-        <div class="footer-tech"><i class="fas fa-rocket"></i> Constelação de Tecnologias</div>
+        <p>Andrey &copy; 2026 | Desenvolvido com Space Tech Architecture</p>
+        <div class="footer-tech">
+            <i class="fas fa-code"></i> <span>Python • Java • JS</span>
+        </div>
     </footer>
 
     <script src="script.js"></script>
