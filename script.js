@@ -1,92 +1,165 @@
 /**
- * PORTFÓLIO ENGINE - ANDREY
- * JavaScript Robusto para UI e API GitHub
+ * PORTFOLIO ENGINE v2.0 - ANDREY
+ * Responsável por:
+ * 1. Scroll Intelligence (Header Fix)
+ * 2. Gerador de Estrelas (Background)
+ * 3. Integração GitHub API com Fallback Técnico
+ * 4. UX & Motion Effects
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-    
-    const header = document.getElementById('main-header');
-    const githubContainer = document.getElementById('github-projects');
-    
-    // --- 1. HEADER DINÂMICO ---
-    window.addEventListener('scroll', () => {
-        // Ativa o header fixo após scroll de 100px
-        if (window.scrollY > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+const PortfolioEngine = (() => {
 
-    // --- 2. INTEGRAÇÃO API GITHUB ---
-    async function fetchProjects() {
-        // Substitua 'SEU-USER-AQUI' pelo seu username real do GitHub
-        const GITHUB_USER = 'Andrey-dev'; 
+    // Configurações Globais
+    const CONFIG = {
+        githubUser: 'Andrey-dev', // Substitua pelo seu user real
+        starsCount: 150,
+        scrollThreshold: 150
+    };
+
+    // --- Módulo: Background Estelar ---
+    const initStars = () => {
+        const layers = ['stars-small', 'stars-medium', 'stars-large'];
         
-        try {
-            // Buscando repositórios do usuário
-            const response = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos`);
-            const repos = await response.json();
+        layers.forEach((layerId, index) => {
+            const layer = document.getElementById(layerId);
+            let shadows = "";
+            const density = CONFIG.starsCount / (index + 1);
 
-            // Limpa o container de loading
-            githubContainer.innerHTML = '';
+            for (let i = 0; i < density; i++) {
+                const x = Math.floor(Math.random() * window.innerWidth);
+                const y = Math.floor(Math.random() * 2000);
+                shadows += `${x}px ${y}px #FFF${i < density - 1 ? ',' : ''}`;
+            }
+            layer.style.boxShadow = shadows;
+        });
+    };
 
-            // Filtramos apenas o BigStreet (ou mostramos todos caso queira)
-            // Aqui vamos forçar a exibição do BigStreet conforme solicitado
-            const projectsToShow = repos.filter(repo => repo.name.toLowerCase() === 'bigstreet');
+    // --- Módulo: Header & Scroll ---
+    const initHeaderScroll = () => {
+        const header = document.getElementById('main-nav');
+        let lastScroll = 0;
 
-            if (projectsToShow.length === 0) {
-                // Caso o repo ainda não exista publicamente, criamos um card manual
-                renderManualProject();
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            // Lógica de fixar/esconder header
+            if (currentScroll > CONFIG.scrollThreshold) {
+                header.classList.add('header-fixed');
+                header.classList.remove('header-hidden');
             } else {
-                projectsToShow.forEach(repo => {
-                    renderProjectCard(repo);
-                });
+                header.classList.remove('header-fixed');
+                header.classList.add('header-hidden');
             }
 
+            lastScroll = currentScroll;
+        });
+    };
+
+    // --- Módulo: GitHub API ---
+    const fetchGitHubProjects = async () => {
+        const feed = document.getElementById('github-feed');
+
+        try {
+            const response = await fetch(`https://api.github.com/users/${CONFIG.githubUser}/repos?sort=updated&per_page=6`);
+            if (!response.ok) throw new Error('Falha na API');
+            
+            const repos = await response.json();
+            
+            // Limpa o loader
+            feed.innerHTML = '';
+
+            // Renderiza repositórios ou Fallback (BigStreet)
+            const hasBigStreet = repos.some(r => r.name.toLowerCase() === 'bigstreet');
+            
+            if (!hasBigStreet) {
+                renderBigStreetFallback();
+            }
+
+            repos.forEach(repo => {
+                if(repo.name.toLowerCase() !== 'bigstreet') {
+                    renderRepoCard(repo);
+                }
+            });
+
         } catch (error) {
-            console.error('Erro ao buscar GitHub:', error);
-            renderManualProject();
+            console.error('Erro na carga de projetos:', error);
+            renderBigStreetFallback();
         }
-    }
+    };
 
-    function renderProjectCard(repo) {
+    const renderRepoCard = (repo) => {
+        const feed = document.getElementById('github-feed');
         const card = document.createElement('div');
-        card.className = 'project-card';
+        card.className = 'repo-card';
         card.innerHTML = `
-            <h3>${repo.name}</h3>
-            <p>Site para localizar eventos esportivos próximos ao usuário. Integração inteligente com geolocalização.</p>
-            <div class="tech-stack">
-                <span>HTML</span> • <span>CSS</span> • <span>Java</span> • <span>Python</span> • <span>DB</span>
-            </div>
-            <a href="${repo.html_url}" target="_blank" class="contact-link" style="display:block; margin-top:20px; font-weight:bold">Ver Repositório →</a>
-        `;
-        githubContainer.appendChild(card);
-    }
-
-    function renderManualProject() {
-        githubContainer.innerHTML = `
-            <div class="project-card">
-                <div class="card-tag">Em destaque</div>
-                <h3>BigStreet</h3>
-                <p>Plataforma Full Stack para localização e gestão de eventos esportivos urbanos em tempo real.</p>
-                <div class="tech-stack">
-                    <strong>Stack:</strong> HTML, CSS, Java, Python, Banco de Dados, API
+            <div class="repo-header">
+                <i class="far fa-folder-open"></i>
+                <div class="repo-links">
+                    <a href="${repo.html_url}" target="_blank"><i class="fab fa-github"></i></a>
                 </div>
-                <div style="margin-top:20px; font-size: 0.9rem; color: var(--primary)">Repositório Privado/Sincronizando...</div>
+            </div>
+            <h3>${repo.name}</h3>
+            <p>${repo.description || 'Sem descrição definida no repositório.'}</p>
+            <div class="repo-footer">
+                <span class="repo-lang">${repo.language || 'Code'}</span>
+                <span class="repo-stars"><i class="far fa-star"></i> ${repo.stargazers_count}</span>
             </div>
         `;
-    }
+        feed.appendChild(card);
+    };
 
-    // --- 3. EFEITO DE PARALLAX SUAVE NAS ESTRELAS ---
-    window.addEventListener('mousemove', (e) => {
-        const x = e.clientX / window.innerWidth;
-        const y = e.clientY / window.innerHeight;
+    const renderBigStreetFallback = () => {
+        const feed = document.getElementById('github-feed');
+        const card = document.createElement('div');
+        card.className = 'repo-card featured';
+        card.style.borderColor = 'var(--clr-primary)';
+        card.innerHTML = `
+            <div class="repo-header">
+                <i class="fas fa-map-marked-alt" style="color:var(--clr-primary)"></i>
+                <span class="badge">Destaque</span>
+            </div>
+            <h3>BigStreet</h3>
+            <p>Plataforma Full Stack robusta para localização de eventos esportivos. Implementa geolocalização em tempo real e gestão de usuários.</p>
+            <div class="tech-stack-inline">
+                <span>Python</span> <span>Java</span> <span>SQL</span> <span>JS</span>
+            </div>
+            <div class="repo-footer">
+                <span class="status">Produção</span>
+                <a href="#" class="btn-text">Ver Estudo de Caso →</a>
+            </div>
+        `;
+        feed.prepend(card);
+    };
+
+    // --- Módulo: Reveal Animations ---
+    const initRevealOnScroll = () => {
+        const observerOptions = { threshold: 0.15 };
         
-        document.getElementById('stars').style.transform = `translate(-${x * 20}px, -${y * 20}px)`;
-        document.getElementById('stars2').style.transform = `translate(-${x * 40}px, -${y * 40}px)`;
-    });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
 
-    // Iniciar busca
-    fetchProjects();
-});
+        document.querySelectorAll('.glass, .spec-card, .section-title').forEach(el => {
+            observer.observe(el);
+        });
+    };
+
+    // Public API
+    return {
+        start: () => {
+            console.log("%c Andrey Portfolio Engine Activated ", "background: #38bdf8; color: #000; font-weight: bold;");
+            initStars();
+            initHeaderScroll();
+            fetchGitHubProjects();
+            initRevealOnScroll();
+        }
+    };
+})();
+
+// Inicialização
+document.addEventListener('DOMContentLoaded', PortfolioEngine.start);
