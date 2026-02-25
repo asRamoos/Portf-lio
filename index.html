@@ -3,15 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andrey | Full Stack Developer Portfolio</title>
+    <title>Andrey | Full Stack Developer</title>
     
     <meta name="description" content="Portfolio de Andrey, desenvolvedor Full Stack especializado em Python e Java.">
-    <meta name="author" content="Andrey">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <link rel="stylesheet" href="style.css">
@@ -33,9 +30,9 @@
             </div>
             <nav class="nav-menu">
                 <ul>
-                    <li><a href="#hero" class="nav-link">Início</a></li>
+                    <li><a href="#hero" class="nav-link">Home</a></li>
                     <li><a href="#especialidades" class="nav-link">Expertise</a></li>
-                    <li><a href="#projetos" class="nav-link">Projetos</a></li>
+                    <li><a href="#projetos" class="nav-link">Portfolio</a></li>
                     <li><a href="#contato" class="nav-link">Contato</a></li>
                 </ul>
             </nav>
@@ -45,56 +42,46 @@
     <main>
         <section id="hero" class="fullscreen-section">
             <div class="hero-main-title">
-                <h1>Andrey</h1>
-                <div class="hero-typewriter">Full Stack Developer</div>
+                <h1>ANDREY</h1>
+                <div class="hero-typewriter">Python & Java Specialist</div>
             </div>
 
             <div class="about-container glass-morphism">
                 <div class="about-header">
-                    <div class="terminal-dots"></div>
-                    <span style="font-family: var(--ff-mono); color: var(--clr-secondary);">bio_andrey.py</span>
+                    <span class="terminal-dots"></span>
+                    <h2 style="font-family: var(--ff-mono); font-size: 1.1rem; color: var(--clr-primary);">root@andrey:~$ whoami</h2>
                 </div>
-                <div class="about-content">
-                    <p>
-                        Sou um desenvolvedor focado em arquiteturas de alta performance. 
-                        Com domínio em <strong>Python</strong> e <strong>Java</strong>, transformo 
-                        lógica complexa em soluções escaláveis e visualmente impactantes.
-                    </p>
-                    <p style="margin-top: 15px; font-size: 0.9rem; color: #94a3b8;">
-                        Especialista em Bancos de Dados e ecossistemas Cloud.
-                    </p>
+                <div class="about-text">
+                    <p>Desenvolvedor Full Stack apaixonado por criar sistemas de alto desempenho e interfaces imersivas. Especialista em resolver problemas complexos através de código limpo e arquiteturas escaláveis.</p>
                 </div>
             </div>
         </section>
 
         <section id="especialidades" class="content-section container">
-            <h2 class="section-title" data-subtitle="Conhecimento Técnico">Especialidades</h2>
-            
+            <h2 class="section-title" data-subtitle="O que eu domino">Especialidades</h2>
             <div class="spec-grid">
                 <div class="spec-card glass">
                     <i class="fab fa-python card-icon"></i>
-                    <h3>Python</h3>
-                    <p>APIs velozes e automação inteligente de processos complexos.</p>
+                    <h3>Python Core</h3>
+                    <p>Desenvolvimento de APIs robustas e automação de fluxos de dados.</p>
                     <ul class="card-tags">
-                        <li>Django</li>
                         <li>FastAPI</li>
+                        <li>Django</li>
                     </ul>
                 </div>
-
                 <div class="spec-card glass">
                     <i class="fab fa-java card-icon"></i>
-                    <h3>Back-end</h3>
-                    <p>Sistemas robustos e microserviços escaláveis com Java Spring.</p>
+                    <h3>Java Enterprise</h3>
+                    <p>Arquitetura de microsserviços e sistemas backend seguros.</p>
                     <ul class="card-tags">
-                        <li>Spring Boot</li>
-                        <li>Docker</li>
+                        <li>Spring</li>
+                        <li>Hibernate</li>
                     </ul>
                 </div>
-
                 <div class="spec-card glass">
                     <i class="fas fa-database card-icon"></i>
-                    <h3>Bancos de Dados</h3>
-                    <p>Modelagem e otimização de queries para alta disponibilidade.</p>
+                    <h3>Databases</h3>
+                    <p>Modelagem SQL e NoSQL para aplicações de larga escala.</p>
                     <ul class="card-tags">
                         <li>PostgreSQL</li>
                         <li>MongoDB</li>
@@ -104,38 +91,34 @@
         </section>
 
         <section id="projetos" class="content-section container">
-            <h2 class="section-title" data-subtitle="Trabalhos Recentes">Portfolio</h2>
-            
+            <h2 class="section-title" data-subtitle="Código Real">Projetos</h2>
             <div class="projects-grid">
                 <article class="repo-card">
-                    <span style="color: var(--clr-primary); font-family: var(--ff-mono); font-size: 0.8rem;">PROJETO DESTAQUE</span>
-                    <h3 style="margin: 10px 0; font-size: 1.5rem;">BigStreet</h3>
-                    <p>Ecosistema para esportes urbanos com geolocalização e gestão de eventos em tempo real.</p>
-                    <div class="card-tags" style="justify-content: flex-start; margin-top: 20px;">
-                        <li>Python</li>
+                    <h3 style="color: var(--clr-primary); margin-bottom: 10px;">BigStreet</h3>
+                    <p>Plataforma estratégica para geolocalização de eventos esportivos urbanos em tempo real.</p>
+                    <div class="card-tags" style="justify-content: flex-start; margin-top: 15px;">
                         <li>Java</li>
+                        <li>Python</li>
                         <li>SQL</li>
                     </div>
                 </article>
-
                 <article class="repo-card">
-                    <span style="color: var(--clr-secondary); font-family: var(--ff-mono); font-size: 0.8rem;">SISTEMA INTERNO</span>
-                    <h3 style="margin: 10px 0; font-size: 1.5rem;">Data Analytics</h3>
-                    <p>Dashboard para monitoramento de métricas industriais com relatórios automatizados.</p>
-                    <div class="card-tags" style="justify-content: flex-start; margin-top: 20px;">
+                    <h3 style="color: var(--clr-secondary); margin-bottom: 10px;">Space Metrics</h3>
+                    <p>Dashboard analítico para monitoramento de infraestrutura cloud com visualização de dados.</p>
+                    <div class="card-tags" style="justify-content: flex-start; margin-top: 15px;">
                         <li>JavaScript</li>
-                        <li>PostgreSQL</li>
+                        <li>Docker</li>
                     </div>
                 </article>
             </div>
         </section>
 
         <section id="contato" class="content-section container">
-            <div class="glass-morphism" style="text-align: center; padding: 60px;">
-                <h2 class="section-title" data-subtitle="Vamos conversar?" style="margin-bottom: 30px;">Contato</h2>
-                <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
-                    <a href="https://instagram.com/as.ramoos_" target="_blank" class="nav-link"><i class="fab fa-instagram"></i> Instagram</a>
-                    <a href="https://wa.me/5531991544778" target="_blank" class="nav-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <div class="glass-morphism" style="text-align: center;">
+                <h2 class="section-title" data-subtitle="Vamos trabalhar juntos?">Contato</h2>
+                <div class="contact-links" style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                    <a href="https://instagram.com/as.ramoos_" class="nav-link" target="_blank"><i class="fab fa-instagram"></i> @as.ramoos_</a>
+                    <a href="https://wa.me/5531991544778" class="nav-link" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                     <a href="mailto:andreyrafaselsr@gmail.com" class="nav-link"><i class="far fa-envelope"></i> Email</a>
                 </div>
             </div>
@@ -143,12 +126,8 @@
     </main>
 
     <footer class="main-footer">
-        <div class="container">
-            <p>Andrey &copy; 2026 | Desenvolvido com foco em performance.</p>
-            <div class="footer-tech">
-                <i class="fas fa-rocket"></i> Powered by Vanilla Stack
-            </div>
-        </div>
+        <p>Andrey &copy; 2026 | Full Stack Developer</p>
+        <div class="footer-tech"><i class="fas fa-rocket"></i> Constelação de Tecnologias</div>
     </footer>
 
     <script src="script.js"></script>
