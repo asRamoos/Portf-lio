@@ -7,27 +7,28 @@
 </head>
 <body>
 
-    <!-- BARRA SUPERIOR -->
-    <div class="top-bar">
-        <div class="contato-topo">
-            <span>📱 (31) 9XXXX-XXXX</span>
-            <span>📧 seuemail@gmail.com</span>
-            <span>📷 @seuinstagram</span>
+    <!-- HEADER FIXO -->
+    <div class="header-fixo" id="headerFixo">
+        <div class="config-btn">⚙</div>
+        <div class="nome-header">Andrey</div>
+        <div class="contato-header">
+            📱 (31) 9XXXX-XXXX
+            📧 seuemail@gmail.com
+            📷 @seuinstagram
         </div>
     </div>
 
-    <!-- HEADER PRINCIPAL -->
-    <header>
+    <!-- HEADER GRANDE -->
+    <header class="hero">
         <h1>Andrey</h1>
     </header>
 
-    <!-- SOBRE MIM -->
+    <!-- SOBRE -->
     <section class="sobre">
         <h2>Sobre Mim</h2>
         <p>
-            Desenvolvedor focado em criação de sistemas modernos e aplicações completas.
-            Trabalho com desenvolvimento Back-end e Front-end, integração com banco de dados
-            e construção de projetos estruturados do zero até produção.
+            Desenvolvedor focado em criação de sistemas modernos,
+            aplicações completas e soluções estruturadas.
         </p>
     </section>
 
@@ -53,5 +54,16 @@
     </footer>
 
 <script src="jsportfolio.js"></script>
+<script>
+    window.addEventListener("scroll", function() {
+        const header = document.getElementById("headerFixo");
+        if (window.scrollY > 150) {
+            header.classList.add("ativo");
+        } else {
+            header.classList.remove("ativo");
+        }
+    });
+</script>
+
 </body>
 </html>
