@@ -1,94 +1,60 @@
-/**
- * ANDREY CORE ENGINE V6.0 
- * Gerenciamento de Scroll, Typewriter e Efeitos Visuais
- */
-
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. Controle do Cabeçalho (Só aparece ao descer)
-    const header = document.getElementById('dynamic-header');
-    let lastScrollY = window.scrollY;
-
-    window.addEventListener('scroll', () => {
-        const currentScrollY = window.scrollY;
-
-        // Se desceu mais de 200px, mostra o header
-        if (currentScrollY > 200) {
-            header.classList.add('visible');
-        } else {
-            header.classList.remove('visible');
-        }
-        
-        lastScrollY = currentScrollY;
-    });
-
-    // 2. Efeito Typewriter: Full Stack Developer
-    const typewriterEl = document.getElementById('typewriter');
+    // 1. Efeito Typewriter
+    const textEl = document.getElementById('type-text');
     const text = "Full Stack Developer";
-    let charIndex = 0;
+    let idx = 0;
 
-    function typeEffect() {
-        if (charIndex < text.length) {
-            typewriterEl.textContent += text.charAt(charIndex);
-            charIndex++;
-            setTimeout(typeEffect, 150);
+    function type() {
+        if (idx < text.length) {
+            textEl.textContent += text.charAt(idx);
+            idx++;
+            setTimeout(type, 100);
         }
     }
+    setTimeout(type, 1000);
 
-    // 3. Sistema de Estrelas Adicionais Dinâmicas (Parallax)
-    function createStarParticles() {
-        const space = document.querySelector('.space-engine');
-        const starCount = 50;
-
-        for (let i = 0; i < starCount; i++) {
-            const star = document.createElement('div');
-            star.style.position = 'absolute';
-            star.style.width = '2px';
-            star.style.height = '2px';
-            star.style.background = '#fff';
-            star.style.borderRadius = '50%';
-            
-            // Posição Aleatória
-            const x = Math.random() * 100;
-            const y = Math.random() * 100;
-            star.style.left = `${x}%`;
-            star.style.top = `${y}%`;
-            
-            // Animação de Brilho individual
-            star.style.animation = `twinkle ${2 + Math.random() * 3}s infinite alternate`;
-            star.style.opacity = Math.random();
-            
-            space.appendChild(star);
+    // 2. Controle do Header no Scroll
+    const header = document.getElementById('main-header');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
         }
-    }
-
-    // CSS Injetado para as partículas
-    const styleSheet = document.createElement("style");
-    styleSheet.innerText = `
-        @keyframes twinkle {
-            from { opacity: 0.2; transform: scale(1); }
-            to { opacity: 1; transform: scale(1.5); }
-        }
-    `;
-    document.head.appendChild(styleSheet);
-
-    // 4. Scroll Suave para links internos
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const target = document.querySelector(targetId);
-            
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
-        });
     });
 
-    // 5. Iniciar Sequência
-    createStarParticles();
-    setTimeout(typeEffect, 1000);
+    // 3. Partículas de estrelas extras via JS para profundidade
+    const space = document.querySelector('.space-background');
+    for(let i=0; i<30; i++) {
+        let star = document.createElement('div');
+        star.className = 'moving-star';
+        let x = Math.random() * window.innerWidth;
+        let y = Math.random() * window.innerHeight;
+        let duration = 2 + Math.random() * 3;
+        
+        star.setAttribute('style', `
+            position: absolute;
+            left: ${x}px;
+            top: ${y}px;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            opacity: ${Math.random()};
+            animation: twinkle ${duration}s infinite alternate;
+        `);
+        space.appendChild(star);
+    }
 });
+
+// CSS de animação para as estrelas JS
+const style = document.createElement('style');
+style.innerHTML = `
+@keyframes twinkle {
+    from { opacity: 0.2; transform: scale(1); }
+    to { opacity: 1; transform: scale(1.5); }
+}
+`;
+document.head.appendChild(style);
