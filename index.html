@@ -3,104 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andrey | Portfólio</title>
+    <title>Andrey | Full Stack Developer</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- FUNDO ESPACIAL -->
-<div class="space">
     <div class="stars"></div>
     <div class="stars2"></div>
     <div class="stars3"></div>
-</div>
 
-<!-- HEADER FIXO -->
-<header class="main-header" id="mainHeader">
-    <div class="header-left">
-        <button id="configBtn" class="icon-btn">⚙</button>
-    </div>
+    <header id="header">
+        <div class="header-content">
+            <h1>Andrey</h1>
+            <p>Full Stack Developer</p>
+        </div>
+    </header>
 
-    <div class="header-center">
-        <h1 class="header-title">Andrey</h1>
-    </div>
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="main-name">Andrey</h1>
+            <h2 class="subtitle">Full Stack Developer</h2>
 
-    <div class="header-right">
-        <button id="menuBtn" class="icon-btn">☰</button>
-    </div>
-</header>
+            <div class="about">
+                <h3>Sobre Mim</h3>
+                <p>
+                    Sou Andrey Rafael dos Santos Ramos, desenvolvedor de sistemas Full Stack,
+                    criando soluções do zero com Python, Java e banco de dados relacionais.
+                    Atuo no desenvolvimento completo de aplicações, desde a modelagem
+                    de dados até a interface final do usuário, sempre focando em organização,
+                    performance e experiência do usuário.
+                </p>
+            </div>
 
-<!-- MENU LATERAL -->
-<nav class="side-menu" id="sideMenu">
-    <ul>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#especialidades">Especialidades</a></li>
-        <li><a href="#projetos">Projetos</a></li>
-        <li><a href="#contato">Contato</a></li>
-    </ul>
-</nav>
+            <div class="skills-section">
+                <h3 class="section-title">Especialidades</h3>
 
-<!-- PAINEL CONFIGURAÇÕES -->
-<div class="config-panel" id="configPanel">
-    <h3>Configurações</h3>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h4>Python</h4>
+                        <p>Desenvolvimento de sistemas, APIs, automações e aplicações web.</p>
+                    </div>
 
-    <div class="config-item">
-        <label>Modo Escuro</label>
-        <button id="darkToggle">Ativar</button>
-    </div>
+                    <div class="skill-card">
+                        <h4>Back-end</h4>
+                        <p>Lógica de negócio, autenticação, integração com banco e segurança.</p>
+                    </div>
 
-    <div class="config-item">
-        <label>Cor Principal</label>
-        <input type="color" id="colorPicker">
-    </div>
-</div>
+                    <div class="skill-card">
+                        <h4>Front-end</h4>
+                        <p>Interfaces modernas, responsivas e focadas na experiência do usuário.</p>
+                    </div>
 
-<!-- HERO -->
-<section class="hero">
-    <h2 class="hero-title">Andrey</h2>
-    <p class="hero-subtitle">Desenvolvedor Full Stack</p>
-</section>
+                    <div class="skill-card">
+                        <h4>Banco de Dados</h4>
+                        <p>Modelagem, consultas otimizadas e estrutura segura de dados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- SOBRE -->
-<section id="sobre" class="section">
-    <h2>Sobre Mim</h2>
-    <p>
-        Desenvolvedor focado em arquitetura de sistemas,
-        integração de banco de dados e desenvolvimento moderno.
-    </p>
-</section>
+    <section class="projects">
+        <h2 class="section-title">Projetos</h2>
 
-<!-- ESPECIALIDADES -->
-<section id="especialidades" class="section">
-    <h2>ESPECIALIDADES</h2>
-    <div class="skills-grid">
-        <div class="skill-card">Python</div>
-        <div class="skill-card">Banco de Dados</div>
-        <div class="skill-card">Back-end</div>
-        <div class="skill-card">Front-end</div>
-    </div>
-</section>
+        <div class="project-card">
+            <h3>BigStreet</h3>
+            <p>
+                Site desenvolvido para localizar eventos esportivos próximos ao usuário.
+                Construído com HTML, CSS, Java, Python, integração com API e banco de dados relacional.
+            </p>
+        </div>
+    </section>
 
-<!-- PROJETOS -->
-<section id="projetos" class="section">
-    <h2>Projetos</h2>
-    <div id="repos" class="projects-grid"></div>
-</section>
+    <section class="contact">
+        <h2 class="section-title">Contato</h2>
 
-<!-- CONTATO -->
-<section id="contato" class="section">
-    <h2>Contato</h2>
-    <div class="contact-grid">
-        <div>Email: seuemail@gmail.com</div>
-        <div>WhatsApp: (31) 9XXXX-XXXX</div>
-        <div>Instagram: @seuinstagram</div>
-    </div>
-</section>
+        <div class="contact-links">
+            <a href="https://www.instagram.com/as.ramoos_/" target="_blank">Instagram</a>
+            <a href="https://wa.me/5531991544778" target="_blank">WhatsApp</a>
+            <a href="mailto:andreyrafaselsr@gmail.com">Email</a>
+        </div>
+    </section>
 
-<footer class="footer">
-    © 2026 Andrey - Todos os direitos reservados
-</footer>
+    <footer>
+        <p>© 2026 Andrey. Todos os direitos reservados.</p>
+    </footer>
 
-<script src="jsportfolio.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
