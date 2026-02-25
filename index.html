@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andrey | Portfolio</title>
-    <link rel="stylesheet" href="style.css?v=3.0">
+    <title>Andrey | Software Engineer Portfolio</title>
+    
+    <meta name="description" content="Portfolio de Andrey, Full Stack Developer especialista em Java e Python.">
+    
+    <link rel="stylesheet" href="style.css?v=2.5">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -15,83 +21,154 @@
         <div id="stars-small"></div>
         <div id="stars-medium"></div>
         <div id="stars-large"></div>
-        <div class="nebula"></div>
+        <div class="nebula-blue"></div>
+        <div class="nebula-purple"></div>
     </div>
 
     <header id="main-nav">
         <div class="nav-container">
             <div class="nav-brand">
                 <span class="brand-name">ANDREY</span>
+                <span class="brand-tag">PORTFOLIO.V2</span>
             </div>
-            <nav class="nav-menu">
+            <nav class="nav-links">
                 <ul>
-                    <li><a href="#especialidades" class="nav-link">Especialidades</a></li>
-                    <li><a href="#projetos" class="nav-link">Projetos</a></li>
-                    <li><a href="#contato" class="nav-link">Contato</a></li>
+                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#especialidades">Expertise</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#contato">Contato</a></li>
                 </ul>
             </nav>
+            <div class="nav-socials">
+                <a href="https://github.com/AndreySRamos" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
         </div>
     </header>
 
     <main>
-        <section id="hero" class="fullscreen-section">
-            <div class="hero-main-title">
-                <h1>ANDREY</h1>
-                <div id="typewriter" class="hero-typewriter"></div>
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <span class="hero-greeting">Olá, eu sou</span>
+                <h1 class="hero-title">ANDREY</h1>
+                <div class="typewriter-container">
+                    <span id="typewriter"></span><span class="cursor">|</span>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#projetos" class="btn-primary">Ver Projetos</a>
+                    <a href="#contato" class="btn-outline">Entrar em Contato</a>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="mouse"></div>
             </div>
         </section>
 
-        <section id="especialidades" class="container content-section">
-            <h2 class="section-title" data-subtitle="Tecnologias">Especialidades</h2>
+        <section id="especialidades" class="section-container">
+            <div class="section-header">
+                <h2 class="section-main-title" data-text="Expertise">Minhas Especialidades</h2>
+                <p class="section-subtitle">Conhecimento técnico em stack moderna para soluções escaláveis.</p>
+            </div>
+            
             <div class="spec-grid">
                 <div class="spec-card glass">
-                    <i class="fab fa-java card-icon"></i>
-                    <h3>Java Front-end</h3>
-                    <p>Desenvolvimento de interfaces dinâmicas e integração robusta com back-end.</p>
-                </div>
-                <div class="spec-card glass">
-                    <i class="fas fa-database card-icon"></i>
-                    <h3>Banco de Dados</h3>
-                    <p>Modelagem e otimização de dados com SQL e NoSQL.</p>
-                </div>
-                <div class="spec-card glass">
-                    <i class="fab fa-css3-alt card-icon"></i>
+                    <div class="card-glow"></div>
+                    <div class="card-icon"><i class="fab fa-css3-alt"></i></div>
                     <h3>CSS Avançado</h3>
-                    <p>Criação de layouts modernos, responsivos e efeitos de Glassmorphism.</p>
+                    <p>Especialista em layouts responsivos, animações em Keyframes, CSS Grid/Flexbox e implementação de design systems com Glassmorphism.</p>
+                    <ul class="spec-tags">
+                        <li>SASS</li>
+                        <li>Animações</li>
+                        <li>Responsividade</li>
+                    </ul>
+                </div>
+
+                <div class="spec-card glass">
+                    <div class="card-glow"></div>
+                    <div class="card-icon"><i class="fab fa-java"></i></div>
+                    <h3>Java Front-end</h3>
+                    <p>Desenvolvimento de interfaces dinâmicas utilizando tecnologias do ecossistema Java para web, integrando perfeitamente com APIs RESTful e lógica de negócio.</p>
+                    <ul class="spec-tags">
+                        <li>Thymeleaf</li>
+                        <li>JSF</li>
+                        <li>Spring MVC</li>
+                    </ul>
+                </div>
+
+                <div class="spec-card glass">
+                    <div class="card-glow"></div>
+                    <div class="card-icon"><i class="fas fa-database"></i></div>
+                    <h3>Banco de Dados</h3>
+                    <p>Arquitetura, modelagem e administração de dados. Otimização de consultas SQL e implementação de soluções NoSQL para alta performance.</p>
+                    <ul class="spec-tags">
+                        <li>PostgreSQL</li>
+                        <li>MySQL</li>
+                        <li>Redis</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <section id="projetos" class="container content-section">
-            <h2 class="section-title" data-subtitle="Meu Portfolio">Projetos</h2>
-            <div class="projects-grid">
-                <a href="https://github.com/seu-usuario/bigstreet" target="_blank" class="repo-card-link">
-                    <article class="repo-card">
-                        <h3>BigStreet <i class="fab fa-github"></i></h3>
-                        <p>Plataforma de geolocalização para esportes urbanos. Clique para ver o código.</p>
-                        <ul class="card-tags">
-                            <li>Java</li>
-                            <li>Python</li>
-                        </ul>
-                    </article>
+        <section id="projetos" class="section-container">
+            <div class="section-header">
+                <h2 class="section-main-title" data-text="Trabalhos">Projetos em Destaque</h2>
+            </div>
+
+            <div class="projects-featured">
+                <a href="https://github.com/AndreySRamos/BigStreet" target="_blank" class="project-link">
+                    <div class="project-card glass-heavy">
+                        <div class="project-info">
+                            <span class="project-category">Full Stack Application</span>
+                            <h3>BigStreet Ecosystem</h3>
+                            <p>Plataforma estratégica para geolocalização e gestão de eventos esportivos urbanos. Integração em tempo real e análise de dados geográficos.</p>
+                            <div class="project-tech">
+                                <span>Java</span>
+                                <span>Spring Boot</span>
+                                <span>Python</span>
+                                <span>PostgreSQL</span>
+                            </div>
+                            <div class="project-cta">
+                                Ver código no GitHub <i class="fas fa-external-link-alt"></i>
+                            </div>
+                        </div>
+                    </div>
                 </a>
             </div>
         </section>
 
-        <section id="contato" class="container content-section">
+        <section id="contato" class="section-container">
             <div class="glass-morphism contact-box">
-                <h2 class="section-title" data-subtitle="Vamos conversar?">Contato</h2>
-                <div class="contact-info">
-                    <p><i class="fab fa-whatsapp"></i> +55 31 99154-4778</p>
-                    <p><i class="far fa-envelope"></i> andreyrafaselsr@gmail.com</p>
-                    <p><i class="fab fa-instagram"></i> @as.ramoos_</p>
+                <h2 class="section-main-title" data-text="Conectar">Informações de Contato</h2>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <i class="fab fa-whatsapp"></i>
+                        <span class="c-label">WhatsApp</span>
+                        <span class="c-value">+55 31 99154-4778</span>
+                    </div>
+                    <div class="contact-card">
+                        <i class="far fa-envelope"></i>
+                        <span class="c-label">Email Profissional</span>
+                        <span class="c-value">andreyrafaselsr@gmail.com</span>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fab fa-instagram"></i>
+                        <span class="c-label">Social Media</span>
+                        <span class="c-value">@as.ramoos_</span>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="main-footer">
-        <p>Andrey &copy; 2026 | Full Stack Developer</p>
+    <footer class="final-footer">
+        <div class="footer-container">
+            <p class="copyright-text">Andrey &copy; 2026 | Full Stack Developer Specialist</p>
+            <div class="tech-stack-icons">
+                <i class="fab fa-python"></i>
+                <i class="fab fa-java"></i>
+                <i class="fab fa-js"></i>
+                <i class="fab fa-docker"></i>
+            </div>
+        </div>
     </footer>
 
     <script src="script.js"></script>
