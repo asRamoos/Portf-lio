@@ -1,142 +1,99 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Andrey | Full Stack Developer</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
 
-    <!-- FUNDO ESTRELADO -->
-    <div class="stars"></div>
-    <div class="stars2"></div>
-    <div class="stars3"></div>
+    <div id="stars-container">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
 
-    <!-- HEADER DINÂMICO -->
-    <header id="header">
+    <header id="main-header">
         <div class="header-content">
-            <h1 class="header-name">Andrey</h1>
-            <p class="header-role">Full Stack Developer</p>
+            <span class="logo">Andrey</span>
+            <span class="sub-logo">Full Stack Developer</span>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-content">
+    <main>
+        <section id="hero">
+            <div class="hero-central">
+                <h1 class="glitch" data-text="Andrey">Andrey</h1>
+                <p class="hero-subtitle">Full Stack Developer</p>
+            </div>
 
-            <h1 class="main-name">Andrey</h1>
-            <h2 class="subtitle">Full Stack Developer</h2>
-
-            <!-- SOBRE MIM -->
-            <div class="about">
-                <h3 class="section-title">Sobre Mim</h3>
-                <p class="about-text">
-                    Sou Andrey Rafael dos Santos Ramos, desenvolvedor de sistemas Full Stack,
-                    criando soluções do zero com Python, Java e banco de dados relacionais.
-                    Atuo no desenvolvimento completo de aplicações, desde a modelagem de dados
-                    até a interface final do usuário, sempre focando em organização, performance,
-                    segurança e experiência do usuário.
+            <div class="about-glass">
+                <h2>Sobre Mim</h2>
+                <p>
+                    Desenvolvedor Full Stack focado em criar soluções robustas e escaláveis. 
+                    Com domínio em <strong>Python</strong> e <strong>Java</strong>, transformo conceitos complexos 
+                    em arquiteturas de <strong>Banco de Dados</strong> eficientes e interfaces modernas. 
+                    Minha paixão reside na interseção entre performance técnica e experiência do usuário.
                 </p>
             </div>
+        </section>
 
-            <!-- ESPECIALIDADES -->
-            <div class="skills-section">
-                <h3 class="section-title">Especialidades</h3>
-
-                <div class="skills-grid">
-
-                    <div class="skill-card">
-                        <h4>Python</h4>
-                        <p>
-                            Desenvolvimento de sistemas, APIs REST, automações,
-                            scripts de processamento e aplicações web estruturadas.
-                        </p>
-                    </div>
-
-                    <div class="skill-card">
-                        <h4>Back-end</h4>
-                        <p>
-                            Criação de regras de negócio, autenticação, integração com banco,
-                            segurança, organização de servidores e estrutura de aplicação.
-                        </p>
-                    </div>
-
-                    <div class="skill-card">
-                        <h4>Front-end</h4>
-                        <p>
-                            Construção de interfaces modernas, responsivas e intuitivas,
-                            priorizando usabilidade e experiência do usuário.
-                        </p>
-                    </div>
-
-                    <div class="skill-card">
-                        <h4>Banco de Dados</h4>
-                        <p>
-                            Modelagem relacional, consultas otimizadas, controle de dados,
-                            estrutura segura e organização de informações.
-                        </p>
-                    </div>
-
+        <section id="especialidades">
+            <h2 class="section-title">Especialidades</h2>
+            <div class="spec-grid">
+                <div class="spec-card">
+                    <i class="fab fa-python"></i>
+                    <h3>Python</h3>
+                    <p>Desenvolvimento de APIs rápidas, automação e ciência de dados com código limpo.</p>
+                </div>
+                <div class="spec-card">
+                    <i class="fas fa-server"></i>
+                    <h3>Back-end</h3>
+                    <p>Arquitetura de sistemas em Java e Python, focando em segurança e alta disponibilidade.</p>
+                </div>
+                <div class="spec-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Front-end</h3>
+                    <p>Criação de interfaces responsivas e intuitivas utilizando as melhores práticas de UX/UI.</p>
+                </div>
+                <div class="spec-card">
+                    <i class="fas fa-database"></i>
+                    <h3>Banco de Dados</h3>
+                    <p>Modelagem, otimização de queries e gerenciamento de dados SQL e NoSQL.</p>
                 </div>
             </div>
+        </section>
 
-        </div>
-    </section>
-
-    <!-- PROJETOS -->
-    <section class="projects">
-        <div class="projects-wrapper">
+        <section id="projetos">
             <h2 class="section-title">Projetos</h2>
-
-            <!-- Repositórios GitHub -->
-            <div id="repos" class="projects-container"></div>
-
-        </div>
-    </section>
-
-    <!-- CONTATO -->
-    <section class="contact">
-        <div class="contact-wrapper">
-
-            <h2 class="section-title">Contato</h2>
-
-            <div class="contact-links">
-
-                <div class="contact-item">
-                    <a href="https://www.instagram.com/as.ramoos_/" target="_blank">
-                        Instagram
-                    </a>
-                </div>
-
-                <div class="contact-item">
-                    <a href="https://wa.me/5531991544778" target="_blank">
-                        WhatsApp
-                    </a>
-                </div>
-
-                <div class="contact-item">
-                    <a href="mailto:andreyrafaselsr@gmail.com">
-                        Email
-                    </a>
-                </div>
-
+            <div id="github-projects" class="projects-container">
+                <div class="loading">Sincronizando com GitHub...</div>
             </div>
+        </section>
 
-        </div>
-    </section>
+        <section id="contato">
+            <h2 class="section-title">Contato</h2>
+            <div class="contact-wrapper">
+                <a href="https://instagram.com/as.ramoos_" target="_blank" class="contact-link">
+                    <i class="fab fa-instagram"></i> @as.ramoos_
+                </a>
+                <a href="https://wa.me/5531991544778" target="_blank" class="contact-link">
+                    <i class="fab fa-whatsapp"></i> (31) 99154-4778
+                </a>
+                <a href="mailto:andreyrafaselsr@gmail.com" class="contact-link">
+                    <i class="far fa-envelope"></i> andreyrafaselsr@gmail.com
+                </a>
+            </div>
+        </section>
+    </main>
 
-    <!-- RODAPÉ -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p>© 2026 Andrey. Todos os direitos reservados.</p>
-        </div>
+    <footer>
+        <p>&copy; 2026 Andrey R. - Built with Code and Passion.</p>
     </footer>
 
-    <!-- SCRIPT -->
     <script src="script.js"></script>
-
 </body>
 </html>
