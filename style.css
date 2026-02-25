@@ -1,98 +1,175 @@
-body {
+/* RESET GLOBAL */
+* {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #001233;
-    color: white;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* HEADER FIXO (inicialmente escondido) */
-.header-fixo {
+:root {
+    --primary: #00aaff;
+    --background: #000814;
+    --text: #ffffff;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--background);
+    color: var(--text);
+    overflow-x: hidden;
+    transition: 0.3s ease;
+}
+
+/* FUNDO ESPACIAL */
+.space {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+}
+
+.stars, .stars2, .stars3 {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background-repeat: repeat;
+    animation: moveStars 200s linear infinite;
+}
+
+.stars {
+    background-image: radial-gradient(2px 2px at 20px 30px, white, transparent);
+}
+
+.stars2 {
+    background-image: radial-gradient(1px 1px at 50px 80px, white, transparent);
+    animation-duration: 300s;
+}
+
+.stars3 {
+    background-image: radial-gradient(3px 3px at 90px 40px, white, transparent);
+    animation-duration: 400s;
+}
+
+@keyframes moveStars {
+    from { transform: translateY(0); }
+    to { transform: translateY(-1000px); }
+}
+
+/* HEADER */
+.main-header {
     position: fixed;
     top: 0;
     width: 100%;
+    height: 70px;
     background: rgba(255,255,255,0.95);
     color: black;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px 30px;
+    justify-content: space-between;
+    padding: 0 40px;
     transform: translateY(-100%);
     transition: 0.4s ease;
     z-index: 1000;
 }
 
-/* Quando rolar */
-.header-fixo.ativo {
+.main-header.active {
     transform: translateY(0);
 }
 
-/* Nome no centro */
-.nome-header {
-    font-weight: bold;
-    font-size: 18px;
-}
-
-/* Contato direita */
-.contato-header {
-    font-size: 14px;
-}
-
-/* Botão configurações esquerda */
-.config-btn {
+.header-title {
     font-size: 20px;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
     cursor: pointer;
 }
 
-/* HERO GRANDE */
-.hero {
-    text-align: center;
+/* MENU LATERAL */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    background: #111;
+    padding-top: 80px;
+    transition: 0.3s ease;
+    z-index: 999;
+}
+
+.side-menu.active {
+    right: 0;
+}
+
+.side-menu ul {
+    list-style: none;
+}
+
+.side-menu li {
+    padding: 15px 30px;
+}
+
+.side-menu a {
+    color: white;
+    text-decoration: none;
+}
+
+/* CONFIG PANEL */
+.config-panel {
+    position: fixed;
+    left: -300px;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    background: #111;
+    padding: 80px 20px;
+    transition: 0.3s ease;
+    z-index: 999;
+}
+
+.config-panel.active {
+    left: 0;
+}
+
+/* SECTIONS */
+.section {
     padding: 120px 20px;
-}
-
-.hero h1 {
-    font-size: 4rem;
-    letter-spacing: 3px;
-}
-
-/* SEÇÕES */
-section {
-    padding: 60px 20px;
     text-align: center;
 }
 
-.sobre p {
-    max-width: 700px;
-    margin: auto;
-    font-size: 18px;
-    line-height: 1.6;
-}
-
-/* ESPECIALIDADES */
-.skills {
+.skills-grid {
     display: flex;
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
 }
 
-.skill {
-    background: rgba(255,255,255,0.15);
-    padding: 15px 30px;
-    border-radius: 30px;
-    backdrop-filter: blur(5px);
-    font-weight: bold;
+.skill-card {
+    background: rgba(255,255,255,0.1);
+    padding: 20px 40px;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
 }
 
-/* PROJETOS */
-#repos {
+/* PROJECTS */
+.projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
 
+/* CONTACT */
+.contact-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 /* FOOTER */
-footer {
+.footer {
     text-align: center;
-    padding: 30px;
-    opacity: 0.7;
+    padding: 40px;
+    opacity: 0.6;
 }
