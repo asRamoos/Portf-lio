@@ -1,3 +1,14 @@
+const header = document.getElementById("header");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 100) {
+        header.classList.add("active");
+    } else {
+        header.classList.remove("active");
+    }
+});
+
+
 const username = "asRamoos";
 
 // Coloque aqui apenas os repositórios que você quer mostrar
@@ -26,3 +37,4 @@ fetch(`https://api.github.com/users/${username}/repos`)
             });
     })
     .catch(error => console.error("Erro ao buscar repositórios:", error));
+
