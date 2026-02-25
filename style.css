@@ -1,163 +1,125 @@
-/* ARQUITETURA DE DESIGN ANDREY V6.0 
-   FOCO: GLASSMORPHISM, NEON GLOW E ESPAÇO
-*/
-
+/* DESIGN SYSTEM - ANDREY 2026 */
 :root {
-    --deep-space: #010409;
-    --star-white: #ffffff;
-    --neon-blue: #0077ff;
-    --dark-blue-glass: rgba(0, 20, 50, 0.7);
+    --bg-dark: #02040a;
+    --neon-blue: #0088ff;
+    --neon-glow: rgba(0, 136, 255, 0.4);
     --white-glass: rgba(255, 255, 255, 0.05);
-    --text-pure: #ffffff;
-    --text-dim: #b1b1b1;
-    --transition-fast: 0.3s ease;
-    --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    --blue-glass: rgba(0, 15, 35, 0.8);
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
 }
 
-/* 1. RESET E FUNDO ESPACIAL */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
 body {
-    background-color: var(--deep-space);
-    color: var(--text-pure);
+    background: var(--bg-dark);
+    color: var(--text-primary);
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
-.space-engine {
-    position: fixed; width: 100%; height: 100%; z-index: -10;
-    background: radial-gradient(circle at center, #020b1a 0%, #010409 100%);
+/* FUNDO ESPACIAL COM ESTRELAS EM MOVIMENTO */
+.space-background {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1; background: radial-gradient(circle at center, #0a1128 0%, #02040a 100%);
 }
 
-.deep-blue-void {
-    position: absolute; width: 100%; height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(0, 119, 255, 0.05) 0%, transparent 80%);
-}
-
-/* ESTRELAS EM MOVIMENTO */
-#stars-layer-1, #stars-layer-2 {
+#stars, #stars2, #stars3 {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background-image: radial-gradient(1px 1px at 25px 35px, #fff, transparent),
-                      radial-gradient(1.5px 1.5px at 100px 150px, #fff, transparent),
-                      radial-gradient(1px 1px at 200px 300px, #fff, transparent);
-    background-size: 300px 300px;
-    animation: moveStars 100s linear infinite;
+    background: transparent;
 }
 
-#stars-layer-2 { animation-duration: 150s; opacity: 0.5; }
+#stars {
+    box-shadow: 450px 200px #FFF, 1200px 400px #FFF, 800px 900px #FFF, 200px 1500px #FFF, 1600px 100px #FFF;
+    width: 1px; height: 1px; animation: spaceMove 100s linear infinite;
+}
 
-@keyframes moveStars {
+#stars2 {
+    box-shadow: 100px 100px #FFF, 500px 800px #FFF, 1400px 1200px #FFF;
+    width: 2px; height: 2px; animation: spaceMove 70s linear infinite;
+}
+
+@keyframes spaceMove {
     from { transform: translateY(0); }
-    to { transform: translateY(-1000px); }
+    to { transform: translateY(-2000px); }
 }
 
-/* 2. CABEÇALHO INTELIGENTE */
-#dynamic-header {
-    position: fixed; top: 0; width: 100%; z-index: 2000;
-    padding: 25px 0; transform: translateY(-100%);
-    transition: var(--transition-slow);
-    background: rgba(1, 4, 9, 0.0);
+/* HEADER DINÂMICO */
+#main-header {
+    position: fixed; top: 0; width: 100%; padding: 25px 0;
+    z-index: 1000; transition: all 0.5s ease;
+    transform: translateY(-100%); opacity: 0;
 }
 
-#dynamic-header.visible {
-    transform: translateY(0);
-    background: rgba(1, 4, 9, 0.8);
-    backdrop-filter: blur(15px);
+#main-header.scrolled {
+    transform: translateY(0); opacity: 1;
+    background: rgba(2, 4, 10, 0.8); backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(255,255,255,0.1);
     padding: 15px 0;
 }
 
-.nav-container {
-    max-width: 1200px; margin: 0 auto; display: flex;
-    justify-content: space-between; align-items: center; padding: 0 40px;
+.container { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
+.nav-flex { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-weight: 900; color: var(--neon-blue); letter-spacing: 2px; }
+.nav-links { display: flex; list-style: none; gap: 30px; }
+.nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 0.9rem; transition: 0.3s; }
+.nav-links a:hover { color: var(--text-primary); text-shadow: 0 0 10px var(--neon-blue); }
+
+/* HERO & NOME GRADIENTE */
+.hero-section { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+
+.main-name-gradient {
+    font-size: clamp(4rem, 15vw, 8rem); font-weight: 900;
+    background: linear-gradient(180deg, #0055ff 0%, #ffffff 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    letter-spacing: -5px; line-height: 1;
 }
 
-.logo-text { font-weight: 900; font-size: 1.5rem; letter-spacing: 2px; color: var(--neon-blue); }
+.typewriter-container { font-family: 'JetBrains Mono'; font-size: 1.5rem; color: var(--neon-blue); margin-top: 10px; }
 
-.nav-menu { display: flex; list-style: none; gap: 40px; }
-.nav-item { text-decoration: none; color: var(--text-dim); font-size: 0.9rem; font-weight: 600; transition: 0.3s; }
-.nav-item:hover { color: var(--neon-blue); text-shadow: 0 0 10px var(--neon-blue); }
-
-/* 3. HERO & GRADIENTE DO NOME */
-.hero-module { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-
-.gradient-name {
-    font-size: clamp(4rem, 18vw, 9rem);
-    font-weight: 900;
-    text-align: center;
-    background: linear-gradient(180deg, var(--neon-blue) 0%, #ffffff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 30px rgba(0, 119, 255, 0.3));
-    letter-spacing: -5px;
+/* CARD SOBRE MIM */
+.about-card-container {
+    max-width: 700px; margin-top: 40px; background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden;
 }
+.about-card-header { background: rgba(255,255,255,0.05); padding: 8px 15px; font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--text-secondary); text-align: left; }
+.about-card-content { padding: 30px; line-height: 1.7; color: var(--text-secondary); text-align: left; }
 
-.hero-typewriter { font-family: 'JetBrains Mono'; font-size: 2rem; color: var(--text-dim); margin: 20px 0; }
+/* HARD SKILLS - FROSTED WHITE */
+.section-padding { padding: 100px 0; }
+.section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 5px; }
+.subtitle-skills { font-family: 'JetBrains Mono'; color: var(--neon-blue); letter-spacing: 4px; font-size: 0.8rem; margin-bottom: 50px; }
 
-/* 4. CARDS DE ESPECIALIDADES (BRANCO TRANSPARENTE) */
-.specialty-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;
-    max-width: 1200px; margin: 0 auto; padding: 50px 40px;
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+.skill-card.frosted-white {
+    background: var(--white-glass); backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 20px;
+    padding: 40px 25px; transition: 0.4s;
 }
+.skill-card:hover { transform: translateY(-10px); border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.08); }
+.icon-skill { font-size: 2.5rem; margin-bottom: 20px; color: #fff; }
 
-.frosted-white-card {
-    background: var(--white-glass);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 24px; padding: 50px 30px;
-    text-align: center; transition: var(--transition-slow);
-    position: relative; overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+/* PROJETOS */
+.project-large-card {
+    display: flex; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 24px; overflow: hidden; margin-top: 40px;
 }
+.project-img-placeholder { flex: 1; background: #0a1128; display: flex; align-items: center; justify-content: center; font-weight: 900; opacity: 0.3; }
+.project-info { flex: 1.5; padding: 50px; }
 
-.frosted-white-card:hover {
-    background: rgba(255,255,255,0.1);
-    transform: translateY(-15px);
-    border-color: rgba(255,255,255,0.4);
-    box-shadow: 0 0 40px rgba(255,255,255,0.1);
+/* CONTATO - AZUL NEON */
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+.contact-card.neon-blue-glass {
+    background: var(--blue-glass); border: 1px solid rgba(0, 136, 255, 0.3);
+    border-radius: 20px; padding: 40px; text-decoration: none; text-align: center;
+    transition: 0.4s; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
-
-.spec-icon { font-size: 3.5rem; color: #fff; margin-bottom: 25px; }
-
-/* 5. CARDS DE CONTATO (AZUL ESCURO BRILHANTE) */
-.contact-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
-    max-width: 1200px; margin: 0 auto; padding: 50px 40px;
+.contact-card:hover { 
+    transform: scale(1.05); border-color: var(--neon-blue);
+    box-shadow: 0 0 30px var(--neon-glow);
 }
+.contact-card i { font-size: 2.5rem; color: var(--neon-blue); margin-bottom: 15px; }
+.label { display: block; font-size: 0.7rem; text-transform: uppercase; color: var(--neon-blue); }
+.value { font-weight: 700; font-size: 1.1rem; color: #fff; }
 
-.shiny-blue-card {
-    background: var(--dark-blue-glass);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 119, 255, 0.3);
-    border-radius: 20px; padding: 40px;
-    display: flex; flex-direction: column; align-items: center;
-    text-decoration: none; color: #fff;
-    transition: var(--transition-slow);
-    box-shadow: 0 0 20px rgba(0, 119, 255, 0.1);
-}
-
-.shiny-blue-card:hover {
-    background: rgba(0, 119, 255, 0.2);
-    transform: scale(1.05);
-    border-color: var(--neon-blue);
-    box-shadow: 0 0 50px rgba(0, 119, 255, 0.4), inset 0 0 20px rgba(0, 119, 255, 0.2);
-}
-
-.shiny-blue-card i { font-size: 3rem; color: var(--neon-blue); margin-bottom: 15px; text-shadow: 0 0 20px var(--neon-blue); }
-.contact-label { font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--neon-blue); text-transform: uppercase; }
-.contact-action { font-size: 1.1rem; font-weight: 700; margin-top: 5px; }
-
-/* 6. SOBRE MIM CARD */
-.about-card {
-    max-width: 800px; margin: 40px auto; padding: 50px;
-    background: rgba(255,255,255,0.02);
-    border-radius: 30px; border: 1px solid rgba(255,255,255,0.05);
-}
-
-.about-title { font-size: 1.5rem; letter-spacing: 5px; color: var(--neon-blue); margin-bottom: 20px; }
-.about-body p { line-height: 1.8; color: var(--text-dim); font-size: 1.1rem; }
-
-/* 7. RODAPÉ */
-.pro-footer { padding: 100px 0 50px; text-align: center; }
-.footer-line { width: 100px; height: 2px; background: var(--neon-blue); margin: 0 auto 30px; box-shadow: 0 0 10px var(--neon-blue); }
+.main-footer { padding: 50px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 50px; opacity: 0.5; }
