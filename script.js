@@ -1,168 +1,94 @@
 /**
- * ANDREY CORE ENGINE v5.0
- * Optimized JavaScript for Space-Tech Portfolio
+ * ANDREY CORE ENGINE V6.0 
+ * Gerenciamento de Scroll, Typewriter e Efeitos Visuais
  */
-
-"use strict";
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- 1. TYPEWRITER SYSTEM ---
-    const typewriter = () => {
-        const target = document.getElementById('typewriter');
-        const text = "Full Stack Developer";
-        let index = 0;
-        const speed = 150;
+    // 1. Controle do Cabeçalho (Só aparece ao descer)
+    const header = document.getElementById('dynamic-header');
+    let lastScrollY = window.scrollY;
 
-        function type() {
-            if (index < text.length) {
-                target.textContent += text.charAt(index);
-                index++;
-                setTimeout(type, speed);
-            }
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+
+        // Se desceu mais de 200px, mostra o header
+        if (currentScrollY > 200) {
+            header.classList.add('visible');
+        } else {
+            header.classList.remove('visible');
         }
         
-        // Iniciar com delay para garantir carregamento visual
-        setTimeout(type, 1200);
-    };
+        lastScrollY = currentScrollY;
+    });
 
-    // --- 2. DYNAMIC COSMOS GENERATOR ---
-    const initCosmos = () => {
-        const createLayer = (id, count, size) => {
-            const el = document.getElementById(id);
-            if (!el) return;
-            
-            let boxShadow = "";
-            for (let i = 0; i < count; i++) {
-                const x = Math.floor(Math.random() * window.innerWidth);
-                const y = Math.floor(Math.random() * 3000); // Espaço vertical longo
-                boxShadow += `${x}px ${y}px #FFF${i === count - 1 ? "" : ","}`;
-            }
-            el.style.boxShadow = boxShadow;
-        };
+    // 2. Efeito Typewriter: Full Stack Developer
+    const typewriterEl = document.getElementById('typewriter');
+    const text = "Full Stack Developer";
+    let charIndex = 0;
 
-        createLayer('stars-small', 250, 1);
-        createLayer('stars-medium', 100, 2);
-        createLayer('stars-large', 40, 3);
-    };
-
-    // --- 3. SCROLL SPY & HEADER CONTROL ---
-    const headerControl = () => {
-        const nav = document.getElementById('main-nav');
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        window.addEventListener('scroll', () => {
-            // Header Glow
-            if (window.scrollY > 100) {
-                nav.classList.add('nav-scrolled');
-            } else {
-                nav.classList.remove('nav-scrolled');
-            }
-
-            // Scroll Spy
-            let current = "";
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    };
-
-    // --- 4. REVEAL ANIMATIONS (Intersection Observer) ---
-    const revealObserver = () => {
-        const options = {
-            threshold: 0.15,
-            rootMargin: "0px 0px -50px 0px"
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('reveal-active');
-                    observer.unobserve(entry.target); // Animates once
-                }
-            });
-        }, options);
-
-        const items = document.querySelectorAll('.expertise-card, .project-mega-card, .contact-container');
-        items.forEach(item => {
-            item.style.opacity = "0";
-            item.style.transform = "translateY(40px)";
-            item.style.transition = "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)";
-            observer.observe(item);
-        });
-
-        // Adicionar classe via CSS injetado para controlar a ativação
-        const style = document.createElement('style');
-        style.innerHTML = `
-            .reveal-active {
-                opacity: 1 !important;
-                transform: translateY(0) !important;
-            }
-        `;
-        document.head.appendChild(style);
-    };
-
-    // --- 5. SMOOTH ANCHOR LINK SCROLL ---
-    const smoothScroll = () => {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    };
-
-    // --- 6. PARALLAX EFFECT FOR NEBULAS ---
-    const initParallax = () => {
-        window.addEventListener('mousemove', (e) => {
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-            
-            const nebula = document.querySelector('.nebula-primary');
-            if (nebula) {
-                nebula.style.transform = `translate(${x * 50}px, ${y * 50}px)`;
-            }
-        });
-    };
-
-    // --- 7. ERROR HANDLER FOR IMAGES (IF ANY) ---
-    const handleImages = () => {
-        document.querySelectorAll('img').forEach(img => {
-            img.onerror = function() {
-                this.src = 'https://via.placeholder.com/400?text=Andrey+Dev';
-            };
-        });
-    };
-
-    // --- INITIALIZATION SEQUENCE ---
-    try {
-        initCosmos();
-        typewriter();
-        headerControl();
-        revealObserver();
-        smoothScroll();
-        initParallax();
-        handleImages();
-        
-        console.log("%c ANDREY PORTFOLIO SYSTEM LOADED ", "background: #00f2ff; color: #000; font-weight: bold;");
-    } catch (error) {
-        console.error("System crash avoided. Details:", error);
+    function typeEffect() {
+        if (charIndex < text.length) {
+            typewriterEl.textContent += text.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeEffect, 150);
+        }
     }
+
+    // 3. Sistema de Estrelas Adicionais Dinâmicas (Parallax)
+    function createStarParticles() {
+        const space = document.querySelector('.space-engine');
+        const starCount = 50;
+
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.style.position = 'absolute';
+            star.style.width = '2px';
+            star.style.height = '2px';
+            star.style.background = '#fff';
+            star.style.borderRadius = '50%';
+            
+            // Posição Aleatória
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            star.style.left = `${x}%`;
+            star.style.top = `${y}%`;
+            
+            // Animação de Brilho individual
+            star.style.animation = `twinkle ${2 + Math.random() * 3}s infinite alternate`;
+            star.style.opacity = Math.random();
+            
+            space.appendChild(star);
+        }
+    }
+
+    // CSS Injetado para as partículas
+    const styleSheet = document.createElement("style");
+    styleSheet.innerText = `
+        @keyframes twinkle {
+            from { opacity: 0.2; transform: scale(1); }
+            to { opacity: 1; transform: scale(1.5); }
+        }
+    `;
+    document.head.appendChild(styleSheet);
+
+    // 4. Scroll Suave para links internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
+            
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // 5. Iniciar Sequência
+    createStarParticles();
+    setTimeout(typeEffect, 1000);
 });
