@@ -1,97 +1,189 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" class="no-js">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andrey | Full Stack Developer</title>
+    <meta name="description" content="Andrey - Full Stack Developer Portfolio. Especialista em Python, Java e Banco de Dados.">
+    <meta name="author" content="Andrey">
+    
+    <title>Andrey | Full Stack Developer | Portfolio Profissional</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;600;800&family=JetBrains+Mono:wght@100;400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <div id="stars-container">
-        <div id="stars"></div>
-        <div id="stars2"></div>
-        <div id="stars3"></div>
+    <div class="cosmos-background">
+        <div id="stars-small"></div>
+        <div id="stars-medium"></div>
+        <div id="stars-large"></div>
+        <div class="nebula"></div>
     </div>
 
-    <header id="main-header">
-        <div class="header-content">
-            <span class="logo">Andrey</span>
-            <span class="sub-logo">Full Stack Developer</span>
+    <header id="main-nav" class="header-hidden">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-name">Andrey</span>
+                <span class="brand-role">Full Stack Dev</span>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#hero" class="nav-link">Home</a></li>
+                    <li><a href="#especialidades" class="nav-link">Especialidades</a></li>
+                    <li><a href="#projetos" class="nav-link">Projetos</a></li>
+                    <li><a href="#contato" class="nav-link">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="nav-cta">
+                <a href="https://wa.me/5531991544778" class="btn-primary-sm">Get in Touch</a>
+            </div>
         </div>
     </header>
 
-    <main>
-        <section id="hero">
-            <div class="hero-central">
-                <h1 class="glitch" data-text="Andrey">Andrey</h1>
-                <p class="hero-subtitle">Full Stack Developer</p>
+    <main id="main-content">
+        
+        <section id="hero" class="fullscreen-section">
+            <div class="hero-content">
+                <div class="hero-main-title">
+                    <h1 class="text-reveal">Andrey</h1>
+                    <div class="title-separator"></div>
+                    <p class="hero-typewriter">Full Stack Developer</p>
+                </div>
+                
+                <div class="hero-scroll-indicator">
+                    <span>Descer para explorar</span>
+                    <div class="mouse-icon">
+                        <div class="wheel"></div>
+                    </div>
+                </div>
             </div>
 
-            <div class="about-glass">
-                <h2>Sobre Mim</h2>
-                <p>
-                    Desenvolvedor Full Stack focado em criar soluções robustas e escaláveis. 
-                    Com domínio em <strong>Python</strong> e <strong>Java</strong>, transformo conceitos complexos 
-                    em arquiteturas de <strong>Banco de Dados</strong> eficientes e interfaces modernas. 
-                    Minha paixão reside na interseção entre performance técnica e experiência do usuário.
-                </p>
-            </div>
-        </section>
-
-        <section id="especialidades">
-            <h2 class="section-title">Especialidades</h2>
-            <div class="spec-grid">
-                <div class="spec-card">
-                    <i class="fab fa-python"></i>
-                    <h3>Python</h3>
-                    <p>Desenvolvimento de APIs rápidas, automação e ciência de dados com código limpo.</p>
+            <div class="about-container glass-morphism">
+                <div class="about-header">
+                    <span class="terminal-dots"></span>
+                    <h2>Sobre_Mim.py</h2>
                 </div>
-                <div class="spec-card">
-                    <i class="fas fa-server"></i>
-                    <h3>Back-end</h3>
-                    <p>Arquitetura de sistemas em Java e Python, focando em segurança e alta disponibilidade.</p>
-                </div>
-                <div class="spec-card">
-                    <i class="fas fa-code"></i>
-                    <h3>Front-end</h3>
-                    <p>Criação de interfaces responsivas e intuitivas utilizando as melhores práticas de UX/UI.</p>
-                </div>
-                <div class="spec-card">
-                    <i class="fas fa-database"></i>
-                    <h3>Banco de Dados</h3>
-                    <p>Modelagem, otimização de queries e gerenciamento de dados SQL e NoSQL.</p>
+                <div class="about-body">
+                    <p>
+                        Sou um desenvolvedor apaixonado por resolver problemas complexos através do código. 
+                        Com uma base sólida em <strong>Python</strong> e <strong>Java</strong>, foco na criação 
+                        de sistemas de alta performance onde a escalabilidade do <strong>Back-end</strong> 
+                        se encontra com a fluidez do <strong>Front-end</strong>.
+                    </p>
+                    <p>
+                        Minha expertise envolve a modelagem inteligente de <strong>Bancos de Dados</strong> 
+                        e o consumo eficiente de APIs, garantindo que cada bit de informação seja processado 
+                        com a máxima segurança e velocidade.
+                    </p>
                 </div>
             </div>
         </section>
 
-        <section id="projetos">
-            <h2 class="section-title">Projetos</h2>
-            <div id="github-projects" class="projects-container">
-                <div class="loading">Sincronizando com GitHub...</div>
+        <section id="especialidades" class="content-section">
+            <div class="container">
+                <h2 class="section-title" data-subtitle="O que eu faço de melhor">Especialidades</h2>
+                
+                <div class="spec-grid">
+                    <article class="spec-card glass">
+                        <div class="card-icon"><i class="fab fa-python"></i></div>
+                        <h3>Python</h3>
+                        <p>Desenvolvimento de microserviços, automação de processos complexos e integração de sistemas com foco em código limpo e manutenção simplificada.</p>
+                        <ul class="card-tags">
+                            <li>Django</li>
+                            <li>FastAPI</li>
+                            <li>Pandas</li>
+                        </ul>
+                    </article>
+
+                    <article class="spec-card glass">
+                        <div class="card-icon"><i class="fas fa-layer-group"></i></div>
+                        <h3>Back-end</h3>
+                        <p>Sistemas robustos em Java (Spring Boot) e arquiteturas escaláveis em nuvem. Foco total em segurança e integridade de dados.</p>
+                        <ul class="card-tags">
+                            <li>Spring Boot</li>
+                            <li>Node.js</li>
+                            <li>Auth0</li>
+                        </ul>
+                    </article>
+
+                    <article class="spec-card glass">
+                        <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+                        <h3>Front-end</h3>
+                        <p>Interfaces modernas com React e JavaScript puro. Foco no Glassmorphism, UX intuitiva e design responsivo para todos os dispositivos.</p>
+                        <ul class="card-tags">
+                            <li>ES6+</li>
+                            <li>React</li>
+                            <li>CSS Grid</li>
+                        </ul>
+                    </article>
+
+                    <article class="spec-card glass">
+                        <div class="card-icon"><i class="fas fa-database"></i></div>
+                        <h3>Banco de Dados</h3>
+                        <p>Arquitetura de dados SQL e NoSQL. Otimização de queries, normalização de dados e gerenciamento de grandes volumes de informação.</p>
+                        <ul class="card-tags">
+                            <li>PostgreSQL</li>
+                            <li>MongoDB</li>
+                            <li>Redis</li>
+                        </ul>
+                    </article>
+                </div>
             </div>
         </section>
 
-        <section id="contato">
-            <h2 class="section-title">Contato</h2>
-            <div class="contact-wrapper">
-                <a href="https://instagram.com/as.ramoos_" target="_blank" class="contact-link">
-                    <i class="fab fa-instagram"></i> @as.ramoos_
-                </a>
-                <a href="https://wa.me/5531991544778" target="_blank" class="contact-link">
-                    <i class="fab fa-whatsapp"></i> (31) 99154-4778
-                </a>
-                <a href="mailto:andreyrafaselsr@gmail.com" class="contact-link">
-                    <i class="far fa-envelope"></i> andreyrafaselsr@gmail.com
-                </a>
+        <section id="projetos" class="content-section alternate-bg">
+            <div class="container">
+                <h2 class="section-title" data-subtitle="Código em ação">Projetos Recentes</h2>
+                <div id="github-feed" class="projects-grid">
+                    <div class="loader-container">
+                        <div class="spinner"></div>
+                        <p>Sincronizando repositórios...</p>
+                    </div>
+                </div>
             </div>
         </section>
+
+        <section id="contato" class="content-section">
+            <div class="container">
+                <div class="contact-card glass-morphism">
+                    <div class="contact-info">
+                        <h2>Vamos construir algo incrível?</h2>
+                        <p>Estou aberto a novas oportunidades e parcerias em projetos desafiadores.</p>
+                    </div>
+                    <div class="contact-links">
+                        <a href="https://instagram.com/as.ramoos_" target="_blank" class="contact-item">
+                            <i class="fab fa-instagram"></i>
+                            <span>as.ramoos_</span>
+                        </a>
+                        <a href="https://wa.me/5531991544778" target="_blank" class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>31 99154-4778</span>
+                        </a>
+                        <a href="mailto:andreyrafaselsr@gmail.com" class="contact-item">
+                            <i class="far fa-envelope"></i>
+                            <span>andreyrafaselsr@gmail.com</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <footer>
-        <p>&copy; 2026 Andrey R. - Built with Code and Passion.</p>
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2026 Andrey. Todos os direitos reservados.</p>
+            <div class="footer-tech">
+                <span>Handcrafted with</span>
+                <i class="fas fa-heart"></i>
+                <span>HTML, CSS & Vanilla JS</span>
+            </div>
+        </div>
     </footer>
 
     <script src="script.js"></script>
