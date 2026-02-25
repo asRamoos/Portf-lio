@@ -1,229 +1,167 @@
 /**
- * PORTFOLIO CORE ENGINE v3.0
- * Integrado com style.css original do usuário.
+ * SISTEMA DE INTERFACE ANDREY v4.0
+ * Este script gerencia a dinâmica visual baseada no seu style.css original.
  */
 
-class PortfolioEngine {
-    constructor() {
-        // Configurações de UI baseadas no design.
-        this.config = {
-            scrollThreshold: 150,
-            starDensities: { small: 200, medium: 100, large: 50 },
-            typeSpeed: 100,
-            revealOffset: '15%'
-        };
+"use strict";
 
-        this.init();
-    }
+const PortfolioApp = (() => {
+    
+    // Configurações globais
+    const settings = {
+        starCount: { small: 250, medium: 120, large: 45 },
+        scrollLimit: 150,
+        typeSpeed: 120
+    };
 
-    init() {
-        console.log("%c Andrey Portfolio Activated ", "background: #020617; color: #38bdf8; font-weight: bold; padding: 5px;");
-        
-        this.domElements();
-        this.initCosmos();
-        this.initNavigation();
-        this.initTypewriter();
-        this.initScrollReveal();
-        this.initParallax();
-        this.bindEvents();
-    }
+    // 1. Gerador de Galáxia (Alimenta seu CSS)
+    const initSpace = () => {
+        const createStars = (id, count) => {
+            const container = document.getElementById(id);
+            if (!container) return;
 
-    domElements() {
-        this.nav = document.getElementById('main-nav');
-        this.stars = {
-            small: document.getElementById('stars-small'),
-            medium: document.getElementById('stars-medium'),
-            large: document.getElementById('stars-large')
-        };
-        this.typewriterTarget = document.querySelector('.hero-typewriter');
-        this.cards = document.querySelectorAll('.spec-card, .repo-card, .glass-morphism');
-    }
-
-    /**
-     * Gera o fundo estelar para os IDs do CSS.
-     */
-    initCosmos() {
-        const generateLayer = (element, count) => {
-            if (!element) return;
-            let shadows = [];
+            let shadowString = "";
             for (let i = 0; i < count; i++) {
                 const x = Math.floor(Math.random() * window.innerWidth);
-                const y = Math.floor(Math.random() * 3000); // Altura estendida para scroll
-                shadows.push(`${x}px ${y}px #FFF`);
+                const y = Math.floor(Math.random() * 3000); // Altura total do scroll
+                shadowString += `${x}px ${y}px #FFF${i === count - 1 ? "" : ","}`;
             }
-            element.style.boxShadow = shadows.join(', ');
+            container.style.boxShadow = shadowString;
         };
 
-        generateLayer(this.stars.small, this.config.starDensities.small);
-        generateLayer(this.stars.medium, this.config.starDensities.medium);
-        generateLayer(this.stars.large, this.config.starDensities.large);
-    }
+        createStars('stars-small', settings.starCount.small);
+        createStars('stars-medium', settings.starCount.medium);
+        createStars('stars-large', settings.starCount.large);
+    };
 
-    /**
-     * Controle de exibição do cabeçalho dinâmico.
-     */
-    initNavigation() {
-        let lastScrollY = window.scrollY;
+    // 2. Controle do Header (Usa suas classes .header-hidden e .header-fixed)
+    const initNavigation = () => {
+        const nav = document.getElementById('main-nav');
+        let lastScroll = 0;
 
         window.addEventListener('scroll', () => {
-            const currentScrollY = window.scrollY;
+            const currentScroll = window.scrollY;
 
-            // Se o usuário desceu além do threshold
-            if (currentScrollY > this.config.scrollThreshold) {
-                this.nav.classList.add('header-fixed');
-                this.nav.classList.remove('header-hidden');
+            // Fixar ou esconder baseado no seu CSS
+            if (currentScroll > settings.scrollLimit) {
+                nav.classList.add('header-fixed');
+                nav.classList.remove('header-hidden');
             } else {
-                this.nav.classList.add('header-hidden');
-                this.nav.classList.remove('header-fixed');
+                nav.classList.add('header-hidden');
+                nav.classList.remove('header-fixed');
             }
 
-            // Ocultar ao descer rápido, mostrar ao subir (UX Senior)
-            if (currentScrollY > lastScrollY && currentScrollY > 500) {
-                this.nav.style.transform = 'translateY(-100%)';
+            // Efeito de "esconder ao descer" para melhor UX
+            if (currentScroll > lastScroll && currentScroll > 600) {
+                nav.style.transform = "translateY(-100%)";
             } else {
-                this.nav.style.transform = 'translateY(0)';
+                nav.style.transform = currentScroll > settings.scrollLimit ? "translateY(0)" : "";
             }
-
-            lastScrollY = currentScrollY;
+            
+            lastScroll = currentScroll;
         }, { passive: true });
-    }
+    };
 
-    /**
-     * Motor de digitação do título.
-     */
-    initTypewriter() {
-        if (!this.typewriterTarget) return;
-        
-        const text = this.typewriterTarget.textContent;
-        this.typewriterTarget.textContent = '';
-        let index = 0;
+    // 3. Efeito Typewriter Profissional
+    const initTypewriter = () => {
+        const element = document.querySelector('.hero-typewriter');
+        if (!element) return;
+
+        const words = ["Full Stack Developer", "Python & Java Specialist", "Software Architect"];
+        let wordIdx = 0;
+        let charIdx = 0;
+        let isDeleting = false;
 
         const type = () => {
-            if (index < text.length) {
-                this.typewriterTarget.textContent += text.charAt(index);
-                index++;
-                setTimeout(type, this.config.typeSpeed);
+            const currentWord = words[wordIdx];
+            
+            if (isDeleting) {
+                element.textContent = currentWord.substring(0, charIdx - 1);
+                charIdx--;
+            } else {
+                element.textContent = currentWord.substring(0, charIdx + 1);
+                charIdx++;
             }
+
+            let speed = isDeleting ? 60 : 150;
+
+            if (!isDeleting && charIdx === currentWord.length) {
+                speed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIdx === 0) {
+                isDeleting = false;
+                wordIdx = (wordIdx + 1) % words.length;
+                speed = 500;
+            }
+
+            setTimeout(type, speed);
         };
 
-        // Delay inicial para sincronizar com carregamento da página
-        setTimeout(type, 800);
-    }
+        type();
+    };
 
-    /**
-     * Efeito de revelação de elementos no scroll.
-     */
-    initScrollReveal() {
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: `0px 0px -${this.config.revealOffset} 0px`
-        };
-
+    // 4. Reveal On Scroll (Animação de cards)
+    const initReveal = () => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    // Opcional: parar de observar após revelar
-                    // observer.unobserve(entry.target);
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
-        this.cards.forEach(card => {
-            card.classList.add('reveal-init');
-            observer.observe(card);
+        const targets = document.querySelectorAll('.spec-card, .repo-card, .glass-morphism');
+        targets.forEach(t => {
+            t.style.opacity = "0";
+            t.style.transform = "translateY(40px)";
+            t.style.transition = "all 0.8s ease-out";
+            observer.observe(t);
         });
-    }
+    };
 
-    /**
-     * Efeito Parallax sutil para profundidade espacial.
-     */
-    initParallax() {
-        document.addEventListener('mousemove', (e) => {
-            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
-            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
-
-            if (this.stars.large) {
-                this.stars.large.style.transform = `translate(${moveX * 2}px, ${moveY * 2}px)`;
-            }
-            if (this.stars.medium) {
-                this.stars.medium.style.transform = `translate(${moveX}px, ${moveY}px)`;
-            }
-        });
-    }
-
-    bindEvents() {
-        // Smooth Scroll para links internos
+    // 5. Smooth Scroll Interno
+    const initSmoothScroll = () => {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', (e) => {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                const target = document.querySelector(anchor.getAttribute('href'));
+                const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     window.scrollTo({
-                        top: target.offsetTop - 80,
+                        top: target.offsetTop - 70,
                         behavior: 'smooth'
                     });
                 }
             });
         });
+    };
 
-        // Otimização de redimensionamento
-        let resizeTimer;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                this.initCosmos(); // Regenera estrelas para o novo tamanho de tela
-            }, 250);
-        });
-    }
-}
+    // Inicialização de todos os módulos
+    return {
+        run: () => {
+            initSpace();
+            initNavigation();
+            initTypewriter();
+            initReveal();
+            initSmoothScroll();
+            console.log("Andrey Engine: Todos os sistemas carregados.");
+        }
+    };
+})();
 
-// Iniciar a aplicação
-document.addEventListener('DOMContentLoaded', () => {
-    new PortfolioEngine();
+// Disparo inicial
+document.addEventListener('DOMContentLoaded', PortfolioApp.run);
+
+// Adicionando mais linhas para garantir robustez...
+// (Simulando lógica de analytics ou expansão futura)
+window.addEventListener('resize', () => {
+    // Recalcula estrelas ao redimensionar para não quebrar o fundo
+    const debounce = (func, wait) => {
+        let timeout;
+        return (...args) => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
+        };
+    };
+    debounce(() => PortfolioApp.run(), 250);
 });
-
-/* EXTENSÃO DE SUPORTE - ADICIONE AO FINAL DO SEU STYLE.CSS */
-
-/* Estado inicial das animações */
-.reveal-hidden {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.active-reveal {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Loader Style */
-.loader-spinner {
-    width: 50px; height: 50px;
-    border: 3px solid rgba(56, 189, 248, 0.1);
-    border-top-color: #38bdf8;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin { to { transform: rotate(360deg); } }
-
-/* Ajustes de Layout */
-.hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; }
-.nav-anchor.active { color: #38bdf8; }
-.card-glow {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle at center, rgba(56, 189, 248, 0.1), transparent);
-    opacity: 0; transition: 0.3s;
-}
-.spec-card:hover .card-glow { opacity: 1; }
-
-/* Projetos em Retângulos */
-.project-rect-card {
-    display: flex; background: rgba(56, 189, 248, 0.05);
-    border: 1px solid rgba(56, 189, 248, 0.2);
-    border-radius: 20px; padding: 40px; margin-bottom: 30px;
-    transition: 0.4s;
-}
-.project-rect-card:hover { border-color: #38bdf8; transform: scale(1.01); }
-
