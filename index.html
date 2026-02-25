@@ -1,127 +1,156 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andrey | Full Stack Developer</title>
+    <title>Andrey | Engenheiro de Software Full Stack</title>
+    <meta name="description" content="Portfolio profissional de Andrey, especialista em Python e Back-end.">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <div class="space-background">
+    <div class="space-container">
         <div id="stars"></div>
         <div id="stars2"></div>
         <div id="stars3"></div>
+        <div class="nebula-aura"></div>
     </div>
 
-    <header id="main-header">
-        <div class="container nav-flex">
-            <div class="logo">ANDREY</div>
-            <nav>
-                <ul class="nav-links">
+    <header id="dynamic-nav">
+        <div class="nav-container">
+            <div class="nav-brand">ANDREY</div>
+            <nav class="nav-links-wrapper">
+                <ul class="nav-menu">
                     <li><a href="#hero">Sobre Mim</a></li>
                     <li><a href="#especialidades">Hard Skills</a></li>
                     <li><a href="#projetos">Projetos</a></li>
-                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="#contato">Contacto</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
-        <section id="hero" class="hero-section">
-            <h1 class="main-name-gradient">ANDREY</h1>
-            <div class="typewriter-container">
-                <span id="type-text"></span><span class="cursor">|</span>
-            </div>
-
-            <div class="about-card-container">
-                <div class="about-card-header">
-                    <span>sobre_mim.py</span>
+    <main class="content-scroller">
+        
+        <section id="hero" class="hero-module">
+            <div class="hero-content">
+                <h1 class="main-name-gradient">ANDREY</h1>
+                <div class="typewriter-wrap">
+                    <span class="type-prefix">> </span>
+                    <span id="typewriter"></span>
+                    <span class="type-cursor">_</span>
                 </div>
-                <div class="about-card-content">
-                    <p>Sou um desenvolvedor apaixonado pela arquitetura de software e pela resolução de problemas complexos. O meu foco não é apenas escrever código, mas sim construir soluções que sejam escaláveis, seguras e intuitivas. Acredito que a tecnologia deve servir as pessoas, e é esse equilíbrio entre performance técnica e experiência humana que procuro em cada projeto que desenvolvo.</p>
+
+                <div class="about-card-v2 glass-border">
+                    <div class="card-header-simple">
+                        <span class="header-label">sobre_mim.py</span>
+                    </div>
+                    <div class="card-body-text">
+                        <p>Sou um desenvolvedor apaixonado pela arquitetura de software e pela resolução de problemas complexos. O meu foco não é apenas escrever código, mas sim construir soluções que sejam escaláveis, seguras e intuitivas. Acredito que a tecnologia deve servir as pessoas, e é esse equilíbrio entre performance técnica e experiência humana que procuro em cada projeto que desenvolvo.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="especialidades" class="container section-padding">
-            <div class="text-center">
-                <h2 class="section-title">Especialidades</h2>
-                <p class="subtitle-skills">HARD SKILLS</p>
+        <section id="especialidades" class="skills-module container">
+            <div class="module-title-box">
+                <h2 class="module-main-title">Especialidades</h2>
+                <p class="hard-skills-subtitle">HARD SKILLS</p>
             </div>
 
-            <div class="skills-grid">
-                <div class="skill-card frosted-white">
-                    <i class="fab fa-python icon-skill"></i>
+            <div class="skills-flex-grid">
+                <article class="skill-card-frosted">
+                    <div class="skill-glow"></div>
+                    <i class="fab fa-python skill-icon"></i>
                     <h3>Python</h3>
                     <p>Domínio em automação de processos, análise de dados e desenvolvimento de scripts robustos para eficiência operacional.</p>
-                </div>
-                <div class="skill-card frosted-white">
-                    <i class="fas fa-server icon-skill"></i>
+                </article>
+
+                <article class="skill-card-frosted">
+                    <div class="skill-glow"></div>
+                    <i class="fas fa-server skill-icon"></i>
                     <h3>Back-end</h3>
-                    <p>Desenvolvimento de APIs RESTful, gestão de servidores e lógica focada em segurança e alta disponibilidade.</p>
-                </div>
-                <div class="skill-card frosted-white">
-                    <i class="fab fa-html5 icon-skill"></i>
+                    <p>Desenvolvimento de APIs RESTful, gestão de servidores e lógica de servidor focada em segurança e alta disponibilidade.</p>
+                </article>
+
+                <article class="skill-card-frosted">
+                    <div class="skill-glow"></div>
+                    <i class="fab fa-html5 skill-icon"></i>
                     <h3>HTML</h3>
-                    <p>Escrita de código semântico para garantir acessibilidade, SEO e uma base sólida para a web moderna.</p>
-                </div>
-                <div class="skill-card frosted-white">
-                    <i class="fab fa-css3-alt icon-skill"></i>
+                    <p>Escrita de código semântico e estruturado para garantir acessibilidade, SEO e uma base sólida para a web moderna.</p>
+                </article>
+
+                <article class="skill-card-frosted">
+                    <div class="skill-glow"></div>
+                    <i class="fab fa-css3-alt skill-icon"></i>
                     <h3>CSS</h3>
-                    <p>Estilização avançada com Flexbox, Grid e animações fluidas, priorizando o design responsivo.</p>
-                </div>
-                <div class="skill-card frosted-white">
-                    <i class="fas fa-database icon-skill"></i>
+                    <p>Estilização avançada com Flexbox, Grid e animações fluidas, priorizando o design responsivo em qualquer dispositivo.</p>
+                </article>
+
+                <article class="skill-card-frosted">
+                    <div class="skill-glow"></div>
+                    <i class="fas fa-database skill-icon"></i>
                     <h3>Banco de Dados</h3>
-                    <p>Modelação de dados eficiente, consultas otimizadas e manutenção de bases SQL/NoSQL.</p>
-                </div>
+                    <p>Modelação de dados eficiente, consultas otimizadas e manutenção de bases SQL/NoSQL com integridade de dados.</p>
+                </article>
             </div>
         </section>
 
-        <section id="projetos" class="container section-padding">
-            <h2 class="section-title text-center">Projetos</h2>
-            <div class="project-large-card">
-                <div class="project-img-placeholder">BIG STREET</div>
-                <div class="project-info">
-                    <span class="highlight-tag">Project Highlight</span>
+        <section id="projetos" class="projects-module container">
+            <h2 class="module-main-title text-center">Projetos</h2>
+            <div class="project-mega-card glass-blue-subtle">
+                <div class="project-visual">
+                    <div class="visual-text">BIG STREET</div>
+                </div>
+                <div class="project-details">
+                    <span class="project-tag">Destaque Profissional</span>
                     <h3>BigStreet Ecosystem</h3>
-                    <p>O BigStreet é uma visão de cidades inteligentes aplicada ao desporto. Conecta espaços urbanos a atletas em tempo real, facilitando a organização de eventos e arenas desportivas nas ruas.</p>
-                    <div class="tags">
-                        <span>Python</span><span>PostgreSQL</span><span>Geolocalização</span>
+                    <p>O BigStreet é mais do que código; é uma visão de cidades inteligentes aplicada ao desporto. Desenvolvi este ecossistema para mapear espaços urbanos e conectá-los a atletas em tempo real, facilitando a organização de eventos.</p>
+                    <div class="tech-stack-row">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">PostgreSQL</span>
+                        <span class="tech-badge">Geolocalização</span>
                     </div>
-                    <a href="https://github.com/AndreySRamos/BigStreet" target="_blank" class="github-link">GitHub <i class="fab fa-github"></i></a>
+                    <a href="https://github.com/AndreySRamos/BigStreet" target="_blank" class="github-link-btn">
+                        Ver no GitHub <i class="fab fa-github"></i>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <section id="contato" class="container section-padding">
-            <h2 class="section-title text-center">Contato</h2>
-            <div class="contact-grid">
-                <a href="https://wa.me/5531991544778" target="_blank" class="contact-card neon-blue-glass">
+        <section id="contato" class="contact-module container">
+            <h2 class="module-main-title text-center">Contacto</h2>
+            <div class="contact-grid-v3">
+                <a href="https://wa.me/5531991544778" target="_blank" class="contact-card-neon">
                     <i class="fab fa-whatsapp"></i>
-                    <span class="label">WhatsApp</span>
-                    <span class="value">Chamar no chat</span>
+                    <span class="c-label">WhatsApp</span>
+                    <span class="c-value">Iniciar Chat</span>
+                    <div class="neon-border"></div>
                 </a>
-                <a href="mailto:andreyrafaselsr@gmail.com" class="contact-card neon-blue-glass">
+
+                <a href="mailto:andreyrafaselsr@gmail.com" class="contact-card-neon">
                     <i class="far fa-envelope"></i>
-                    <span class="label">E-mail</span>
-                    <span class="value">Enviar Proposta</span>
+                    <span class="c-label">E-mail</span>
+                    <span class="c-value">andreyrafaselsr@gmail.com</span>
+                    <div class="neon-border"></div>
                 </a>
-                <a href="https://instagram.com/as.ramoos_" target="_blank" class="contact-card neon-blue-glass">
+
+                <a href="https://instagram.com/as.ramoos_" target="_blank" class="contact-card-neon">
                     <i class="fab fa-instagram"></i>
-                    <span class="label">Instagram</span>
-                    <span class="value">@as.ramoos_</span>
+                    <span class="c-label">Instagram</span>
+                    <span class="c-value">@as.ramoos_</span>
+                    <div class="neon-border"></div>
                 </a>
             </div>
         </section>
+
     </main>
 
-    <footer class="main-footer">
-        <p>ANDREY &copy; 2026 | Full Stack Developer</p>
+    <footer class="site-footer">
+        <div class="footer-divider"></div>
+        <p>ANDREY &copy; 2026 | Full Stack Solutions Specialist</p>
     </footer>
 
     <script src="script.js"></script>
