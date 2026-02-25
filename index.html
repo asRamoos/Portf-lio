@@ -2,69 +2,105 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Andrey | Portfólio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- HEADER FIXO -->
-    <div class="header-fixo" id="headerFixo">
-        <div class="config-btn">⚙</div>
-        <div class="nome-header">Andrey</div>
-        <div class="contato-header">
-            📱 (31) 9XXXX-XXXX
-            📧 seuemail@gmail.com
-            📷 @seuinstagram
-        </div>
+<!-- FUNDO ESPACIAL -->
+<div class="space">
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+</div>
+
+<!-- HEADER FIXO -->
+<header class="main-header" id="mainHeader">
+    <div class="header-left">
+        <button id="configBtn" class="icon-btn">⚙</button>
     </div>
 
-    <!-- HEADER GRANDE -->
-    <header class="hero">
-        <h1>Andrey</h1>
-    </header>
+    <div class="header-center">
+        <h1 class="header-title">Andrey</h1>
+    </div>
 
-    <!-- SOBRE -->
-    <section class="sobre">
-        <h2>Sobre Mim</h2>
-        <p>
-            Desenvolvedor focado em criação de sistemas modernos,
-            aplicações completas e soluções estruturadas.
-        </p>
-    </section>
+    <div class="header-right">
+        <button id="menuBtn" class="icon-btn">☰</button>
+    </div>
+</header>
 
-    <!-- ESPECIALIDADES -->
-    <section class="especialidades">
-        <h2>ESPECIALIDADES</h2>
-        <div class="skills">
-            <div class="skill">Python</div>
-            <div class="skill">Banco de Dados</div>
-            <div class="skill">Back-end</div>
-            <div class="skill">Front-end</div>
-        </div>
-    </section>
+<!-- MENU LATERAL -->
+<nav class="side-menu" id="sideMenu">
+    <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#especialidades">Especialidades</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#contato">Contato</a></li>
+    </ul>
+</nav>
 
-    <!-- PROJETOS -->
-    <section class="projetos">
-        <h2>Projetos</h2>
-        <div id="repos"></div>
-    </section>
+<!-- PAINEL CONFIGURAÇÕES -->
+<div class="config-panel" id="configPanel">
+    <h3>Configurações</h3>
 
-    <footer>
-        © 2026 Andrey - Todos os direitos reservados
-    </footer>
+    <div class="config-item">
+        <label>Modo Escuro</label>
+        <button id="darkToggle">Ativar</button>
+    </div>
+
+    <div class="config-item">
+        <label>Cor Principal</label>
+        <input type="color" id="colorPicker">
+    </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <h2 class="hero-title">Andrey</h2>
+    <p class="hero-subtitle">Desenvolvedor Full Stack</p>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="section">
+    <h2>Sobre Mim</h2>
+    <p>
+        Desenvolvedor focado em arquitetura de sistemas,
+        integração de banco de dados e desenvolvimento moderno.
+    </p>
+</section>
+
+<!-- ESPECIALIDADES -->
+<section id="especialidades" class="section">
+    <h2>ESPECIALIDADES</h2>
+    <div class="skills-grid">
+        <div class="skill-card">Python</div>
+        <div class="skill-card">Banco de Dados</div>
+        <div class="skill-card">Back-end</div>
+        <div class="skill-card">Front-end</div>
+    </div>
+</section>
+
+<!-- PROJETOS -->
+<section id="projetos" class="section">
+    <h2>Projetos</h2>
+    <div id="repos" class="projects-grid"></div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="section">
+    <h2>Contato</h2>
+    <div class="contact-grid">
+        <div>Email: seuemail@gmail.com</div>
+        <div>WhatsApp: (31) 9XXXX-XXXX</div>
+        <div>Instagram: @seuinstagram</div>
+    </div>
+</section>
+
+<footer class="footer">
+    © 2026 Andrey - Todos os direitos reservados
+</footer>
 
 <script src="jsportfolio.js"></script>
-<script>
-    window.addEventListener("scroll", function() {
-        const header = document.getElementById("headerFixo");
-        if (window.scrollY > 150) {
-            header.classList.add("ativo");
-        } else {
-            header.classList.remove("ativo");
-        }
-    });
-</script>
-
 </body>
 </html>
-
