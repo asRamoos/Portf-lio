@@ -3,158 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Andrey | Engenharia de Software</title>
-    
-    <meta name="description" content="Andrey - Desenvolvedor Full Stack especializado em Python e Back-end.">
-    <link rel="stylesheet" href="style.css?v=6.0">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
+    <title>Andrey | Full Stack Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <div class="space-engine">
-        <div id="stars-layer-1"></div>
-        <div id="stars-layer-2"></div>
-        <div id="stars-layer-3"></div>
-        <div class="deep-blue-void"></div>
-        <div class="space-glow"></div>
+    <div class="space-background">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
     </div>
 
-    <header id="dynamic-header">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-text">ANDREY</span>
-            </div>
-            <nav class="nav-navigation">
-                <ul class="nav-menu">
-                    <li><a href="#hero" class="nav-item">Sobre Mim</a></li>
-                    <li><a href="#especialidades" class="nav-item">Especialidades</a></li>
-                    <li><a href="#projetos" class="nav-item">Projetos</a></li>
-                    <li><a href="#contato" class="nav-item">Contato</a></li>
+    <header id="main-header">
+        <div class="container nav-flex">
+            <div class="logo">ANDREY</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#hero">Sobre Mim</a></li>
+                    <li><a href="#especialidades">Hard Skills</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#contato">Contato</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="main-scroller">
-        
-        <section id="hero" class="hero-module">
-            <div class="hero-main">
-                <h1 class="gradient-name">ANDREY</h1>
-                <div class="typewriter-box">
-                    <span id="typewriter"></span><span class="blink">_</span>
-                </div>
+    <main>
+        <section id="hero" class="hero-section">
+            <h1 class="main-name-gradient">ANDREY</h1>
+            <div class="typewriter-container">
+                <span id="type-text"></span><span class="cursor">|</span>
             </div>
 
-            <div class="about-card frosted-glass">
-                <div class="about-header">
-                    <h3 class="about-title">SOBRE MIM</h3>
-                    <div class="accent-line"></div>
+            <div class="about-card-container">
+                <div class="about-card-header">
+                    <span>sobre_mim.py</span>
                 </div>
-                <div class="about-body">
-                    <p>
-                        Desenvolvedor focado em construir o futuro através do código. Minha jornada é movida pela curiosidade de entender como sistemas complexos funcionam e pela paixão em simplificá-los. Especialista em transformar lógica pura em experiências digitais que fazem sentido para quem as usa. Sempre em busca do próximo desafio que me force a evoluir.
-                    </p>
+                <div class="about-card-content">
+                    <p>Sou um desenvolvedor apaixonado pela arquitetura de software e pela resolução de problemas complexos. O meu foco não é apenas escrever código, mas sim construir soluções que sejam escaláveis, seguras e intuitivas. Acredito que a tecnologia deve servir as pessoas, e é esse equilíbrio entre performance técnica e experiência humana que procuro em cada projeto que desenvolvo.</p>
                 </div>
             </div>
         </section>
 
-        <section id="especialidades" class="section-wrapper">
-            <div class="section-title-box">
-                <span class="pre-title">O que eu faço</span>
-                <h2 class="main-title">Especialidades</h2>
+        <section id="especialidades" class="container section-padding">
+            <div class="text-center">
+                <h2 class="section-title">Especialidades</h2>
+                <p class="subtitle-skills">HARD SKILLS</p>
             </div>
 
-            <div class="specialty-grid">
-                <div class="spec-card frosted-white-card">
-                    <div class="brilho-glow"></div>
-                    <i class="fab fa-python spec-icon"></i>
+            <div class="skills-grid">
+                <div class="skill-card frosted-white">
+                    <i class="fab fa-python icon-skill"></i>
                     <h3>Python</h3>
-                    <p>Criação de soluções inteligentes e integração de sistemas de alto desempenho.</p>
+                    <p>Domínio em automação de processos, análise de dados e desenvolvimento de scripts robustos para eficiência operacional.</p>
                 </div>
-
-                <div class="spec-card frosted-white-card">
-                    <div class="brilho-glow"></div>
-                    <i class="fas fa-server spec-icon"></i>
+                <div class="skill-card frosted-white">
+                    <i class="fas fa-server icon-skill"></i>
                     <h3>Back-end</h3>
-                    <p>Arquiteturas robustas focadas em segurança, eficiência e escalabilidade global.</p>
+                    <p>Desenvolvimento de APIs RESTful, gestão de servidores e lógica focada em segurança e alta disponibilidade.</p>
                 </div>
-
-                <div class="spec-card frosted-white-card">
-                    <div class="brilho-glow"></div>
-                    <i class="fab fa-html5 spec-icon"></i>
+                <div class="skill-card frosted-white">
+                    <i class="fab fa-html5 icon-skill"></i>
                     <h3>HTML</h3>
-                    <p>Estrutura semântica focada em SEO e acessibilidade para web moderna.</p>
+                    <p>Escrita de código semântico para garantir acessibilidade, SEO e uma base sólida para a web moderna.</p>
                 </div>
-
-                <div class="spec-card frosted-white-card">
-                    <div class="brilho-glow"></div>
-                    <i class="fab fa-css3-alt spec-icon"></i>
+                <div class="skill-card frosted-white">
+                    <i class="fab fa-css3-alt icon-skill"></i>
                     <h3>CSS</h3>
-                    <p>Estilização com design avançado, animações e layouts totalmente responsivos.</p>
+                    <p>Estilização avançada com Flexbox, Grid e animações fluidas, priorizando o design responsivo.</p>
                 </div>
-
-                <div class="spec-card frosted-white-card">
-                    <div class="brilho-glow"></div>
-                    <i class="fas fa-database spec-icon"></i>
+                <div class="skill-card frosted-white">
+                    <i class="fas fa-database icon-skill"></i>
                     <h3>Banco de Dados</h3>
-                    <p>Otimização de queries e estruturação de dados em larga escala (SQL/NoSQL).</p>
+                    <p>Modelação de dados eficiente, consultas otimizadas e manutenção de bases SQL/NoSQL.</p>
                 </div>
             </div>
         </section>
 
-        <section id="projetos" class="section-wrapper">
-            <div class="project-showcase">
-                <a href="https://github.com/AndreySRamos/BigStreet" target="_blank" class="project-link">
-                    <div class="big-project-card glass-premium">
-                        <div class="project-info">
-                            <span class="badge">Destaque</span>
-                            <h3>BigStreet Ecosystem</h3>
-                            <p>O BigStreet nasceu da necessidade de conectar o esporte às cidades. É um sistema que utiliza geolocalização para transformar espaços urbanos em arenas esportivas, facilitando a gestão de eventos e a experiência dos atletas em tempo real.</p>
-                            <div class="tech-row">
-                                <span>Python</span><span>Spring</span><span>PostgreSQL</span>
-                            </div>
-                        </div>
+        <section id="projetos" class="container section-padding">
+            <h2 class="section-title text-center">Projetos</h2>
+            <div class="project-large-card">
+                <div class="project-img-placeholder">BIG STREET</div>
+                <div class="project-info">
+                    <span class="highlight-tag">Project Highlight</span>
+                    <h3>BigStreet Ecosystem</h3>
+                    <p>O BigStreet é uma visão de cidades inteligentes aplicada ao desporto. Conecta espaços urbanos a atletas em tempo real, facilitando a organização de eventos e arenas desportivas nas ruas.</p>
+                    <div class="tags">
+                        <span>Python</span><span>PostgreSQL</span><span>Geolocalização</span>
                     </div>
-                </a>
+                    <a href="https://github.com/AndreySRamos/BigStreet" target="_blank" class="github-link">GitHub <i class="fab fa-github"></i></a>
+                </div>
             </div>
         </section>
 
-        <section id="contato" class="section-wrapper">
-            <div class="section-title-box">
-                <h2 class="main-title">Vamos conversar?</h2>
-            </div>
-            
+        <section id="contato" class="container section-padding">
+            <h2 class="section-title text-center">Contato</h2>
             <div class="contact-grid">
-                <a href="https://wa.me/5531991544778" target="_blank" class="contact-card shiny-blue-card">
+                <a href="https://wa.me/5531991544778" target="_blank" class="contact-card neon-blue-glass">
                     <i class="fab fa-whatsapp"></i>
-                    <span class="contact-label">WhatsApp</span>
-                    <span class="contact-action">Iniciar conversa</span>
+                    <span class="label">WhatsApp</span>
+                    <span class="value">Chamar no chat</span>
                 </a>
-
-                <a href="mailto:andreyrafaselsr@gmail.com" class="contact-card shiny-blue-card">
+                <a href="mailto:andreyrafaselsr@gmail.com" class="contact-card neon-blue-glass">
                     <i class="far fa-envelope"></i>
-                    <span class="contact-label">E-mail</span>
-                    <span class="contact-action">Enviar proposta</span>
+                    <span class="label">E-mail</span>
+                    <span class="value">Enviar Proposta</span>
                 </a>
-
-                <a href="https://instagram.com/as.ramoos_" target="_blank" class="contact-card shiny-blue-card">
+                <a href="https://instagram.com/as.ramoos_" target="_blank" class="contact-card neon-blue-glass">
                     <i class="fab fa-instagram"></i>
-                    <span class="contact-label">Instagram</span>
-                    <span class="contact-action">Seguir perfil</span>
+                    <span class="label">Instagram</span>
+                    <span class="value">@as.ramoos_</span>
                 </a>
             </div>
         </section>
     </main>
 
-    <footer class="pro-footer">
-        <div class="footer-line"></div>
-        <p>ANDREY &copy; 2026 | Full Stack Solutions</p>
+    <footer class="main-footer">
+        <p>ANDREY &copy; 2026 | Full Stack Developer</p>
     </footer>
 
     <script src="script.js"></script>
