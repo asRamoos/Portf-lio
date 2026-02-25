@@ -1,37 +1,32 @@
 /**
  * PORTFOLIO ARCHITECTURE - ANDREY
- * Gerenciamento de Interface e Efeitos Cosmos
+ * Gerenciamento de Interface e Sistema Cosmos
  */
 
 "use strict";
 
-const PortfolioCore = (() => {
-    // Configurações de Partículas
-    const starSettings = {
-        small: { id: 'stars-small', count: 250, size: '1px' },
-        medium: { id: 'stars-medium', count: 120, size: '2px' },
-        large: { id: 'stars-large', count: 45, size: '3px' }
-    };
-
-    // 1. Gerador de Galáxia Dinâmico
+const AndreyPortfolio = (() => {
+    // 1. Motor de Partículas Cosmos (Gera as estrelas do seu CSS)
     const initCosmos = () => {
-        const createStars = (layer) => {
-            const container = document.getElementById(layer.id);
+        const generateStars = (id, count) => {
+            const container = document.getElementById(id);
             if (!container) return;
 
-            let boxShadows = [];
-            for (let i = 0; i < layer.count; i++) {
+            let shadows = [];
+            for (let i = 0; i < count; i++) {
                 const x = Math.floor(Math.random() * window.innerWidth);
-                const y = Math.floor(Math.random() * 3000); // Altura total
-                boxShadows.push(`${x}px ${y}px #FFF`);
+                const y = Math.floor(Math.random() * 3000); // Altura longa para o scroll
+                shadows.push(`${x}px ${y}px #FFF`);
             }
-            container.style.boxShadow = boxShadows.join(', ');
+            container.style.boxShadow = shadows.join(', ');
         };
 
-        Object.values(starSettings).forEach(createStars);
+        generateStars('stars-small', 250);
+        generateStars('stars-medium', 100);
+        generateStars('stars-large', 40);
     };
 
-    // 2. Navegação Inteligente (Header Fixed/Hidden)
+    // 2. Lógica do Header (Usa as classes .header-hidden e .header-fixed do CSS)
     const initNavigation = () => {
         const nav = document.getElementById('main-nav');
         let lastScroll = 0;
@@ -39,8 +34,8 @@ const PortfolioCore = (() => {
         window.addEventListener('scroll', () => {
             const currentScroll = window.scrollY;
 
-            // Ativa o fundo do menu ao rolar
-            if (currentScroll > 150) {
+            // Ativa o fundo do menu ao rolar para baixo
+            if (currentScroll > 100) {
                 nav.classList.add('header-fixed');
                 nav.classList.remove('header-hidden');
             } else {
@@ -48,53 +43,55 @@ const PortfolioCore = (() => {
                 nav.classList.remove('header-fixed');
             }
 
-            // Esconde o menu ao rolar para baixo, mostra ao subir
+            // Esconde ao descer e mostra ao subir
             if (currentScroll > lastScroll && currentScroll > 600) {
                 nav.style.transform = "translateY(-100%)";
             } else {
-                nav.style.transform = (currentScroll > 150) ? "translateY(0)" : "";
+                nav.style.transform = currentScroll > 100 ? "translateY(0)" : "";
             }
+            
             lastScroll = currentScroll;
         }, { passive: true });
     };
 
-    // 3. Efeito Typewriter (Escrita)
+    // 3. Efeito Typewriter Profissional
     const initTypewriter = () => {
-        const target = document.querySelector('.hero-typewriter');
-        if (!target) return;
+        const element = document.querySelector('.hero-typewriter');
+        if (!element) return;
 
-        const words = ["Python Expert", "Java Architect", "Full Stack Developer"];
+        const words = ["Python Specialist", "Java Developer", "Full Stack Architect"];
         let wordIdx = 0;
         let charIdx = 0;
         let isDeleting = false;
 
         const type = () => {
-            const current = words[wordIdx];
+            const currentWord = words[wordIdx];
+            
             if (isDeleting) {
-                target.textContent = current.substring(0, charIdx - 1);
+                element.textContent = currentWord.substring(0, charIdx - 1);
                 charIdx--;
             } else {
-                target.textContent = current.substring(0, charIdx + 1);
+                element.textContent = currentWord.substring(0, charIdx + 1);
                 charIdx++;
             }
 
-            let typeSpeed = isDeleting ? 60 : 150;
+            let speed = isDeleting ? 60 : 150;
 
-            if (!isDeleting && charIdx === current.length) {
-                typeSpeed = 2000; // Pausa no final da palavra
+            if (!isDeleting && charIdx === currentWord.length) {
+                speed = 2000;
                 isDeleting = true;
             } else if (isDeleting && charIdx === 0) {
                 isDeleting = false;
                 wordIdx = (wordIdx + 1) % words.length;
-                typeSpeed = 500;
+                speed = 500;
             }
 
-            setTimeout(type, typeSpeed);
+            setTimeout(type, speed);
         };
         type();
     };
 
-    // 4. Reveal Animation (Animação ao descer a página)
+    // 4. Animação de Revelação (Scroll Reveal)
     const initReveal = () => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -109,30 +106,21 @@ const PortfolioCore = (() => {
         targets.forEach(el => {
             el.style.opacity = "0";
             el.style.transform = "translateY(40px)";
-            el.style.transition = "all 0.8s ease-out";
+            el.style.transition = "all 0.7s ease-out";
             observer.observe(el);
         });
     };
 
-    // Inicialização Geral
+    // Inicialização
     return {
-        start: () => {
+        init: () => {
             initCosmos();
             initNavigation();
             initTypewriter();
             initReveal();
-            console.log("Andrey Portfolio Engine: Running");
+            console.log("Sistema Andrey Carregado.");
         }
     };
 })();
 
-// Disparo Inicial
-document.addEventListener('DOMContentLoaded', PortfolioCore.start);
-
-// Recalcular estrelas se a janela mudar de tamanho
-window.addEventListener('resize', () => {
-    clearTimeout(window.resizedFinished);
-    window.resizedFinished = setTimeout(() => {
-        PortfolioCore.start();
-    }, 250);
-});
+document.addEventListener('DOMContentLoaded', AndreyPortfolio.init);
