@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andrey | Full Stack Developer</title>
-    
-    <link rel="stylesheet" href="style.css?v=2.0">
-    
+    <title>Andrey | Portfolio</title>
+    <link rel="stylesheet" href="style.css?v=3.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -24,13 +22,12 @@
         <div class="nav-container">
             <div class="nav-brand">
                 <span class="brand-name">ANDREY</span>
-                <span class="brand-role">Full Stack Developer</span>
             </div>
             <nav class="nav-menu">
                 <ul>
-                    <li><a href="#hero" class="nav-link">Home</a></li>
-                    <li><a href="#especialidades" class="nav-link">Expertise</a></li>
-                    <li><a href="#projetos" class="nav-link">Portfolio</a></li>
+                    <li><a href="#especialidades" class="nav-link">Especialidades</a></li>
+                    <li><a href="#projetos" class="nav-link">Projetos</a></li>
+                    <li><a href="#contato" class="nav-link">Contato</a></li>
                 </ul>
             </nav>
         </div>
@@ -42,30 +39,52 @@
                 <h1>ANDREY</h1>
                 <div id="typewriter" class="hero-typewriter"></div>
             </div>
+        </section>
 
-            <div class="about-container glass-morphism">
-                <div class="about-header">
-                    <span class="terminal-dots"></span>
-                    <span class="file-name">developer.java</span>
+        <section id="especialidades" class="container content-section">
+            <h2 class="section-title" data-subtitle="Tecnologias">Especialidades</h2>
+            <div class="spec-grid">
+                <div class="spec-card glass">
+                    <i class="fab fa-java card-icon"></i>
+                    <h3>Java Front-end</h3>
+                    <p>Desenvolvimento de interfaces dinâmicas e integração robusta com back-end.</p>
                 </div>
-                <div class="about-content">
-                    <p>Especialista em arquitetura de sistemas robustos com foco em <strong>Java</strong> e <strong>Python</strong>. Desenvolvendo soluções escaláveis com design imersivo.</p>
+                <div class="spec-card glass">
+                    <i class="fas fa-database card-icon"></i>
+                    <h3>Banco de Dados</h3>
+                    <p>Modelagem e otimização de dados com SQL e NoSQL.</p>
+                </div>
+                <div class="spec-card glass">
+                    <i class="fab fa-css3-alt card-icon"></i>
+                    <h3>CSS Avançado</h3>
+                    <p>Criação de layouts modernos, responsivos e efeitos de Glassmorphism.</p>
                 </div>
             </div>
         </section>
 
-        <section id="especialidades" class="container content-section">
-            <h2 class="section-title" data-subtitle="Hard Skills">Especialidades</h2>
-            <div class="spec-grid">
-                <div class="spec-card glass">
-                    <i class="fab fa-java card-icon"></i>
-                    <h3>Back-end Java</h3>
-                    <ul class="card-tags"><li>Spring Boot</li><li>Docker</li></ul>
-                </div>
-                <div class="spec-card glass">
-                    <i class="fab fa-python card-icon"></i>
-                    <h3>Python Core</h3>
-                    <ul class="card-tags"><li>FastAPI</li><li>Django</li></ul>
+        <section id="projetos" class="container content-section">
+            <h2 class="section-title" data-subtitle="Meu Portfolio">Projetos</h2>
+            <div class="projects-grid">
+                <a href="https://github.com/seu-usuario/bigstreet" target="_blank" class="repo-card-link">
+                    <article class="repo-card">
+                        <h3>BigStreet <i class="fab fa-github"></i></h3>
+                        <p>Plataforma de geolocalização para esportes urbanos. Clique para ver o código.</p>
+                        <ul class="card-tags">
+                            <li>Java</li>
+                            <li>Python</li>
+                        </ul>
+                    </article>
+                </a>
+            </div>
+        </section>
+
+        <section id="contato" class="container content-section">
+            <div class="glass-morphism contact-box">
+                <h2 class="section-title" data-subtitle="Vamos conversar?">Contato</h2>
+                <div class="contact-info">
+                    <p><i class="fab fa-whatsapp"></i> +55 31 99154-4778</p>
+                    <p><i class="far fa-envelope"></i> andreyrafaselsr@gmail.com</p>
+                    <p><i class="fab fa-instagram"></i> @as.ramoos_</p>
                 </div>
             </div>
         </section>
@@ -73,7 +92,6 @@
 
     <footer class="main-footer">
         <p>Andrey &copy; 2026 | Full Stack Developer</p>
-        <div class="footer-tech"><i class="fas fa-code"></i> Python • Java • JS</div>
     </footer>
 
     <script src="script.js"></script>
