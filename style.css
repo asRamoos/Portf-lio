@@ -1,127 +1,182 @@
-/* ARCHITECTURE: MODERN SPACE-TECH UI V7.0
-   DEVELOPER: ANDREY
+/* ANDREY PORTFOLIO V8.0 - FULL ROBUST ARCHITECTURE
+   ENGINE: CSS3 VARIABLE SYSTEM + NEON GLASSMORPHISM
 */
 
 :root {
-    --bg-black: #02040a;
-    --bg-space: #050a18;
-    --neon-blue: #0088ff;
-    --white-glass: rgba(255, 255, 255, 0.05);
-    --blue-glass: rgba(0, 15, 40, 0.7);
-    --text-pure: #ffffff;
-    --text-muted: #94a3b8;
-    --transition-slow: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Color Palette */
+    --bg-deep: #02040a;
+    --bg-space: #050a1b;
+    --primary-blue: #0088ff;
+    --primary-white: #ffffff;
+    --accent-glow: rgba(0, 136, 255, 0.4);
+    
+    /* Glass Specs */
+    --white-glass: rgba(255, 255, 255, 0.04);
+    --white-border: rgba(255, 255, 255, 0.12);
+    --blue-glass: rgba(0, 15, 45, 0.75);
+    --blue-border: rgba(0, 136, 255, 0.35);
+    
+    /* Typography */
+    --ff-main: 'Inter', sans-serif;
+    --ff-code: 'JetBrains Mono', monospace;
+    
+    /* Transitions */
+    --transition-fast: 0.3s ease;
+    --transition-slow: 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* 1. GLOBAL RESET */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+/* 1. RESET & BASE */
+* { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+html { scroll-behavior: smooth; font-size: 16px; }
 
 body {
-    background-color: var(--bg-black);
-    color: var(--text-pure);
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
+    background: var(--bg-deep);
+    color: var(--primary-white);
+    font-family: var(--ff-main);
     overflow-x: hidden;
+    line-height: 1.6;
 }
 
 .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
 
-/* 2. ESPAÇO E ESTRELAS */
-.space-container {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-    background: radial-gradient(circle at center, var(--bg-space) 0%, var(--bg-black) 100%);
+/* 2. SPACE ENGINE */
+.space-master-container {
+    position: fixed; inset: 0; z-index: -10;
+    background: radial-gradient(circle at center, var(--bg-space) 0%, var(--bg-deep) 100%);
+    overflow: hidden;
 }
 
-#stars, #stars2, #stars3 { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent; }
-
-#stars {
-    width: 1px; height: 1px;
-    box-shadow: 174px 122px #FFF, 800px 300px #FFF, 1200px 100px #FFF, 450px 900px #FFF, 1600px 400px #FFF;
-    animation: starMove 150s linear infinite;
+#layer-stars-small, #layer-stars-medium, #layer-stars-large {
+    position: absolute; top: 0; left: 0; width: 100%; height: 200%;
 }
 
-#stars2 {
-    width: 2px; height: 2px;
-    box-shadow: 100px 500px #FFF, 1500px 800px #FFF, 300px 1200px #FFF, 900px 100px #FFF;
-    animation: starMove 100s linear infinite;
+#layer-stars-small {
+    background: transparent;
+    box-shadow: 100px 500px #fff, 1500px 800px #fff, 400px 1200px #fff, 1200px 100px #fff, 800px 1600px #fff;
+    width: 1px; height: 1px; animation: spaceMove 120s linear infinite;
 }
 
-@keyframes starMove {
+#layer-stars-medium {
+    background: transparent;
+    box-shadow: 200px 400px #fff, 1400px 1200px #fff, 600px 100px #fff, 300px 1800px #fff;
+    width: 2px; height: 2px; animation: spaceMove 80s linear infinite;
+}
+
+@keyframes spaceMove {
     from { transform: translateY(0); }
     to { transform: translateY(-2000px); }
 }
 
-/* 3. HEADER INTELIGENTE */
-#dynamic-nav {
-    position: fixed; top: 0; width: 100%; z-index: 2000; padding: 25px 0;
-    transition: var(--transition-slow); transform: translateY(-100%); opacity: 0;
+.nebula-glow-blue {
+    position: absolute; width: 800px; height: 800px; top: -100px; right: -200px;
+    background: radial-gradient(circle, rgba(0, 136, 255, 0.08) 0%, transparent 70%);
+    filter: blur(100px); pointer-events: none;
 }
 
-#dynamic-nav.scrolled {
+/* 3. NAVEGAÇÃO DINÂMICA */
+#main-navigation {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    padding: 30px 0; transition: var(--transition-slow);
+    transform: translateY(-100%); opacity: 0;
+}
+
+#main-navigation.active {
     transform: translateY(0); opacity: 1;
-    background: rgba(2, 4, 10, 0.85); backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0;
+    background: rgba(2, 4, 10, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 15px 0;
 }
 
-.nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 40px; }
-.nav-brand { font-weight: 900; color: var(--neon-blue); letter-spacing: 2px; }
-.nav-menu { display: flex; list-style: none; gap: 30px; }
-.nav-menu a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; transition: 0.3s; font-weight: 600; }
-.nav-menu a:hover { color: var(--text-pure); text-shadow: 0 0 10px var(--neon-blue); }
+.nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
+.nav-brand { font-weight: 900; letter-spacing: 2px; color: var(--primary-blue); display: flex; align-items: center; gap: 10px; }
+.brand-glyph { background: var(--primary-blue); color: var(--bg-deep); width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-weight: 900; }
 
-/* 4. HERO E DEGRADÊ ANDREY */
-.hero-module { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
+.nav-list { display: flex; list-style: none; gap: 35px; }
+.nav-link { text-decoration: none; color: #94a3b8; font-weight: 600; font-size: 0.9rem; transition: var(--transition-fast); }
+.nav-link:hover, .nav-link.active { color: var(--primary-white); text-shadow: 0 0 10px var(--accent-glow); }
 
-.main-name-gradient {
-    font-size: clamp(4rem, 15vw, 9rem); font-weight: 950;
-    background: linear-gradient(180deg, var(--neon-blue) 0%, #ffffff 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    letter-spacing: -5px; line-height: 1; margin-bottom: 10px;
-    filter: drop-shadow(0 0 20px rgba(0, 136, 255, 0.2));
+/* 4. HERO SECTION & GRADIENT NAME */
+.hero-section { height: 100vh; display: flex; align-items: center; justify-content: center; }
+.hero-inner { text-align: center; max-width: 900px; }
+
+.main-title-gradient {
+    font-size: clamp(4rem, 15vw, 9rem);
+    font-weight: 950;
+    line-height: 0.9;
+    letter-spacing: -5px;
+    background: linear-gradient(180deg, var(--primary-blue) 0%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 25px rgba(0, 136, 255, 0.3));
+    margin-bottom: 15px;
 }
 
-.typewriter-wrap { font-family: 'JetBrains Mono'; font-size: 1.5rem; color: var(--neon-blue); margin-bottom: 40px; }
+.typewriter-console { font-family: var(--ff-code); font-size: 1.8rem; color: #94a3b8; margin-bottom: 50px; }
+.prompt { color: var(--primary-blue); margin-right: 10px; }
 
-/* CARD SOBRE MIM */
-.about-card-v2 {
-    max-width: 800px; margin: 0 auto; background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; overflow: hidden;
+/* ABOUT CARD */
+.about-me-container {
+    max-width: 800px; margin: 0 auto; border-radius: 16px;
+    border: 1px solid var(--white-border); overflow: hidden;
+    background: var(--white-glass); backdrop-filter: blur(12px);
+    text-align: left;
 }
-.card-header-simple { background: rgba(255,255,255,0.05); padding: 10px 20px; text-align: left; }
-.header-label { font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--text-muted); }
-.card-body-text { padding: 40px; text-align: left; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; }
+.terminal-bar { background: rgba(255,255,255,0.05); padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
+.terminal-title { font-family: var(--ff-code); font-size: 0.75rem; color: #64748b; }
+.terminal-controls { display: flex; gap: 6px; }
+.t-dot { width: 10px; height: 10px; border-radius: 50%; background: #334155; }
+.about-content { padding: 40px; color: #cbd5e1; font-size: 1.1rem; line-height: 1.8; }
 
-/* 5. ESPECIALIDADES (FROSTED GLASS) */
-.skills-module { padding: 100px 0; }
-.module-main-title { font-size: 3rem; font-weight: 900; margin-bottom: 5px; }
-.hard-skills-subtitle { font-family: 'JetBrains Mono'; color: var(--neon-blue); letter-spacing: 5px; font-size: 0.85rem; margin-bottom: 60px; text-align: center; }
+/* 5. SKILLS GRID (WHITE FROST) */
+.skills-section { padding: 120px 0; }
+.section-header { margin-bottom: 80px; }
+.section-header.center { text-align: center; }
+.section-title { font-size: 3rem; font-weight: 900; text-transform: uppercase; letter-spacing: -1px; }
 
-.skills-flex-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-.skill-card-frosted {
-    background: var(--white-glass); backdrop-filter: blur(15px);
-    border: 1px solid rgba(255,255,255,0.1); border-radius: 24px;
-    padding: 60px 40px; transition: var(--transition-slow); position: relative; overflow: hidden;
+.title-decorator { display: flex; align-items: center; justify-content: center; gap: 15px; margin-top: 5px; }
+.title-decorator .line { width: 50px; height: 2px; background: var(--primary-blue); }
+.decorator-text { font-family: var(--ff-code); font-size: 0.8rem; color: var(--primary-blue); letter-spacing: 4px; }
+
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+.skill-card-white {
+    padding: 60px 40px; border-radius: 24px; border: 1px solid var(--white-border);
+    background: var(--white-glass); backdrop-filter: blur(10px);
+    transition: var(--transition-slow); position: relative; overflow: hidden;
 }
-.skill-card-frosted:hover { transform: translateY(-15px); border-color: rgba(255,255,255,0.3); }
-.skill-icon { font-size: 3.5rem; color: #fff; margin-bottom: 25px; }
+.skill-card-white:hover { transform: translateY(-15px); border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.08); }
+.skill-icon-main { font-size: 3.5rem; color: #fff; margin-bottom: 25px; }
 
-/* 6. CONTACTO (BLUE NEON GLASS) */
-.contact-grid-v3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 50px 0; }
+/* 6. PROJECT CARD (BLUE GLASS) */
+.mega-project-card {
+    display: flex; border-radius: 32px; border: 1px solid var(--blue-border);
+    background: var(--blue-glass); backdrop-filter: blur(20px); overflow: hidden;
+    margin-top: 50px; box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+}
+.project-preview { flex: 1; background: #071228; display: flex; align-items: center; justify-content: center; }
+.abstract-visual { font-weight: 900; font-size: 2.5rem; opacity: 0.1; transform: rotate(-10deg); }
+.project-info { flex: 1.2; padding: 60px; }
+.tag-pill { font-family: var(--ff-code); font-size: 0.7rem; color: var(--primary-blue); border: 1px solid var(--primary-blue); padding: 4px 12px; border-radius: 100px; margin-right: 8px; }
+
+/* 7. CONTACT GRID (DEEP BLUE NEON) */
+.contact-grid-neon { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 50px; }
 .contact-card-neon {
-    background: var(--blue-glass); border: 1px solid rgba(0, 136, 255, 0.3);
-    border-radius: 20px; padding: 40px; text-decoration: none; color: #fff;
-    display: flex; flex-direction: column; align-items: center; transition: var(--transition-slow);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4); position: relative;
+    text-decoration: none; display: flex; align-items: center; gap: 25px; padding: 40px;
+    background: var(--blue-glass); border: 1px solid var(--blue-border); border-radius: 20px;
+    transition: var(--transition-slow); box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
-.contact-card-neon:hover {
-    transform: scale(1.05); border-color: var(--neon-blue);
-    box-shadow: 0 0 40px rgba(0, 136, 255, 0.3);
-}
-.contact-card-neon i { font-size: 3rem; color: var(--neon-blue); margin-bottom: 20px; text-shadow: 0 0 20px var(--neon-blue); }
-.c-label { font-size: 0.75rem; color: var(--neon-blue); text-transform: uppercase; font-family: 'JetBrains Mono'; }
-.c-value { font-size: 1.1rem; font-weight: 700; margin-top: 5px; }
+.contact-card-neon:hover { transform: scale(1.05); border-color: var(--primary-blue); box-shadow: 0 0 40px var(--accent-glow); }
+.contact-icon-box i { font-size: 2.5rem; color: var(--primary-blue); text-shadow: 0 0 15px var(--primary-blue); }
+.contact-subtitle { display: block; font-family: var(--ff-code); font-size: 0.7rem; color: var(--primary-blue); text-transform: uppercase; }
+.contact-main-val { font-size: 1.1rem; font-weight: 700; color: #fff; }
 
-/* 7. FOOTER */
-.site-footer { padding: 80px 0; text-align: center; opacity: 0.5; }
-.footer-divider { width: 80px; height: 2px; background: var(--neon-blue); margin: 0 auto 30px; }
+/* 8. FOOTER */
+.footer-system { padding: 100px 0 50px; text-align: center; opacity: 0.5; font-family: var(--ff-code); font-size: 0.8rem; }
+.footer-divider { width: 60px; height: 2px; background: var(--primary-blue); margin: 0 auto 30px; }
+
+/* RESPONSIVE MAPPING */
+@media (max-width: 992px) {
+    .mega-project-card { flex-direction: column; }
+    .nav-menu-desktop { display: none; }
+    .main-title-gradient { font-size: 5rem; }
+}
