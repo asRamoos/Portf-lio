@@ -1,146 +1,97 @@
 /**
- * ANDREY PROFESSIONAL PORTFOLIO ENGINE v8.0
- * Lógica de UI, Animações e Monitoramento de Scroll
+ * ANDREY OS ENGINE v9.0
+ * Controle de UX/UI, Animações e Monitoramento de State
  */
 
 "use strict";
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. TYPEWRITER SYSTEM ---
-    const typewriter = () => {
-        const target = document.getElementById('type-target');
-        const text = "Full Stack Developer";
-        let index = 0;
-        const speed = 150;
+    // 1. Loader de Sistema
+    const preloader = document.getElementById('app-preloader');
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            preloader.classList.add('fade-out');
+            document.body.classList.remove('loading');
+        }, 800);
+    });
 
-        function render() {
-            if (index < text.length) {
-                target.textContent += text.charAt(index);
-                index++;
-                setTimeout(render, speed);
-            }
-        }
-        setTimeout(render, 1200);
-    };
+    // 2. Engine de Typewriter (Efeito Terminal)
+    const typeTarget = document.getElementById('auto-typewriter');
+    const roleText = "Full Stack Software Engineer";
+    let charIndex = 0;
 
-    // --- 2. SMART HEADER LOGIC ---
-    // Faz o cabeçalho aparecer apenas após o scroll inicial
-    const headerLogic = () => {
-        const header = document.getElementById('main-navigation');
-        const threshold = 300;
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > threshold) {
-                header.classList.add('active');
-            } else {
-                header.classList.remove('active');
-            }
-        });
-    };
-
-    // --- 3. SPACE PARALLAX ENGINE ---
-    // Adiciona estrelas dinâmicas extras para profundidade 3D
-    const spaceParallax = () => {
-        const container = document.querySelector('.space-master-container');
-        const count = 40;
-
-        for (let i = 0; i < count; i++) {
-            const star = document.createElement('div');
-            const size = Math.random() * 3 + 'px';
-            
-            star.style.position = 'absolute';
-            star.style.width = size;
-            star.style.height = size;
-            star.style.background = '#fff';
-            star.style.borderRadius = '50%';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.opacity = Math.random();
-            star.style.filter = 'blur(1px)';
-            
-            // Animação de brilho (twinkle)
-            star.style.animation = `twinkle ${2 + Math.random() * 3}s infinite alternate`;
-            container.appendChild(star);
+    const runTypewriter = () => {
+        if (charIndex < roleText.length) {
+            typeTarget.textContent += roleText.charAt(charIndex);
+            charIndex++;
+            setTimeout(runTypewriter, 100);
         }
     };
+    setTimeout(runTypewriter, 1500);
 
-    // --- 4. SCROLL SPY (Ativar links do menu conforme rola) ---
-    const scrollSpy = () => {
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
+    // 3. Controle Inteligente de Scroll (Cabeçalho)
+    const siteHeader = document.getElementById('site-header');
+    let lastScrollPosition = 0;
 
-        window.addEventListener('scroll', () => {
-            let current = "";
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 150) {
-                    current = section.getAttribute('id');
-                }
-            });
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
 
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active');
-                }
-            });
+        // Ativa o visual de vidro ao descer
+        if (currentScroll > 150) {
+            siteHeader.classList.add('is-scrolled');
+        } else {
+            siteHeader.classList.remove('is-scrolled');
+        }
+
+        lastScrollPosition = currentScroll;
+    });
+
+    // 4. Parallax de Estrelas Adicional via Mouse
+    const spaceEngine = document.getElementById('deep-space-engine');
+    document.addEventListener('mousemove', (e) => {
+        const moveX = (e.clientX * -0.01);
+        const moveY = (e.clientY * -0.01);
+        spaceEngine.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+    });
+
+    // 5. Smooth Scroll Interno Otimizado
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const headerOffset = 100;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }
         });
-    };
+    });
 
-    // --- 5. SMOOTH NAVIGATION ---
-    const smoothNav = () => {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const target = document.querySelector(targetId);
-                
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
+    // 6. Scroll Spy (Menu Ativo)
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+        let current = "";
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= sectionTop - 150) {
+                current = section.getAttribute('id');
+            }
         });
-    };
 
-    // --- 6. UTILS: HOVER GLOW EFFECT ---
-    const cardGlowEffect = () => {
-        const cards = document.querySelectorAll('.skill-card-white');
-        cards.forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-            });
+        navLinks.forEach((link) => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
+            }
         });
-    };
-
-    // --- INICIALIZAÇÃO ---
-    try {
-        console.log("%c ANDREY PORTFOLIO SYSTEM LOADED v8.0 ", "background: #0088ff; color: #fff; font-weight: bold; padding: 5px;");
-        typewriter();
-        headerLogic();
-        spaceParallax();
-        scrollSpy();
-        smoothNav();
-        cardGlowEffect();
-    } catch (err) {
-        console.error("System fail:", err);
-    }
+    });
 });
-
-// Twinkle Keyframes Injected
-const styleSheet = document.createElement("style");
-styleSheet.innerHTML = `
-    @keyframes twinkle {
-        from { opacity: 0.3; transform: scale(1); }
-        to { opacity: 1; transform: scale(1.5); }
-    }
-`;
-document.head.appendChild(styleSheet);
