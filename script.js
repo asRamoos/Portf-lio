@@ -1,46 +1,168 @@
+/**
+ * ANDREY CORE ENGINE v5.0
+ * Optimized JavaScript for Space-Tech Portfolio
+ */
+
+"use strict";
+
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. Efeito Typewriter: Full Stack Developer
-    const typeTarget = document.getElementById('typewriter');
-    const text = "Full Stack Developer";
-    let i = 0;
+    // --- 1. TYPEWRITER SYSTEM ---
+    const typewriter = () => {
+        const target = document.getElementById('typewriter');
+        const text = "Full Stack Developer";
+        let index = 0;
+        const speed = 150;
 
-    function type() {
-        if (i < text.length) {
-            typeTarget.textContent += text.charAt(i);
-            i++;
-            setTimeout(type, 150);
-        }
-    }
-
-    // 2. Sistema de Estrelas (Background Cosmos)
-    function initStars() {
-        const smallStars = document.getElementById('stars-small');
-        const mediumStars = document.getElementById('stars-medium');
-        
-        const generate = (el, count) => {
-            let shadows = "";
-            for (let j = 0; j < count; j++) {
-                shadows += `${Math.random() * 2500}px ${Math.random() * 2500}px #FFF${j === count - 1 ? "" : ","}`;
+        function type() {
+            if (index < text.length) {
+                target.textContent += text.charAt(index);
+                index++;
+                setTimeout(type, speed);
             }
-            el.style.boxShadow = shadows;
         }
+        
+        // Iniciar com delay para garantir carregamento visual
+        setTimeout(type, 1200);
+    };
 
-        generate(smallStars, 200);
-        generate(mediumStars, 80);
-    }
+    // --- 2. DYNAMIC COSMOS GENERATOR ---
+    const initCosmos = () => {
+        const createLayer = (id, count, size) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            
+            let boxShadow = "";
+            for (let i = 0; i < count; i++) {
+                const x = Math.floor(Math.random() * window.innerWidth);
+                const y = Math.floor(Math.random() * 3000); // Espaço vertical longo
+                boxShadow += `${x}px ${y}px #FFF${i === count - 1 ? "" : ","}`;
+            }
+            el.style.boxShadow = boxShadow;
+        };
 
-    // 3. Efeito de Scroll no Nav
-    window.addEventListener('scroll', () => {
+        createLayer('stars-small', 250, 1);
+        createLayer('stars-medium', 100, 2);
+        createLayer('stars-large', 40, 3);
+    };
+
+    // --- 3. SCROLL SPY & HEADER CONTROL ---
+    const headerControl = () => {
         const nav = document.getElementById('main-nav');
-        if (window.scrollY > 50) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-        }
-    });
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
 
-    // Iniciar
-    setTimeout(type, 1000);
-    initStars();
+        window.addEventListener('scroll', () => {
+            // Header Glow
+            if (window.scrollY > 100) {
+                nav.classList.add('nav-scrolled');
+            } else {
+                nav.classList.remove('nav-scrolled');
+            }
+
+            // Scroll Spy
+            let current = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    };
+
+    // --- 4. REVEAL ANIMATIONS (Intersection Observer) ---
+    const revealObserver = () => {
+        const options = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-active');
+                    observer.unobserve(entry.target); // Animates once
+                }
+            });
+        }, options);
+
+        const items = document.querySelectorAll('.expertise-card, .project-mega-card, .contact-container');
+        items.forEach(item => {
+            item.style.opacity = "0";
+            item.style.transform = "translateY(40px)";
+            item.style.transition = "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)";
+            observer.observe(item);
+        });
+
+        // Adicionar classe via CSS injetado para controlar a ativação
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .reveal-active {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+        `;
+        document.head.appendChild(style);
+    };
+
+    // --- 5. SMOOTH ANCHOR LINK SCROLL ---
+    const smoothScroll = () => {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    };
+
+    // --- 6. PARALLAX EFFECT FOR NEBULAS ---
+    const initParallax = () => {
+        window.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            const nebula = document.querySelector('.nebula-primary');
+            if (nebula) {
+                nebula.style.transform = `translate(${x * 50}px, ${y * 50}px)`;
+            }
+        });
+    };
+
+    // --- 7. ERROR HANDLER FOR IMAGES (IF ANY) ---
+    const handleImages = () => {
+        document.querySelectorAll('img').forEach(img => {
+            img.onerror = function() {
+                this.src = 'https://via.placeholder.com/400?text=Andrey+Dev';
+            };
+        });
+    };
+
+    // --- INITIALIZATION SEQUENCE ---
+    try {
+        initCosmos();
+        typewriter();
+        headerControl();
+        revealObserver();
+        smoothScroll();
+        initParallax();
+        handleImages();
+        
+        console.log("%c ANDREY PORTFOLIO SYSTEM LOADED ", "background: #00f2ff; color: #000; font-weight: bold;");
+    } catch (error) {
+        console.error("System crash avoided. Details:", error);
+    }
 });
