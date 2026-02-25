@@ -1,133 +1,175 @@
 /**
- * PORTFOLIO SCRIPTS - ANDREY
- * Lógica robusta para interface dinâmica
+ * PORTFOLIO ARCHITECTURE v4.0 - ANDREY
+ * Lógica modular para controle de Interface e Experiência do Usuário (UX)
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+"use strict";
 
-    // 1. Loader de Entrada
-    const loader = document.getElementById('loader-wrapper');
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            loader.style.opacity = '0';
-            setTimeout(() => loader.style.display = 'none', 800);
-        }, 1500);
-    });
-
-    // 2. Controle do Header Dinâmico (Fixed no Scroll)
-    const header = document.getElementById('main-nav');
-    const heroSection = document.getElementById('hero-screen');
-    const scrollThreshold = 400; // Distância para fixar o header
-
-    const handleScroll = () => {
-        const scrollY = window.scrollY;
-
-        // Se passar da metade da primeira página
-        if (scrollY > scrollThreshold) {
-            header.classList.add('scrolled');
-            header.classList.remove('nav-hidden');
-        } else if (scrollY > 100) {
-            // Entre 100 e 400 ele fica escondido para transição suave
-            header.classList.add('nav-hidden');
-            header.classList.remove('scrolled');
-        } else {
-            // No topo absoluto
-            header.classList.add('nav-hidden');
-        }
+const AndreyPortfolio = (() => {
+    // Estado da Aplicação
+    const state = {
+        isLoaded: false,
+        lastScroll: 0,
+        theme: 'dark',
+        mobileMenu: false
     };
 
-    window.addEventListener('scroll', handleScroll);
-
-    // 3. Sistema de Animação das Estrelas (Parallax no Mouse)
-    const starLayers = [
-        document.getElementById('stars-layer-1'),
-        document.getElementById('stars-layer-2'),
-        document.getElementById('stars-layer-3')
-    ];
-
-    document.addEventListener('mousemove', (e) => {
-        const x = e.clientX / window.innerWidth;
-        const y = e.clientY / window.innerHeight;
-
-        starLayers.forEach((layer, index) => {
-            if (layer) {
-                const speed = (index + 1) * 20;
-                const moveX = (x - 0.5) * speed;
-                const moveY = (y - 0.5) * speed;
-                layer.style.transform = `translate(${moveX}px, ${moveY}px)`;
-            }
-        });
-    });
-
-    // 4. Efeito Reveal (Mostrar elementos ao rolar)
-    const observerOptions = {
-        threshold: 0.15,
-        rootMargin: "0px"
+    // Configurações do Motor de Animação
+    const config = {
+        typewriter: ["Full Stack Developer", "Python Expert", "Java Architect", "Problem Solver"],
+        starCounts: { small: 300, medium: 150, large: 60 },
+        revealThreshold: 0.15
     };
 
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('reveal-active');
-                revealObserver.unobserve(entry.target); // Anima apenas uma vez
-            }
+    // 1. Inicialização do Loader e Segurança
+    const initLoader = () => {
+        const loader = document.getElementById('loader');
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 500);
+                state.isLoaded = true;
+                document.body.classList.add('page-ready');
+            }, 800);
         });
-    }, observerOptions);
+    };
 
-    // Seleciona elementos para observar
-    const itemsToReveal = document.querySelectorAll('.glass-card, .project-rect-card, .contact-card-item, .section-heading');
-    
-    itemsToReveal.forEach(item => {
-        item.style.opacity = "0";
-        item.style.transform = "translateY(50px)";
-        item.style.transition = "all 1s cubic-bezier(0.19, 1, 0.22, 1)";
-        revealObserver.observe(item);
-    });
+    // 2. Motor de Partículas Cosmos (Gerador de Shadows)
+    const initCosmos = () => {
+        const generateStars = (id, count) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            
+            let boxShadow = "";
+            const canvasWidth = window.innerWidth * 2; // Espaço extra para movimento
+            const canvasHeight = 4000;
 
-    // Adiciona classe CSS dinâmica para animação de revelação
-    const style = document.createElement('style');
-    style.innerHTML = `
-        .reveal-active {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-    `;
-    document.head.appendChild(style);
-
-    // 5. Scroll Suave para links internos
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80, // Compensação do header
-                    behavior: 'smooth'
-                });
+            for (let i = 0; i < count; i++) {
+                const x = Math.floor(Math.random() * canvasWidth);
+                const y = Math.floor(Math.random() * canvasHeight);
+                boxShadow += `${x}px ${y}px #FFF${i === count - 1 ? "" : ","}`;
             }
-        });
-    });
+            el.style.boxShadow = boxShadow;
+        };
 
-    // 6. Efeito de Digitação no Subtítulo
-    const subtitle = document.getElementById('main-subtitle');
-    const text = subtitle.innerText;
-    subtitle.innerText = '';
-    
-    let i = 0;
-    const typeWriter = () => {
-        if (i < text.length) {
-            subtitle.innerText += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, 100);
+        generateStars('stars-small', config.starCounts.small);
+        generateStars('stars-medium', config.starCounts.medium);
+        generateStars('stars-large', config.starCounts.large);
+    };
+
+    // 3. Header Inteligente (Scroll Logic)
+    const initHeader = () => {
+        const nav = document.getElementById('main-nav');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.scrollY;
+
+            // Lógica de Aparência do Header
+            if (currentScroll > 300) {
+                nav.classList.add('header-fixed');
+                nav.classList.remove('header-hidden');
+            } else {
+                nav.classList.add('header-hidden');
+                nav.classList.remove('header-fixed');
+            }
+
+            // Lógica de Direção (Esconde ao descer, mostra ao subir)
+            if (currentScroll > state.lastScroll && currentScroll > 800) {
+                nav.style.transform = "translateY(-100%)";
+            } else {
+                nav.style.transform = "translateY(0)";
+            }
+            
+            state.lastScroll = currentScroll;
+        }, { passive: true });
+    };
+
+    // 4. Typewriter Engine (Efeito de Escrita)
+    const initTypewriter = () => {
+        const target = document.getElementById('typewriter-text');
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        const type = () => {
+            const currentText = config.typewriter[textIndex];
+            
+            if (isDeleting) {
+                target.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                target.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 150;
+
+            if (!isDeleting && charIndex === currentText.length) {
+                typeSpeed = 2000; // Pausa no final
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % config.typewriter.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        };
+
+        type();
+    };
+
+    // 5. Scroll Reveal (Animações de Entrada)
+    const initReveal = () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active-reveal');
+                }
+            });
+        }, { threshold: config.revealThreshold });
+
+        const revealElements = document.querySelectorAll(
+            '.spec-card, .project-rect-card, .glass-morphism, .section-title'
+        );
+        
+        revealElements.forEach(el => {
+            el.classList.add('reveal-hidden');
+            observer.observe(el);
+        });
+    };
+
+    // 6. Smooth Scroll Handler
+    const initSmoothScroll = () => {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    };
+
+    // Public Init
+    return {
+        start: () => {
+            initLoader();
+            initCosmos();
+            initHeader();
+            initTypewriter();
+            initReveal();
+            initSmoothScroll();
+            console.log("Portfolio Engine Started | Developer: Andrey");
         }
     };
-    
-    // Inicia o typewriter após o loader sumir
-    setTimeout(typeWriter, 2500);
+})();
 
-    // 7. Console Welcome Message
-    console.log("%c ANDREY | FULL STACK DEVELOPER ", "color: #00d2ff; font-size: 20px; font-weight: bold;");
-    console.log("Sistema carregado com sucesso. Bem-vindo ao meu portfolio.");
-});
+// Execução
+document.addEventListener('DOMContentLoaded', AndreyPortfolio.start);
