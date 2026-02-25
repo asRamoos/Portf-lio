@@ -1,253 +1,131 @@
 <!DOCTYPE html>
-<html lang="pt-br" class="no-js">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ANDREY | Full Stack Software Engineer - Portfolio v9.0</title>
-    
-    <meta name="description" content="Portfolio profissional de Andrey, desenvolvedor Full Stack especializado em arquiteturas robustas, Python e ecossistemas digitais.">
-    <meta name="keywords" content="Software Engineer, Python, Back-end, BigStreet, Andrey, Developer">
-    <meta name="theme-color" content="#02040a">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,100;0,400;0,700;1,100&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfólio profissional de Andrey Rafael - Desenvolvedor Full Stack">
+<title>Andrey | Full Stack Developer</title>
+<link rel="stylesheet" href="style.css">
 </head>
-<body class="loading">
 
-    <div id="app-preloader">
-        <div class="loader-content">
-            <span class="loader-text">INICIALIZANDO SISTEMA</span>
-            <div class="loader-bar"><div class="progress"></div></div>
-        </div>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+    <div class="loader-spinner"></div>
+</div>
+
+<!-- FUNDO ESTRELADO -->
+<div class="stars"></div>
+<div class="stars2"></div>
+<div class="stars3"></div>
+
+<!-- HEADER -->
+<header id="header">
+    <div class="header-container">
+        <h1 class="logo">Andrey</h1>
+        <nav>
+            <ul>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#especialidades">Especialidades</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
     </div>
+</header>
 
-    <div id="deep-space-engine" aria-hidden="true">
-        <div class="stars-layer layer-1"></div>
-        <div class="stars-layer layer-2"></div>
-        <div class="stars-layer layer-3"></div>
-        <div class="nebula nebula-blue"></div>
-        <div class="nebula nebula-purple"></div>
-        <div class="digital-scanline"></div>
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="main-title">Andrey</h1>
+        <h2 class="subtitle">Full Stack Developer</h2>
+        <a href="#projetos" class="cta-button">Ver Projetos</a>
     </div>
+</section>
 
-    <header id="site-header" class="header-hidden">
-        <div class="header-inner container">
-            <div class="header-brand">
-                <div class="brand-hex">
-                    <span class="hex-char">A</span>
-                </div>
-                <h2 class="brand-text">ANDREY</h2>
-            </div>
+<!-- SOBRE -->
+<section id="sobre" class="section">
+    <div class="container">
+        <h2 class="section-title">Sobre Mim</h2>
+        <p class="about-text">
+            Sou Andrey Rafael dos Santos Ramos, desenvolvedor de sistemas Full Stack,
+            criando soluções do zero com Python, Java e banco de dados relacionais.
+            Atuo no desenvolvimento completo de aplicações, desde a modelagem
+            até a interface final, priorizando performance, organização e segurança.
+        </p>
+    </div>
+</section>
 
-            <nav class="main-nav" aria-label="Navegação Principal">
-                <ul class="nav-list">
-                    <li class="nav-item">
-                        <a href="#hero" class="nav-link active">
-                            <span class="nav-num">01.</span> <span class="nav-txt">Sobre Mim</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#especialidades" class="nav-link">
-                            <span class="nav-num">02.</span> <span class="nav-txt">Hard Skills</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#projetos" class="nav-link">
-                            <span class="nav-num">03.</span> <span class="nav-txt">Projetos</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#contato" class="nav-link">
-                            <span class="nav-num">04.</span> <span class="nav-txt">Contato</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+<!-- ESPECIALIDADES -->
+<section id="especialidades" class="section">
+<div class="container">
+<h2 class="section-title">Especialidades</h2>
 
-            <div class="header-actions">
-                <a href="https://github.com/AndreySRamos" target="_blank" class="action-btn-circle">
-                    <i class="fab fa-github"></i>
-                </a>
-            </div>
-        </div>
-    </header>
+<div class="skills-grid">
 
-    <main id="smooth-scroll-wrapper">
+<div class="skill-card reveal">
+<h3>Python</h3>
+<p>APIs, automações, aplicações web e estrutura backend robusta.</p>
+</div>
 
-        <section id="hero" class="section-hero">
-            <div class="container hero-layout">
-                <div class="hero-header">
-                    <div class="hero-eyebrow">
-                        <span class="eyebrow-line"></span>
-                        <span class="eyebrow-text">SISTEMA OPERACIONAL V9.0</span>
-                    </div>
-                    <h1 class="hero-name-gradient">ANDREY</h1>
-                    <div class="hero-terminal">
-                        <span class="term-prompt">>>></span>
-                        <span id="auto-typewriter" class="term-content"></span>
-                        <span class="term-cursor"></span>
-                    </div>
-                </div>
+<div class="skill-card reveal">
+<h3>Back-end</h3>
+<p>Regras de negócio, autenticação, integração com banco e APIs REST.</p>
+</div>
 
-                <div class="about-module glass-morphism-white">
-                    <div class="module-bar">
-                        <div class="window-controls">
-                            <span class="ctrl close"></span>
-                            <span class="ctrl min"></span>
-                            <span class="ctrl max"></span>
-                        </div>
-                        <span class="module-id">sobre_mim.py</span>
-                    </div>
-                    <div class="module-content">
-                        <div class="content-body">
-                            <p class="p-lead">
-                                <span class="highlight">Desenvolvedor Full Stack</span> apaixonado pela arquitetura de software e pela resolução de problemas complexos. 
-                            </p>
-                            <p>
-                                O meu foco não é apenas escrever código, mas sim construir soluções que sejam escaláveis, seguras e intuitivas. Acredito que a tecnologia deve servir as pessoas, e é esse equilíbrio entre performance técnica e experiência humana que procuro em cada projeto que desenvolvo.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<div class="skill-card reveal">
+<h3>Front-end</h3>
+<p>Interfaces modernas, responsivas e focadas em UX.</p>
+</div>
 
-        <section id="especialidades" class="section-skills">
-            <div class="container">
-                <div class="section-title-wrapper center">
-                    <span class="super-title">Expertise Técnica</span>
-                    <h2 class="main-section-title">Especialidades</h2>
-                    <div class="section-divider">
-                        <span class="divider-text">HARD SKILLS</span>
-                    </div>
-                </div>
+<div class="skill-card reveal">
+<h3>Banco de Dados</h3>
+<p>Modelagem relacional, otimização de consultas e integridade de dados.</p>
+</div>
 
-                <div class="skills-complex-grid">
-                    <div class="skill-node glass-frost-node">
-                        <div class="node-inner">
-                            <div class="node-icon"><i class="fab fa-python"></i></div>
-                            <h3 class="node-title">Python</h3>
-                            <p class="node-desc">Desenvolvimento de back-end robusto, scripts de automação complexos e tratamento intensivo de dados.</p>
-                        </div>
-                    </div>
+</div>
+</div>
+</section>
 
-                    <div class="skill-node glass-frost-node">
-                        <div class="node-inner">
-                            <div class="node-icon"><i class="fas fa-microchip"></i></div>
-                            <h3 class="node-title">Back-end</h3>
-                            <p class="node-desc">Arquitetura de microsserviços, APIs seguras e otimização de performance no lado do servidor.</p>
-                        </div>
-                    </div>
+<!-- PROJETOS -->
+<section id="projetos" class="section">
+<div class="container">
+<h2 class="section-title">Projetos</h2>
 
-                    <div class="skill-node glass-frost-node">
-                        <div class="node-inner">
-                            <div class="node-icon"><i class="fab fa-html5"></i></div>
-                            <h3 class="node-title">HTML5</h3>
-                            <p class="node-desc">Construção semântica impecável focada em acessibilidade e indexação SEO de alto nível.</p>
-                        </div>
-                    </div>
+<div id="repos" class="projects-grid"></div>
 
-                    <div class="skill-node glass-frost-node">
-                        <div class="node-inner">
-                            <div class="node-icon"><i class="fab fa-css3-alt"></i></div>
-                            <h3 class="node-title">CSS3</h3>
-                            <p class="node-desc">Estilização modular, layouts dinâmicos com Grid/Flex e animações via GPU.</p>
-                        </div>
-                    </div>
+</div>
+</section>
 
-                    <div class="skill-node glass-frost-node">
-                        <div class="node-inner">
-                            <div class="node-icon"><i class="fas fa-database"></i></div>
-                            <h3 class="node-title">Bancos de Dados</h3>
-                            <p class="node-desc">Modelagem de dados relacionais e não-relacionais, garantindo integridade e velocidade de acesso.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- CONTATO -->
+<section id="contato" class="section">
+<div class="container">
+<h2 class="section-title">Contato</h2>
 
-        <section id="projetos" class="section-projects">
-            <div class="container">
-                <div class="section-title-wrapper">
-                    <h2 class="main-section-title">Portfólio de Projetos</h2>
-                </div>
+<div class="contact-grid">
 
-                <div class="mega-project-card glass-deep-blue">
-                    <div class="project-media">
-                        <div class="media-overlay"></div>
-                        <span class="media-label">BIG STREET</span>
-                    </div>
-                    <div class="project-info">
-                        <div class="info-header">
-                            <span class="project-category">SISTEMA DE GEOLOCALIZAÇÃO</span>
-                            <h3 class="project-name">BigStreet Ecosystem</h3>
-                        </div>
-                        <p class="project-summary">
-                            O BigStreet é uma plataforma inovadora que integra o esporte ao tecido urbano. Utilizando Python e mapeamento avançado, o sistema gerencia arenas esportivas de rua em tempo real.
-                        </p>
-                        <div class="project-tags">
-                            <span>#PYTHON</span><span>#POSTGRESQL</span><span>#LEAFLET</span>
-                        </div>
-                        <div class="project-link-box">
-                            <a href="https://github.com/AndreySRamos/BigStreet" target="_blank" class="btn-primary-neon">
-                                EXPLORAR CÓDIGO <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<a href="https://www.instagram.com/as.ramoos_/" target="_blank" class="contact-card">
+Instagram
+</a>
 
-        <section id="contato" class="section-contact">
-            <div class="container">
-                <div class="contact-header center">
-                    <h2 class="main-section-title">Canais de Comunicação</h2>
-                </div>
+<a href="https://wa.me/5531991544778" target="_blank" class="contact-card">
+WhatsApp
+</a>
 
-                <div class="contact-matrix">
-                    <a href="https://wa.me/5531991544778" target="_blank" class="matrix-card neon-blue-card">
-                        <div class="matrix-glow"></div>
-                        <i class="fab fa-whatsapp"></i>
-                        <span class="matrix-label">WhatsApp</span>
-                        <span class="matrix-action">Falar com Andrey</span>
-                    </a>
+<a href="mailto:andreyrafaselsr@gmail.com" class="contact-card">
+Email
+</a>
 
-                    <a href="mailto:andreyrafaselsr@gmail.com" class="matrix-card neon-blue-card">
-                        <div class="matrix-glow"></div>
-                        <i class="far fa-envelope"></i>
-                        <span class="matrix-label">Email Profissional</span>
-                        <span class="matrix-action">Enviar Proposta</span>
-                    </a>
+</div>
 
-                    <a href="https://instagram.com/as.ramoos_" target="_blank" class="matrix-card neon-blue-card">
-                        <div class="matrix-glow"></div>
-                        <i class="fab fa-instagram"></i>
-                        <span class="matrix-label">Instagram</span>
-                        <span class="matrix-action">@as.ramoos_</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
+</div>
+</section>
 
-    <footer id="app-footer">
-        <div class="container">
-            <div class="footer-line"></div>
-            <div class="footer-wrap">
-                <p class="legal-text">ANDREY &copy; 2026. LICENÇA MIT PARA EXCELÊNCIA TÉCNICA.</p>
-                <div class="status-indicator">
-                    <span class="pulse"></span> ONLINE_STATUS: ACTIVE
-                </div>
-            </div>
-        </div>
-    </footer>
+<footer>
+<p>© 2026 Andrey. Todos os direitos reservados.</p>
+</footer>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
