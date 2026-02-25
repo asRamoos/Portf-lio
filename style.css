@@ -1,125 +1,127 @@
-/* DESIGN SYSTEM - ANDREY 2026 */
+/* ARCHITECTURE: MODERN SPACE-TECH UI V7.0
+   DEVELOPER: ANDREY
+*/
+
 :root {
-    --bg-dark: #02040a;
+    --bg-black: #02040a;
+    --bg-space: #050a18;
     --neon-blue: #0088ff;
-    --neon-glow: rgba(0, 136, 255, 0.4);
     --white-glass: rgba(255, 255, 255, 0.05);
-    --blue-glass: rgba(0, 15, 35, 0.8);
-    --text-primary: #ffffff;
-    --text-secondary: #a0a0a0;
+    --blue-glass: rgba(0, 15, 40, 0.7);
+    --text-pure: #ffffff;
+    --text-muted: #94a3b8;
+    --transition-slow: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* 1. GLOBAL RESET */
 * { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
 body {
-    background: var(--bg-dark);
-    color: var(--text-primary);
+    background-color: var(--bg-black);
+    color: var(--text-pure);
     font-family: 'Inter', sans-serif;
+    line-height: 1.6;
     overflow-x: hidden;
-    scroll-behavior: smooth;
 }
 
-/* FUNDO ESPACIAL COM ESTRELAS EM MOVIMENTO */
-.space-background {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    z-index: -1; background: radial-gradient(circle at center, #0a1128 0%, #02040a 100%);
+.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+/* 2. ESPAÇO E ESTRELAS */
+.space-container {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+    background: radial-gradient(circle at center, var(--bg-space) 0%, var(--bg-black) 100%);
 }
 
-#stars, #stars2, #stars3 {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: transparent;
-}
+#stars, #stars2, #stars3 { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent; }
 
 #stars {
-    box-shadow: 450px 200px #FFF, 1200px 400px #FFF, 800px 900px #FFF, 200px 1500px #FFF, 1600px 100px #FFF;
-    width: 1px; height: 1px; animation: spaceMove 100s linear infinite;
+    width: 1px; height: 1px;
+    box-shadow: 174px 122px #FFF, 800px 300px #FFF, 1200px 100px #FFF, 450px 900px #FFF, 1600px 400px #FFF;
+    animation: starMove 150s linear infinite;
 }
 
 #stars2 {
-    box-shadow: 100px 100px #FFF, 500px 800px #FFF, 1400px 1200px #FFF;
-    width: 2px; height: 2px; animation: spaceMove 70s linear infinite;
+    width: 2px; height: 2px;
+    box-shadow: 100px 500px #FFF, 1500px 800px #FFF, 300px 1200px #FFF, 900px 100px #FFF;
+    animation: starMove 100s linear infinite;
 }
 
-@keyframes spaceMove {
+@keyframes starMove {
     from { transform: translateY(0); }
     to { transform: translateY(-2000px); }
 }
 
-/* HEADER DINÂMICO */
-#main-header {
-    position: fixed; top: 0; width: 100%; padding: 25px 0;
-    z-index: 1000; transition: all 0.5s ease;
-    transform: translateY(-100%); opacity: 0;
+/* 3. HEADER INTELIGENTE */
+#dynamic-nav {
+    position: fixed; top: 0; width: 100%; z-index: 2000; padding: 25px 0;
+    transition: var(--transition-slow); transform: translateY(-100%); opacity: 0;
 }
 
-#main-header.scrolled {
+#dynamic-nav.scrolled {
     transform: translateY(0); opacity: 1;
-    background: rgba(2, 4, 10, 0.8); backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding: 15px 0;
+    background: rgba(2, 4, 10, 0.85); backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 0;
 }
 
-.container { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
-.nav-flex { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-weight: 900; color: var(--neon-blue); letter-spacing: 2px; }
-.nav-links { display: flex; list-style: none; gap: 30px; }
-.nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 0.9rem; transition: 0.3s; }
-.nav-links a:hover { color: var(--text-primary); text-shadow: 0 0 10px var(--neon-blue); }
+.nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+.nav-brand { font-weight: 900; color: var(--neon-blue); letter-spacing: 2px; }
+.nav-menu { display: flex; list-style: none; gap: 30px; }
+.nav-menu a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; transition: 0.3s; font-weight: 600; }
+.nav-menu a:hover { color: var(--text-pure); text-shadow: 0 0 10px var(--neon-blue); }
 
-/* HERO & NOME GRADIENTE */
-.hero-section { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+/* 4. HERO E DEGRADÊ ANDREY */
+.hero-module { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
 
 .main-name-gradient {
-    font-size: clamp(4rem, 15vw, 8rem); font-weight: 900;
-    background: linear-gradient(180deg, #0055ff 0%, #ffffff 100%);
+    font-size: clamp(4rem, 15vw, 9rem); font-weight: 950;
+    background: linear-gradient(180deg, var(--neon-blue) 0%, #ffffff 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    letter-spacing: -5px; line-height: 1;
+    letter-spacing: -5px; line-height: 1; margin-bottom: 10px;
+    filter: drop-shadow(0 0 20px rgba(0, 136, 255, 0.2));
 }
 
-.typewriter-container { font-family: 'JetBrains Mono'; font-size: 1.5rem; color: var(--neon-blue); margin-top: 10px; }
+.typewriter-wrap { font-family: 'JetBrains Mono'; font-size: 1.5rem; color: var(--neon-blue); margin-bottom: 40px; }
 
 /* CARD SOBRE MIM */
-.about-card-container {
-    max-width: 700px; margin-top: 40px; background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden;
+.about-card-v2 {
+    max-width: 800px; margin: 0 auto; background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; overflow: hidden;
 }
-.about-card-header { background: rgba(255,255,255,0.05); padding: 8px 15px; font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--text-secondary); text-align: left; }
-.about-card-content { padding: 30px; line-height: 1.7; color: var(--text-secondary); text-align: left; }
+.card-header-simple { background: rgba(255,255,255,0.05); padding: 10px 20px; text-align: left; }
+.header-label { font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--text-muted); }
+.card-body-text { padding: 40px; text-align: left; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; }
 
-/* HARD SKILLS - FROSTED WHITE */
-.section-padding { padding: 100px 0; }
-.section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 5px; }
-.subtitle-skills { font-family: 'JetBrains Mono'; color: var(--neon-blue); letter-spacing: 4px; font-size: 0.8rem; margin-bottom: 50px; }
+/* 5. ESPECIALIDADES (FROSTED GLASS) */
+.skills-module { padding: 100px 0; }
+.module-main-title { font-size: 3rem; font-weight: 900; margin-bottom: 5px; }
+.hard-skills-subtitle { font-family: 'JetBrains Mono'; color: var(--neon-blue); letter-spacing: 5px; font-size: 0.85rem; margin-bottom: 60px; text-align: center; }
 
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-.skill-card.frosted-white {
-    background: var(--white-glass); backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.1); border-radius: 20px;
-    padding: 40px 25px; transition: 0.4s;
+.skills-flex-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+.skill-card-frosted {
+    background: var(--white-glass); backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 24px;
+    padding: 60px 40px; transition: var(--transition-slow); position: relative; overflow: hidden;
 }
-.skill-card:hover { transform: translateY(-10px); border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.08); }
-.icon-skill { font-size: 2.5rem; margin-bottom: 20px; color: #fff; }
+.skill-card-frosted:hover { transform: translateY(-15px); border-color: rgba(255,255,255,0.3); }
+.skill-icon { font-size: 3.5rem; color: #fff; margin-bottom: 25px; }
 
-/* PROJETOS */
-.project-large-card {
-    display: flex; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 24px; overflow: hidden; margin-top: 40px;
-}
-.project-img-placeholder { flex: 1; background: #0a1128; display: flex; align-items: center; justify-content: center; font-weight: 900; opacity: 0.3; }
-.project-info { flex: 1.5; padding: 50px; }
-
-/* CONTATO - AZUL NEON */
-.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-.contact-card.neon-blue-glass {
+/* 6. CONTACTO (BLUE NEON GLASS) */
+.contact-grid-v3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 50px 0; }
+.contact-card-neon {
     background: var(--blue-glass); border: 1px solid rgba(0, 136, 255, 0.3);
-    border-radius: 20px; padding: 40px; text-decoration: none; text-align: center;
-    transition: 0.4s; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border-radius: 20px; padding: 40px; text-decoration: none; color: #fff;
+    display: flex; flex-direction: column; align-items: center; transition: var(--transition-slow);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4); position: relative;
 }
-.contact-card:hover { 
+.contact-card-neon:hover {
     transform: scale(1.05); border-color: var(--neon-blue);
-    box-shadow: 0 0 30px var(--neon-glow);
+    box-shadow: 0 0 40px rgba(0, 136, 255, 0.3);
 }
-.contact-card i { font-size: 2.5rem; color: var(--neon-blue); margin-bottom: 15px; }
-.label { display: block; font-size: 0.7rem; text-transform: uppercase; color: var(--neon-blue); }
-.value { font-weight: 700; font-size: 1.1rem; color: #fff; }
+.contact-card-neon i { font-size: 3rem; color: var(--neon-blue); margin-bottom: 20px; text-shadow: 0 0 20px var(--neon-blue); }
+.c-label { font-size: 0.75rem; color: var(--neon-blue); text-transform: uppercase; font-family: 'JetBrains Mono'; }
+.c-value { font-size: 1.1rem; font-weight: 700; margin-top: 5px; }
 
-.main-footer { padding: 50px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 50px; opacity: 0.5; }
+/* 7. FOOTER */
+.site-footer { padding: 80px 0; text-align: center; opacity: 0.5; }
+.footer-divider { width: 80px; height: 2px; background: var(--neon-blue); margin: 0 auto 30px; }
