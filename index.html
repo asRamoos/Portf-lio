@@ -1,214 +1,196 @@
 <!DOCTYPE html>
-<html lang="pt-br" dir="ltr">
+<html lang="pt-br" class="no-js">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     
-    <title>Andrey | Full Stack Developer | Python & Java Expert</title>
-    
-    <meta name="description" content="Portfolio profissional de Andrey, desenvolvedor Full Stack especialista em Python, Java e Bancos de Dados de alta performance.">
-    <meta name="keywords" content="Andrey, Full Stack, Python, Java, SQL, BigStreet, Software Engineer, Web Development">
-    <meta name="author" content="Andrey">
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Andrey",
-      "jobTitle": "Full Stack Developer",
-      "url": "https://seuportfolio.com",
-      "sameAs": [
-        "https://instagram.com/as.ramoos_"
-      ]
-    }
-    </script>
+    <title>Andrey | Full Stack Engineering & Architecture</title>
 
+    <link rel="preload" href="style.css" as="style">
+    <link rel="stylesheet" href="style.css">
+
+    <meta name="description" content="Especialista Full Stack: Python, Java e Engenharia de Dados. Conheça os projetos de Andrey.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#020617">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=JetBrains+Mono:wght@300;500;800&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+    <style>
+        /* CSS Crítico Inline para evitar tela branca */
+        #loader {
+            position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%;
+            background: #020617; display: flex; align-items: center; justify-content: center;
+        }
+    </style>
+</head>
+<body id="body-context">
+
+    <div id="loader">
+        <div class="loader-spinner"></div>
+    </div>
 
     <div class="cosmos-background" aria-hidden="true">
         <div id="stars-small"></div>
         <div id="stars-medium"></div>
         <div id="stars-large"></div>
-        <div class="nebula"></div>
-        <div class="cosmic-dust"></div>
+        <div class="nebula-primary"></div>
+        <div class="nebula-secondary"></div>
     </div>
 
-    <header id="main-nav" class="header-hidden" role="banner">
+    <header id="main-nav" class="header-hidden" role="navigation">
         <div class="nav-container">
             <div class="nav-brand">
-                <span class="brand-name">Andrey</span>
-                <span class="brand-role">Full   Stack   Developer</span>
+                <h1 class="brand-logo">ANDREY<span class="dot">.</span></h1>
+                <div class="brand-badge">Full Stack Developer</div>
             </div>
             
-            <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
-                <span class="sr-only">Menu</span>
-                <div class="hamburger"></div>
-            </button>
-
-            <nav class="nav-menu" id="primary-navigation">
-                <ul class="nav-list">
-                    <li><a href="#hero" class="nav-link">Início</a></li>
-                    <li><a href="#especialidades" class="nav-link">Especialidades</a></li>
-                    <li><a href="#projetos" class="nav-link">Portfolio</a></li>
-                    <li><a href="#contato" class="nav-link">Contato</a></li>
+            <nav class="desktop-only">
+                <ul class="nav-links">
+                    <li><a href="#hero" class="nav-anchor active">Início</a></li>
+                    <li><a href="#specialties" class="nav-anchor">Expertise</a></li>
+                    <li><a href="#projects" class="nav-anchor">Projetos</a></li>
+                    <li><a href="#contact" class="nav-anchor">Contato</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main id="main-content">
+    <main id="main-scroll-container">
         <section id="hero" class="fullscreen-section">
-            <div class="hero-content-wrapper">
-                <div class="hero-main-title">
-                    <h1 class="glitch" data-text="Andrey">Andrey</h1>
-                    <div class="hero-typewriter-container">
-                        <span class="hero-typewriter">Full Stack Developer</span>
+            <div class="hero-inner">
+                <div class="hero-text-content">
+                    <h2 class="hero-pre-title">Olá, eu sou o</h2>
+                    <h1 class="hero-main-name">Andrey</h1>
+                    <div class="hero-dynamic-text">
+                        <span id="typewriter-text"></span><span class="cursor">|</span>
                     </div>
                 </div>
 
-                <article class="about-container glass-morphism">
-                    <header class="about-header">
-                        <div class="terminal-dots" aria-hidden="true"></div>
-                        <h2 class="mono-title">sobre_mim.py</h2>
-                    </header>
-                    <div class="about-body">
-                        <p>Sou um engenheiro de software focado na construção de sistemas escaláveis e resilientes. Com domínio profundo em <strong>Python</strong> e <strong>Java</strong>, minha abordagem une o rigor técnico do back-end com a fluidez do front-end moderno.</p>
-                        <p>Minha especialidade reside na modelagem de <strong>Bancos de Dados</strong> complexos e na implementação de arquiteturas orientadas a microsserviços, garantindo que cada linha de código contribua para a performance global do sistema.</p>
+                <div class="about-container glass-morphism reveal-on-scroll">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons"><span></span><span></span><span></span></div>
+                        <span class="terminal-file">bio_andrey.sh</span>
                     </div>
-                </article>
+                    <div class="terminal-content">
+                        <p class="code-line"><span class="code-purple">const</span> <span class="code-blue">profile</span> = {</p>
+                        <p class="code-line indent">stack: [<span class="code-green">"Python"</span>, <span class="code-green">"Java"</span>, <span class="code-green">"JS"</span>],</p>
+                        <p class="code-line indent">focus: <span class="code-green">"High Performance Systems"</span>,</p>
+                        <p class="code-line indent">databases: [<span class="code-green">"PostgreSQL"</span>, <span class="code-green">"MongoDB"</span>]</p>
+                        <p class="code-line">};</p>
+                        <p class="bio-prose">
+                            Especialista em transformar lógica complexa em experiências digitais fluidas. 
+                            Minha engenharia é focada na escalabilidade do back-end e no brilho visual do front-end.
+                        </p>
+                    </div>
+                </div>
             </div>
 
-            <div class="scroll-down-indicator" aria-hidden="true">
-                <span>Explore o Universo</span>
-                <div class="mouse-icon"><div class="wheel"></div></div>
+            <div class="scroll-down-hint">
+                <div class="mouse-wheel"></div>
+                <span>Role para explorar</span>
             </div>
         </section>
 
-        <section id="especialidades" class="content-section">
+        <section id="specialties" class="content-section">
             <div class="container">
-                <header class="section-intro">
-                    <h2 class="section-title" data-subtitle="O que eu domino">Especialidades Técnicas</h2>
-                </header>
+                <h2 class="section-title" data-subtitle="Expertise Técnica">Minhas Especialidades</h2>
                 
                 <div class="spec-grid">
-                    <div class="spec-card glass">
+                    <div class="spec-card glass reveal-up">
                         <div class="card-glow"></div>
-                        <div class="card-icon"><i class="fab fa-python" aria-hidden="true"></i></div>
-                        <h3>Python</h3>
-                        <p>Desenvolvimento de motores de processamento, automação inteligente e APIs de alta velocidade.</p>
-                        <ul class="card-tags">
-                            <li>Django</li>
-                            <li>FastAPI</li>
-                            <li>Pandas</li>
-                        </ul>
+                        <i class="fab fa-python card-icon"></i>
+                        <h3>Python Development</h3>
+                        <p>Automação, Data Science e APIs performáticas com Django e FastAPI.</p>
+                        <div class="card-footer"><span>95% Proficiency</span></div>
                     </div>
 
-                    <div class="spec-card glass">
+                    <div class="spec-card glass reveal-up">
                         <div class="card-glow"></div>
-                        <div class="card-icon"><i class="fas fa-server" aria-hidden="true"></i></div>
-                        <h3>Back-end</h3>
-                        <p>Arquitetura Java Enterprise, Spring Boot e sistemas distribuídos com foco em segurança.</p>
-                        <ul class="card-tags">
-                            <li>Spring Cloud</li>
-                            <li>Hibernate</li>
-                            <li>JUnit</li>
-                        </ul>
+                        <i class="fab fa-java card-icon"></i>
+                        <h3>Back-end Java</h3>
+                        <p>Sistemas robustos, microserviços e arquitetura Spring Boot estável.</p>
+                        <div class="card-footer"><span>90% Proficiency</span></div>
                     </div>
 
-                    <div class="spec-card glass">
+                    <div class="spec-card glass reveal-up">
                         <div class="card-glow"></div>
-                        <div class="card-icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
-                        <h3>Front-end</h3>
-                        <p>Interfaces reativas e performáticas, priorizando acessibilidade e design sistêmico.</p>
-                        <ul class="card-tags">
-                            <li>React</li>
-                            <li>TypeScript</li>
-                            <li>Tailwind</li>
-                        </ul>
+                        <i class="fas fa-code card-icon"></i>
+                        <h3>Front-end Pro</h3>
+                        <p>Criação de interfaces responsivas, modernas e com efeito Glassmorphism.</p>
+                        <div class="card-footer"><span>88% Proficiency</span></div>
                     </div>
 
-                    <div class="spec-card glass">
+                    <div class="spec-card glass reveal-up">
                         <div class="card-glow"></div>
-                        <div class="card-icon"><i class="fas fa-database" aria-hidden="true"></i></div>
-                        <h3>Banco de Dados</h3>
-                        <p>Otimização de consultas SQL, normalização de esquemas e gerenciamento NoSQL em larga escala.</p>
-                        <ul class="card-tags">
-                            <li>PostgreSQL</li>
-                            <li>MongoDB</li>
-                            <li>Redis</li>
-                        </ul>
+                        <i class="fas fa-database card-icon"></i>
+                        <h3>Database Management</h3>
+                        <p>Modelagem SQL, NoSQL e otimização de queries para alta demanda.</p>
+                        <div class="card-footer"><span>92% Proficiency</span></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="projetos" class="content-section alternate-bg">
+        <section id="projects" class="content-section">
             <div class="container">
-                <header class="section-intro">
-                    <h2 class="section-title" data-subtitle="Trabalhos selecionados">Projetos em Destaque</h2>
-                </header>
+                <h2 class="section-title" data-subtitle="Cases de Sucesso">Portfolio de Projetos</h2>
                 
-                <div class="projects-grid" id="github-feed">
-                    <article class="repo-card featured-project">
-                        <div class="project-overlay"></div>
-                        <div class="project-content">
-                            <span class="project-category">Projeto Principal</span>
-                            <h3>BigStreet</h3>
-                            <p>Plataforma estratégica para localização de eventos esportivos urbanos. Integra geolocalização, gestão de usuários e pagamentos automatizados.</p>
-                            <div class="tech-stack">
-                                <span>Java</span>
-                                <span>Python</span>
-                                <span>PostgreSQL</span>
-                                <span>Maps API</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="btn-primary-sm">Ver Case Study</a>
+                <div class="projects-vertical-stack">
+                    <div class="project-rect-card highlight-blue reveal-left">
+                        <div class="project-visual">
+                            <span class="project-year">2026</span>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-tag">Featured Project</span>
+                            <h3>BigStreet Ecosystem</h3>
+                            <p>Plataforma líder em geolocalização para esportes urbanos. Gerencia comunidades, eventos e pagamentos em tempo real.</p>
+                            <div class="project-stack-icons">
+                                <i class="fab fa-python" title="Python"></i>
+                                <i class="fab fa-java" title="Java"></i>
+                                <i class="fas fa-database" title="SQL"></i>
                             </div>
                         </div>
-                    </article>
-
                     </div>
+
+                    <div class="project-rect-card reveal-right">
+                        <div class="project-visual"></div>
+                        <div class="project-info">
+                            <span class="project-tag">Enterprise App</span>
+                            <h3>Sistema de Gestão Interna</h3>
+                            <p>Dashboard de alta performance para monitoramento de dados industriais e relatórios automáticos.</p>
+                            <div class="project-stack-icons">
+                                <i class="fab fa-js" title="JavaScript"></i>
+                                <i class="fas fa-leaf" title="Spring Boot"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="contato" class="content-section">
+        <section id="contact" class="content-section">
             <div class="container">
-                <div class="contact-wrapper glass-morphism">
-                    <div class="contact-info">
-                        <h2>Vamos construir o futuro?</h2>
-                        <p>Estou disponível para novos projetos e colaborações técnicas.</p>
-                    </div>
-                    <div class="contact-methods">
-                        <a href="https://instagram.com/as.ramoos_" class="contact-link" target="_blank">
+                <div class="contact-card glass-morphism">
+                    <h2 class="contact-title">Inicie um Projeto</h2>
+                    <p class="contact-lead">Estou pronto para transformar sua ideia em código de alta performance.</p>
+                    
+                    <div class="contact-grid-links">
+                        <a href="https://instagram.com/as.ramoos_" target="_blank" class="contact-item-link">
                             <i class="fab fa-instagram"></i>
-                            <div class="method-text">
-                                <span>Instagram</span>
-                                <small>@as.ramoos_</small>
-                            </div>
+                            <span>@as.ramoos_</span>
                         </a>
-                        <a href="https://wa.me/5531991544778" class="contact-link" target="_blank">
+                        <a href="https://wa.me/5531991544778" target="_blank" class="contact-item-link">
                             <i class="fab fa-whatsapp"></i>
-                            <div class="method-text">
-                                <span>WhatsApp</span>
-                                <small>31 99154-4778</small>
-                            </div>
+                            <span>Conectar no WhatsApp</span>
                         </a>
-                        <a href="mailto:andreyrafaselsr@gmail.com" class="contact-link">
+                        <a href="mailto:andreyrafaselsr@gmail.com" class="contact-item-link">
                             <i class="far fa-envelope"></i>
-                            <div class="method-text">
-                                <span>Email</span>
-                                <small>andreyrafaselsr@gmail.com</small>
-                            </div>
+                            <span>andreyrafaselsr@gmail.com</span>
                         </a>
                     </div>
                 </div>
@@ -216,22 +198,12 @@
         </section>
     </main>
 
-    <footer class="main-footer" role="contentinfo">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <span class="brand-name">Andrey</span>
-                    <p>Desenvolvendo soluções robustas e elegantes desde 2020.</p>
-                </div>
-                <div class="footer-legal">
-                    <p>&copy; 2026 Andrey. Todos os direitos reservados.</p>
-                    <p class="tech-stack-footer">Construído com HTML5, CSS3 Moderno e Vanilla JS.</p>
-                </div>
-            </div>
+    <footer class="main-footer">
+        <div class="footer-bottom">
+            <p>Andrey &copy; 2026 – Todos os dados, imagens e arquitetura pertencem ao autor. <span class="footer-heart"><i class="fas fa-code"></i></span></p>
         </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
-
