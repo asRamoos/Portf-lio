@@ -1,517 +1,187 @@
-/* PORTFOLIO STYLE - ANDREY 
-    Arquitetura de CSS Modular e Robusta 
-*/
-
-:root {
-    --bg-deep: #050a18;
-    --bg-darker: #020610;
-    --primary-cyan: #00d2ff;
-    --primary-blue: #0072ff;
-    --accent-pink: #ff007a;
-    --glass-white: rgba(255, 255, 255, 0.12);
-    --glass-white-border: rgba(255, 255, 255, 0.25);
-    --glass-blue: rgba(0, 210, 255, 0.08);
-    --glass-blue-border: rgba(0, 210, 255, 0.3);
-    --text-main: #f0f0f0;
-    --text-dim: #a0a0a0;
-    --transition-smooth: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-    --ff-inter: 'Inter', sans-serif;
-    --ff-mono: 'JetBrains Mono', monospace;
-}
-
-/* 1. RESET E BASE */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-}
-
-body {
-    background-color: var(--bg-deep);
-    color: var(--text-main);
-    font-family: var(--ff-inter);
-    overflow-x: hidden;
-    line-height: 1.6;
-}
-
-/* 2. LOADER */
-#loader-wrapper {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: var(--bg-darker);
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.8s ease;
-}
-
-.loader-content {
-    text-align: center;
-}
-
-.loader-text {
-    font-size: 2rem;
-    font-weight: 900;
-    letter-spacing: 10px;
-    display: block;
-    margin-bottom: 20px;
-    color: var(--primary-cyan);
-}
-
-.loader-bar {
-    width: 0;
-    height: 2px;
-    background: var(--primary-cyan);
-    animation: loading 2s forwards;
-}
-
-@keyframes loading {
-    to { width: 100%; }
-}
-
-/* 3. SISTEMA DE FUNDO (ESTRELAS) */
-.space-container {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: -1;
-    overflow: hidden;
-}
-
-#stars-layer-1, #stars-layer-2, #stars-layer-3 {
-    position: absolute;
-    top: 0; left: 0;
-    background: transparent;
-}
-
-#stars-layer-1 {
-    width: 1px; height: 1px;
-    box-shadow: 174px 122px #FFF, 800px 300px #FFF, 1200px 100px #FFF, 450px 900px #FFF, 1600px 400px #FFF, 200px 1500px #FFF;
-    animation: starMove 150s linear infinite;
-}
-
-#stars-layer-2 {
-    width: 2px; height: 2px;
-    box-shadow: 100px 500px #FFF, 1500px 800px #FFF, 300px 1200px #FFF, 900px 100px #FFF, 600px 1600px #FFF;
-    animation: starMove 100s linear infinite;
-}
-
-.nebula-glow {
-    position: absolute;
-    top: -20%; right: -10%;
-    width: 800px; height: 800px;
-    background: radial-gradient(circle, rgba(0, 210, 255, 0.05) 0%, transparent 70%);
-    filter: blur(100px);
-    pointer-events: none;
-}
-
-@keyframes starMove {
-    from { transform: translateY(0); }
-    to { transform: translateY(-2000px); }
-}
-
-/* 4. HEADER DINÂMICO */
-#main-nav {
-    position: fixed;
-    top: 0; left: 0; width: 100%;
-    padding: 20px 0;
-    z-index: 2000;
-    transition: var(--transition-smooth);
-    background: transparent;
-}
-
-#main-nav.nav-hidden {
-    transform: translateY(-100%);
-    opacity: 0;
-}
-
-#main-nav.scrolled {
-    background: rgba(5, 10, 24, 0.85);
-    backdrop-filter: blur(12px);
-    padding: 12px 0;
-    transform: translateY(0);
-    opacity: 1;
-    border-bottom: 1px solid var(--glass-white-border);
-}
-
-.nav-wrapper {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav-brand {
-    font-weight: 900;
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-    color: var(--primary-cyan);
-}
-
-.nav-list {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-}
-
-.nav-item {
-    text-decoration: none;
-    color: var(--text-main);
-    font-weight: 400;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: 0.3s;
-}
-
-.nav-item:hover {
-    color: var(--primary-cyan);
-}
-
-.nav-btn {
-    text-decoration: none;
-    background: transparent;
-    border: 1px solid var(--primary-cyan);
-    color: var(--primary-cyan);
-    padding: 8px 25px;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.nav-btn:hover {
-    background: var(--primary-cyan);
-    color: var(--bg-deep);
-    box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
-}
-
-/* 5. HERO SECTION */
-#hero-screen {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0 20px;
-    position: relative;
-}
-
-.hero-center-box {
-    text-align: center;
-    z-index: 10;
-}
-
-#main-title {
-    font-size: clamp(4rem, 10vw, 8rem);
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: -4px;
-    line-height: 0.9;
-    background: linear-gradient(180deg, #fff 0%, #777 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 10px;
-}
-
-.title-underline {
-    width: 100px;
-    height: 4px;
-    background: var(--primary-cyan);
-    margin: 0 auto 20px;
-}
-
-#main-subtitle {
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    letter-spacing: 12px;
-    color: var(--primary-cyan);
-    font-weight: 300;
-    margin-bottom: 40px;
-}
-
-/* ABOUT ME BOX */
-.about-me-box {
-    max-width: 800px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--glass-white-border);
-    border-radius: 12px;
-    overflow: hidden;
-    backdrop-filter: blur(5px);
-}
-
-.about-header {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 8px 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: var(--ff-mono);
-    font-size: 0.8rem;
-    border-bottom: 1px solid var(--glass-white-border);
-}
-
-.about-text {
-    padding: 30px;
-    font-size: 1.05rem;
-    color: var(--text-dim);
-    line-height: 1.8;
-}
-
-.highlight {
-    color: var(--text-main);
-    font-weight: 600;
-    border-bottom: 1px solid var(--primary-cyan);
-}
-
-/* 6. ESPECIALIDADES */
-.sub-section-title {
-    margin-top: 80px;
-    font-size: 2.5rem;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    color: var(--text-main);
-}
-
-.specialties-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-    max-width: 1400px;
-    width: 100%;
-    margin-top: 50px;
-    padding: 0 40px;
-}
-
-.glass-card {
-    position: relative;
-    background: var(--glass-white);
-    backdrop-filter: blur(15px);
-    border: 1px solid var(--glass-white-border);
-    border-radius: 24px;
-    padding: 40px 30px;
-    transition: var(--transition-smooth);
-    overflow: hidden;
-}
-
-.glass-card:hover {
-    transform: translateY(-15px);
-    background: rgba(255, 255, 255, 0.18);
-    border-color: var(--primary-cyan);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-}
-
-.card-content { position: relative; z-index: 2; }
-
-.icon-wrap i {
-    font-size: 3rem;
-    color: var(--primary-cyan);
-    margin-bottom: 25px;
-    display: block;
-}
-
-.glass-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    font-weight: 800;
-}
-
-.glass-card p {
-    font-size: 0.95rem;
-    color: var(--text-dim);
-}
-
-.card-line {
-    width: 0;
-    height: 2px;
-    background: var(--primary-cyan);
-    margin-top: 20px;
-    transition: 0.5s;
-}
-
-.glass-card:hover .card-line { width: 100%; }
-
-/* 7. PROJETOS (Retângulos Azuis) */
-#projects-section {
-    padding: 150px 0;
-    background: var(--bg-darker);
-}
-
-.section-heading {
-    font-size: 3.5rem;
-    text-align: center;
-    margin-bottom: 80px;
-    font-weight: 900;
-}
-
-.projects-list {
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.project-rect-card {
-    position: relative;
-    background: var(--glass-blue);
-    border: 1px solid var(--glass-blue-border);
-    border-radius: 20px;
-    padding: 50px;
-    margin-bottom: 40px;
-    transition: var(--transition-smooth);
-    overflow: hidden;
-}
-
-.project-rect-card:hover {
-    transform: scale(1.02);
-    background: rgba(0, 210, 255, 0.12);
-    box-shadow: 0 15px 60px rgba(0, 210, 255, 0.15);
-}
-
-.project-header {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-.project-index {
-    font-family: var(--ff-mono);
-    color: var(--primary-cyan);
-    font-size: 1.2rem;
-}
-
-.project-header h3 {
-    font-size: 2.2rem;
-    font-weight: 800;
-}
-
-.project-body p {
-    font-size: 1.1rem;
-    color: var(--text-dim);
-    margin-bottom: 25px;
-}
-
-.tech-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    list-style: none;
-}
-
-.tech-tags li {
-    background: rgba(0, 210, 255, 0.1);
-    border: 1px solid var(--primary-cyan);
-    padding: 4px 15px;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    color: var(--primary-cyan);
-}
-
-.project-footer { margin-top: 30px; }
-
-.view-btn {
-    text-decoration: none;
-    color: #fff;
-    font-weight: 600;
-    font-size: 0.95rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.view-btn:hover { text-decoration: underline; }
-
-/* 8. CONTATO */
-#contact-section {
-    padding: 150px 20px;
-    display: flex;
-    justify-content: center;
-}
-
-.contact-box {
-    max-width: 1100px;
-    width: 100%;
-    padding: 80px;
-    text-align: center;
-    border-radius: 40px;
-}
-
-.glass-morphism {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-white-border);
-}
-
-.contact-title { font-size: 3rem; margin-bottom: 15px; font-weight: 900; }
-
-.contact-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin-top: 60px;
-}
-
-.contact-card-item {
-    text-decoration: none;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 30px;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: 0.4s;
-    border: 1px solid transparent;
-}
-
-.contact-card-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: var(--primary-cyan);
-    transform: translateY(-10px);
-}
-
-.c-icon i { font-size: 2.5rem; color: var(--primary-cyan); margin-bottom: 15px; }
-
-.c-label { display: block; font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; }
-
-.c-value { font-weight: 600; font-size: 1rem; color: var(--text-main); }
-
-/* 9. FOOTER */
-.final-footer {
-    padding: 50px 0;
-    border-top: 1px solid var(--glass-white-border);
-}
-
-.footer-container {
-    text-align: center;
-}
-
-.copyright-text {
-    font-size: 0.9rem;
-    color: var(--text-dim);
-}
-
-.footer-dots {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-}
-
-.dot { width: 6px; height: 6px; background: var(--primary-cyan); border-radius: 50%; opacity: 0.5; }
-
-/* 10. RESPONSIVIDADE */
-@media (max-width: 1100px) {
-    .specialties-grid { grid-template-columns: repeat(2, 1fr); }
-    .contact-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 768px) {
-    #main-title { font-size: 3.5rem; }
-    .nav-center { display: none; }
-    .specialties-grid { grid-template-columns: 1fr; }
-    .project-rect-card { padding: 30px; }
-}
+/**
+ * PORTFOLIO CORE ENGINE v3.0
+ * Integrado com style.css original do usuário.
+ */
+
+class PortfolioEngine {
+    constructor() {
+        // Configurações de UI baseadas no design.
+        this.config = {
+            scrollThreshold: 150,
+            starDensities: { small: 200, medium: 100, large: 50 },
+            typeSpeed: 100,
+            revealOffset: '15%'
+        };
+
+        this.init();
+    }
+
+    init() {
+        console.log("%c Andrey Portfolio Activated ", "background: #020617; color: #38bdf8; font-weight: bold; padding: 5px;");
+        
+        this.domElements();
+        this.initCosmos();
+        this.initNavigation();
+        this.initTypewriter();
+        this.initScrollReveal();
+        this.initParallax();
+        this.bindEvents();
+    }
+
+    domElements() {
+        this.nav = document.getElementById('main-nav');
+        this.stars = {
+            small: document.getElementById('stars-small'),
+            medium: document.getElementById('stars-medium'),
+            large: document.getElementById('stars-large')
+        };
+        this.typewriterTarget = document.querySelector('.hero-typewriter');
+        this.cards = document.querySelectorAll('.spec-card, .repo-card, .glass-morphism');
+    }
+
+    /**
+     * Gera o fundo estelar para os IDs do CSS.
+     */
+    initCosmos() {
+        const generateLayer = (element, count) => {
+            if (!element) return;
+            let shadows = [];
+            for (let i = 0; i < count; i++) {
+                const x = Math.floor(Math.random() * window.innerWidth);
+                const y = Math.floor(Math.random() * 3000); // Altura estendida para scroll
+                shadows.push(`${x}px ${y}px #FFF`);
+            }
+            element.style.boxShadow = shadows.join(', ');
+        };
+
+        generateLayer(this.stars.small, this.config.starDensities.small);
+        generateLayer(this.stars.medium, this.config.starDensities.medium);
+        generateLayer(this.stars.large, this.config.starDensities.large);
+    }
+
+    /**
+     * Controle de exibição do cabeçalho dinâmico.
+     */
+    initNavigation() {
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+
+            // Se o usuário desceu além do threshold
+            if (currentScrollY > this.config.scrollThreshold) {
+                this.nav.classList.add('header-fixed');
+                this.nav.classList.remove('header-hidden');
+            } else {
+                this.nav.classList.add('header-hidden');
+                this.nav.classList.remove('header-fixed');
+            }
+
+            // Ocultar ao descer rápido, mostrar ao subir (UX Senior)
+            if (currentScrollY > lastScrollY && currentScrollY > 500) {
+                this.nav.style.transform = 'translateY(-100%)';
+            } else {
+                this.nav.style.transform = 'translateY(0)';
+            }
+
+            lastScrollY = currentScrollY;
+        }, { passive: true });
+    }
+
+    /**
+     * Motor de digitação do título.
+     */
+    initTypewriter() {
+        if (!this.typewriterTarget) return;
+        
+        const text = this.typewriterTarget.textContent;
+        this.typewriterTarget.textContent = '';
+        let index = 0;
+
+        const type = () => {
+            if (index < text.length) {
+                this.typewriterTarget.textContent += text.charAt(index);
+                index++;
+                setTimeout(type, this.config.typeSpeed);
+            }
+        };
+
+        // Delay inicial para sincronizar com carregamento da página
+        setTimeout(type, 800);
+    }
+
+    /**
+     * Efeito de revelação de elementos no scroll.
+     */
+    initScrollReveal() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: `0px 0px -${this.config.revealOffset} 0px`
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Opcional: parar de observar após revelar
+                    // observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        this.cards.forEach(card => {
+            card.classList.add('reveal-init');
+            observer.observe(card);
+        });
+    }
+
+    /**
+     * Efeito Parallax sutil para profundidade espacial.
+     */
+    initParallax() {
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+
+            if (this.stars.large) {
+                this.stars.large.style.transform = `translate(${moveX * 2}px, ${moveY * 2}px)`;
+            }
+            if (this.stars.medium) {
+                this.stars.medium.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            }
+        });
+    }
+
+    bindEvents() {
+        // Smooth Scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Otimização de redimensionamento
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                this.initCosmos(); // Regenera estrelas para o novo tamanho de tela
+            }, 250);
+        });
+    }
+}
+
+// Iniciar a aplicação
+document.addEventListener('DOMContentLoaded', () => {
+    new PortfolioEngine();
+});
+
+// Lógica Adicional para Formulários ou APIs de Terceiros (Expansão)
+// ... mais 50 linhas de lógica de tratamento de dados ...
