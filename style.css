@@ -1,30 +1,31 @@
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Montserrat',sans-serif;color:#fff;background:#0D1B2A;scroll-behavior:smooth;}
-header{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);text-align:center;padding:15px 0;transition:all 0.5s ease;opacity:0;pointer-events:none;z-index:1000;}
+body{font-family:'Montserrat',sans-serif;color:#fff;background:#0D1B2A;overflow-x:hidden;}
+#stars{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;background:#0D1B2A;}
+header{position:fixed;top:0;width:100%;text-align:center;padding:15px 0;background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);opacity:0;pointer-events:none;transition:all 0.5s ease;z-index:1000;}
 header h1{color:#fff;font-size:1.8rem;font-weight:700;}
-#hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 20px;}
-#hero h1{font-size:4rem;font-weight:900;margin-bottom:10px;}
-#hero h2{font-size:2rem;font-weight:700;margin-bottom:20px;color:#00cfff;}
-.sobre-mim{max-width:700px;font-size:1.1rem;line-height:1.6;margin-bottom:50px;}
-.especialidades{width:100%;margin-top:50px;}
-.especialidades h2{font-size:2.5rem;font-weight:700;margin-bottom:30px;}
-.cards-especialidades{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;justify-items:center;}
-.card{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);padding:20px;border-radius:15px;box-shadow:0 8px 20px rgba(0,0,0,0.3);transition:all 0.3s ease;width:220px;text-align:center;}
+#hero{padding:100px 20px;text-align:center;display:flex;justify-content:center;align-items:center;flex-direction:column;}
+.hero-code{background:rgba(255,255,255,0.1);padding:20px;border-radius:10px;font-family:monospace;font-size:1.1rem;line-height:1.5;}
+#especialidades{padding:50px 20px;text-align:center;height:100vh;}
+#especialidades h2{font-size:2.5rem;margin-bottom:40px;color:#00cfff;}
+.cards-especialidades{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:20px;justify-items:center;align-items:center;}
+.card{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);padding:25px;border-radius:15px;box-shadow:0 8px 25px rgba(0,0,0,0.4);transition:all 0.3s ease;width:220px;text-align:center;}
 .card h3{font-size:1.5rem;margin-bottom:10px;color:#00cfff;}
 .card p{font-size:1rem;color:#fff;}
-.card:hover{transform:translateY(-10px);box-shadow:0 12px 25px rgba(0,0,0,0.5);}
+.card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 12px 30px rgba(0,0,0,0.6);}
 #projetos{padding:80px 20px;text-align:center;}
-#projetos h2{font-size:2.5rem;margin-bottom:40px;}
+#projetos h2{font-size:2.5rem;margin-bottom:40px;color:#00cfff;}
 .cards-projetos{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
-.projeto-card{background:rgba(0,140,255,0.2);padding:20px;border-radius:15px;box-shadow:0 8px 20px rgba(0,0,0,0.3);transition:all 0.3s ease;}
+.projeto-card{background:rgba(0,140,255,0.2);padding:20px;border-radius:15px;box-shadow:0 8px 25px rgba(0,0,0,0.4);transition:all 0.3s ease;text-align:center;}
 .projeto-card h3{font-size:1.5rem;margin-bottom:10px;}
-.projeto-card p{font-size:1rem;color:#fff;}
-.projeto-card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 12px 25px rgba(0,0,0,0.5);}
+.projeto-card p{font-size:1rem;color:#fff;margin-bottom:10px;}
+.projeto-card a{color:#00cfff;text-decoration:none;font-weight:700;}
+.projeto-card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 12px 30px rgba(0,0,0,0.6);}
 #contato{padding:80px 20px;text-align:center;}
-#contato h2{font-size:2.5rem;margin-bottom:30px;}
+#contato h2{font-size:2.5rem;margin-bottom:30px;color:#00cfff;}
 .contatos{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;}
 .contatos a{color:#fff;text-decoration:none;font-size:1.2rem;display:flex;align-items:center;gap:10px;transition:all 0.3s ease;}
 .contatos a:hover{color:#00cfff;transform:scale(1.1);}
 footer{text-align:center;padding:20px;font-size:0.9rem;color:#aaa;}
-@media(max-width:768px){#hero h1{font-size:3rem;}#hero h2{font-size:1.5rem;}.cards-especialidades{grid-template-columns:repeat(auto-fit,minmax(180px,1fr));}.cards-projetos{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));}}
-@media(max-width:480px){#hero h1{font-size:2.5rem;}#hero h2{font-size:1.2rem;}.sobre-mim{font-size:1rem;}.cards-especialidades{grid-template-columns:1fr;}.cards-projetos{grid-template-columns:1fr;}}
+@media(max-width:1024px){.cards-especialidades{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,1fr);}}
+@media(max-width:768px){.cards-especialidades{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,1fr);}.cards-projetos{grid-template-columns:1fr;}}
+@media(max-width:480px){.hero-code{font-size:1rem;padding:15px;}}
