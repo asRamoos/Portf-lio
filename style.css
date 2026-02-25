@@ -1,30 +1,29 @@
-/* PORTFOLIO STYLE CORE - ANDREY 
-    Arquitetura: Glassmorphism / Space Tech / High Performance
-    Total: +200 linhas de estilização estruturada
+/* STYLE CORE - PORTFÓLIO ANDREY 
+    Arquitetura de Design: Glassmorphism / Space Tech
 */
 
 :root {
-    /* Paleta de Cores (Deep Space) */
+    /* Cores Principais */
     --clr-deep: #020617;
     --clr-space: #0f172a;
     --clr-primary: #38bdf8;
     --clr-secondary: #818cf8;
     --clr-accent: #f472b6;
     
-    /* Variáveis de Vidro (Glassmorphism) */
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-blur: blur(12px);
-    
     /* Tipografia */
     --ff-main: 'Inter', sans-serif;
     --ff-mono: 'JetBrains Mono', monospace;
     
-    /* Transições e Animações */
+    /* Efeitos de Vidro */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-blur: blur(12px);
+    
+    /* Transições */
     --transit: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 1. RESET E BASE */
+/* Reset Base */
 * {
     margin: 0;
     padding: 0;
@@ -36,95 +35,74 @@ body {
     background-color: var(--clr-deep);
     color: #f8fafc;
     font-family: var(--ff-main);
-    line-height: 1.6;
     overflow-x: hidden;
+    line-height: 1.6;
 }
 
-/* 2. SISTEMA DE BACKGROUND (COSMOS) */
+/* --- COSMOS BACKGROUND --- */
 .cosmos-background {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -2;
+    background: radial-gradient(ellipse at bottom, #0f172a 0%, #020617 100%);
     overflow: hidden;
 }
 
 #stars-small, #stars-medium, #stars-large {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 2px;
-    height: 2px;
+    top: 0; left: 0; right: 0; bottom: 0;
     background: transparent;
+    pointer-events: none;
 }
 
 .nebula {
     position: absolute;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
+    top: -200px; right: -200px;
     filter: blur(80px);
-    top: 20%;
-    right: -10%;
-    z-index: -1;
-    animation: pulse 10s infinite alternate;
+    pointer-events: none;
 }
 
-@keyframes pulse {
-    from { transform: scale(1); opacity: 0.5; }
-    to { transform: scale(1.3); opacity: 0.8; }
-}
-
-/* 3. HEADER E NAVEGAÇÃO */
+/* --- HEADER DINÂMICO --- */
 #main-nav {
     position: fixed;
-    top: 0;
-    width: 100%;
+    top: 0; left: 0; width: 100%;
+    padding: 20px 0;
     z-index: 1000;
     transition: var(--transit);
-    padding: 20px 0;
 }
 
-.header-fixed {
-    background: rgba(2, 6, 23, 0.8);
+#main-nav.header-fixed {
+    background: rgba(2, 6, 23, 0.85);
     backdrop-filter: var(--glass-blur);
     border-bottom: 1px solid var(--glass-border);
-    padding: 12px 0 !important;
-}
-
-.header-hidden {
-    transform: translateY(-5px);
+    padding: 12px 0;
 }
 
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.nav-brand {
-    display: flex;
-    flex-direction: column;
+    padding: 0 40px;
 }
 
 .brand-name {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 800;
-    letter-spacing: 2px;
     color: var(--clr-primary);
+    letter-spacing: -1px;
 }
 
 .brand-role {
-    font-family: var(--ff-mono);
-    font-size: 0.7rem;
-    color: var(--clr-secondary);
+    font-size: 0.75rem;
     text-transform: uppercase;
+    display: block;
+    color: var(--clr-secondary);
+    letter-spacing: 2px;
 }
 
 .nav-menu ul {
@@ -136,105 +114,62 @@ body {
 .nav-link {
     text-decoration: none;
     color: #94a3b8;
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-size: 0.95rem;
     transition: var(--transit);
 }
 
-.nav-link:hover {
-    color: var(--clr-primary);
-    text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
-}
+.nav-link:hover { color: var(--clr-primary); }
 
-/* 4. SEÇÕES E LAYOUT */
+/* --- HERO SECTION --- */
 .fullscreen-section {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 100px 25px;
-}
-
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 80px 25px;
-}
-
-/* 5. HERO E TEXTO DINÂMICO */
-.hero-main-title {
-    text-align: center;
-    margin-bottom: 40px;
+    padding: 100px 20px;
 }
 
 .hero-main-title h1 {
-    font-size: clamp(3rem, 10vw, 6rem);
-    font-weight: 900;
-    background: linear-gradient(to right, #fff, var(--clr-primary));
+    font-size: clamp(3.5rem, 12vw, 8rem);
+    font-weight: 800;
+    text-align: center;
+    background: linear-gradient(180deg, #fff 30%, var(--clr-primary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    line-height: 1;
 }
 
-.hero-typewriter {
-    font-family: var(--ff-mono);
-    color: var(--clr-secondary);
-    font-size: 1.2rem;
-    margin-top: 10px;
-}
-
-/* 6. GLASSMORPHISM CARDS */
+/* --- GLASS MORPHISM --- */
 .glass-morphism {
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
     border: 1px solid var(--glass-border);
     border-radius: 24px;
     padding: 40px;
+    margin-top: 30px;
 }
 
-.about-container {
-    max-width: 700px;
-    width: 100%;
+.terminal-dots::before {
+    content: '';
+    display: inline-block;
+    width: 12px; height: 12px;
+    background: #ff5f56;
+    border-radius: 50%;
+    box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
 }
 
-.terminal-dots {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 20px;
-}
-
-.terminal-dots::before, .terminal-dots::after { content: ''; width: 12px; height: 12px; border-radius: 50%; }
-.terminal-dots::before { background: #ff5f56; box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f; }
-
-/* 7. GRIDS DE ESPECIALIDADES */
-.section-title {
-    font-size: 2.5rem;
-    margin-bottom: 50px;
-    position: relative;
-}
-
-.section-title::before {
-    content: attr(data-subtitle);
-    display: block;
-    font-family: var(--ff-mono);
-    font-size: 0.8rem;
-    color: var(--clr-primary);
-    text-transform: uppercase;
-    letter-spacing: 3px;
-}
-
+/* --- GRIDS --- */
 .spec-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
 
-.spec-card {
-    padding: 40px;
-    border-radius: 20px;
-    background: rgba(15, 23, 42, 0.5);
+.spec-card.glass {
+    background: rgba(255, 255, 255, 0.02);
     border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 40px 30px;
     transition: var(--transit);
 }
 
@@ -245,31 +180,15 @@ body {
 }
 
 .card-icon {
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: var(--clr-primary);
     margin-bottom: 20px;
 }
 
-.card-tags {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-    list-style: none;
-}
-
-.card-tags li {
-    font-family: var(--ff-mono);
-    font-size: 0.7rem;
-    padding: 4px 12px;
-    background: rgba(56, 189, 248, 0.1);
-    color: var(--clr-primary);
-    border-radius: 100px;
-}
-
-/* 8. PROJETOS (GITHUB STYLE) */
+/* --- PROJETOS --- */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 30px;
 }
 
@@ -279,30 +198,26 @@ body {
     border-radius: 20px;
     padding: 30px;
     transition: var(--transit);
-    cursor: pointer;
 }
 
-.repo-card:hover {
-    border-color: var(--clr-secondary);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+/* --- UTILITÁRIOS --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
 }
 
-/* 9. FOOTER */
-.main-footer {
-    padding: 80px 0;
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 60px;
     text-align: center;
-    border-top: 1px solid var(--glass-border);
 }
 
-.footer-tech {
-    margin-top: 20px;
-    color: #64748b;
-    font-size: 0.8rem;
-}
-
-/* 10. RESPONSIVIDADE */
-@media (max-width: 768px) {
-    .nav-menu { display: none; }
-    .hero-main-title h1 { font-size: 3.5rem; }
-    .projects-grid { grid-template-columns: 1fr; }
+.section-title::after {
+    content: attr(data-subtitle);
+    display: block;
+    font-size: 0.9rem;
+    color: var(--clr-secondary);
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
