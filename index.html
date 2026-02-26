@@ -3,10 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andrey | Full Stack Developer</title>
-    <meta name="description" content="Portfolio de Andrey, Desenvolvedor Full Stack especializado em Python e interfaces modernas.">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Andrey | Portfolio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-cosmos: #05070a;
+            --nebula-purple: rgba(76, 29, 149, 0.2);
+            --nebula-blue: rgba(30, 58, 138, 0.3);
+            --primary-cyan: #22d3ee;
+            --glass-white: rgba(255, 255, 255, 0.07);
+            --glass-blue: rgba(15, 23, 42, 0.6);
+            --text-main: #f1f5f9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-cosmos);
+            background-image: 
+                radial-gradient(circle at 20% 30%, var(--nebula-purple) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, var(--nebula-blue) 0%, transparent 40%);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Canvas de Estrelas */
+        #starfield {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* Header */
+        header {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: 0.4s;
+        }
+
+        header.scrolled {
+            background: rgba(5, 7, 10, 0.6);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 0;
+        }
+
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 900; font-size: 1.6rem; letter-spacing: -1px; }
+        .logo span { color: var(--primary-cyan); }
+        .nav-menu { display: flex; list-style: none; gap: 40px; }
+        .nav-menu a { text-decoration: none; color: #94a3b8; font-weight: 500; transition: 0.3s; }
+        .nav-menu a:hover { color: var(--primary-cyan); }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
+
+        .code-container {
+            background: #0f172a;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 700px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 20px rgba(34, 211, 238, 0.1);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .code-header {
+            background: #1e293b;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .red { background: #ff5f56; } .yellow { background: #ffbd2e; } .green { background: #27c93f; }
+        .file-name { color: #64748b; font-size: 0.85rem; margin-left: 10px; font-family: 'Fira Code', monospace; }
+
+        .code-content {
+            padding: 30px;
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #e2e8f0;
+        }
+
+        .k { color: #c678dd; } .f { color: #61afef; } .s { color: #98c379; } 
+        .c { color: #e5c07b; } .co { color: #5c6370; font-style: italic; }
+
+        /* Especialidades - Cards Brancos Transparentes */
+        .specialties { padding: 100px 0; }
+        .section-title { text-align: center; margin-bottom: 60px; font-size: 2.8rem; font-weight: 800; }
+
+        .grid-2x3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card-tech {
+            padding: 45px 30px;
+            border-radius: 24px;
+            text-align: center;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: var(--glass-white);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05), inset 0 0 15px rgba(255, 255, 255, 0.05);
+        }
+
+        .card-tech:hover {
+            transform: translateY(-12px) scale(1.02);
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+        }
+
+        .card-tech img {
+            width: 55px;
+            height: 55px;
+            margin-bottom: 25px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(255,255,255,0.3));
+        }
+
+        .card-tech h3 { font-size: 1.3rem; margin-bottom: 15px; font-weight: 700; color: #fff; }
+        .card-tech p { color: #cbd5e1; font-size: 0.9rem; }
+
+        /* Projetos - Cards Azul Escuro Transparentes */
+        .projects { padding-bottom: 120px; }
+        
+        .project-single {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px;
+            border-radius: 30px;
+            background: var(--glass-blue);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(34, 211, 238, 0.2);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(34, 211, 238, 0.05);
+            text-align: left;
+            transition: 0.4s;
+        }
+
+        .project-single:hover {
+            border-color: var(--primary-cyan);
+            box-shadow: 0 30px 70px rgba(34, 211, 238, 0.15);
+        }
+
+        .project-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+        .project-header h3 { font-size: 2rem; color: var(--primary-cyan); font-weight: 900; }
+        
+        .project-desc { font-size: 1.1rem; color: #94a3b8; line-height: 1.8; margin-bottom: 30px; }
+
+        .tech-tags { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 35px; }
+        .tag {
+            background: rgba(34, 211, 238, 0.1);
+            color: var(--primary-cyan);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(34, 211, 238, 0.2);
+        }
+
+        .btn-github {
+            display: inline-flex;
+            align-items: center;
+            background: var(--primary-cyan);
+            color: #0891b2;
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 800;
+            transition: 0.3s;
+        }
+
+        .btn-github:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+            filter: brightness(1.1);
+        }
+
+        footer { padding: 60px; text-align: center; font-size: 0.9rem; color: #475569; }
+
+        @media (max-width: 900px) { .grid-2x3 { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 650px) { .grid-2x3 { grid-template-columns: 1fr; } .project-single { padding: 30px; } }
+    </style>
 </head>
 <body>
 
@@ -16,74 +222,69 @@
         <nav class="container">
             <div class="logo">ANDREY<span>.dev</span></div>
             <ul class="nav-menu">
-                <li><a href="#home">Início</a></li>
-                <li><a href="#specialties">Especialidades</a></li>
-                <li><a href="#projects">Projetos</a></li>
-                <li><a href="#contact">Contato</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#specialties">Stack</a></li>
+                <li><a href="#projects">Projeto</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <section id="home" class="hero">
-            <div class="code-container fade-in">
+            <div class="code-container">
                 <div class="code-header">
-                    <span class="dot red"></span>
-                    <span class="dot yellow"></span>
-                    <span class="dot green"></span>
-                    <span class="file-name">about_me.py</span>
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    <span class="file-name">Andrey_Profile.py</span>
                 </div>
-                <pre class="code-content">
-<code><span class="k">class</span> <span class="c">Developer</span>:
+                <div class="code-content">
+                    <pre><code><span class="k">class</span> <span class="c">Andrey</span>:
     <span class="k">def</span> <span class="f">__init__</span>(self):
-        self.name = <span class="s">"Andrey"</span>
         self.role = <span class="s">"Full Stack Developer"</span>
-        self.focus = <span class="s">"Scalable Systems & UI/UX"</span>
+        self.goal = <span class="s">"Modern & Scalable Solutions"</span>
     
-    <span class="k">def</span> <span class="f">get_about</span>(self):
-        <span class="k">return</span> <span class="s">"Apaixonado por transformar café em 
-                código limpo e soluções inteligentes."</span>
+    <span class="k">def</span> <span class="f">mission</span>(self):
+        <span class="k">return</span> <span class="s">"Creating high-impact experiences."</span>
 
-<span class="co"># Executando perfil...</span>
-me = Developer()
-<span class="p">print</span>(me.get_about())</code>
-                </pre>
+<span class="co"># Running system...</span>
+me = Andrey()
+<span class="f">print</span>(me.mission())</code></pre>
+                </div>
             </div>
         </section>
 
         <section id="specialties" class="specialties">
             <div class="container">
-                <h2 class="section-title">Minhas Especialidades</h2>
+                <h2 class="section-title">Tecnologias</h2>
                 <div class="grid-2x3">
-                    <div class="card glass">
-                        <div class="icon">🐍</div>
+                    <div class="card-tech">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
                         <h3>Python</h3>
-                        <p>Desenvolvimento de APIs robustas com Django e FastAPI, automação e análise de dados.</p>
+                        <p>Desenvolvimento Backend robusto e processamento de dados.</p>
                     </div>
-                    <div class="card glass">
-                        <div class="icon">⚙️</div>
-                        <h3>Back-End</h3>
-                        <p>Arquitetura de servidores, segurança, autenticação JWT e integração de sistemas.</p>
+                    <div class="card-tech">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" style="filter: invert(1);">
+                        <h3>Django</h3>
+                        <p>Criação de APIs seguras e escaláveis para aplicações web.</p>
                     </div>
-                    <div class="card glass">
-                        <div class="icon">💻</div>
-                        <h3>Front-End</h3>
-                        <p>Criação de interfaces reativas e modernas com foco total na experiência do usuário.</p>
+                    <div class="card-tech">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
+                        <h3>React</h3>
+                        <p>Interfaces dinâmicas com componentes reativos e alta UX.</p>
                     </div>
-                    <div class="card glass">
-                        <div class="icon">🗄️</div>
-                        <h3>Bancos de Dados</h3>
-                        <p>Modelagem e otimização de consultas em PostgreSQL, MySQL e bancos NoSQL.</p>
+                    <div class="card-tech">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL">
+                        <h3>Banco de Dados</h3>
+                        <p>Modelagem e otimização de bancos relacionais complexos.</p>
                     </div>
-                    <div class="card glass">
-                        <div class="icon">🎨</div>
-                        <h3>CSS Avançado</h3>
-                        <p>Design responsivo, animações complexas, Flexbox, Grid e o toque moderno do Glassmorphism.</p>
+                    <div class="card-tech">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS">
+                        <h3>CSS</h3>
+                        <p>Estilização moderna, animações e layouts responsivos.</p>
                     </div>
-                    <div class="card glass">
-                        <div class="icon">JS</div>
+                    <div class="card-tech">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
                         <h3>JavaScript</h3>
-                        <p>Lógica de programação avançada, manipulação do DOM e uso de frameworks modernos.</p>
+                        <p>Lógica ES6+ para interatividade e performance no navegador.</p>
                     </div>
                 </div>
             </div>
@@ -91,32 +292,84 @@ me = Developer()
 
         <section id="projects" class="projects">
             <div class="container">
-                <h2 class="section-title">Projetos em Destaque</h2>
-                <div class="project-grid">
-                    <a href="https://github.com/Andrey/projeto1" target="_blank" class="project-card glass-blue">
-                        <h3>E-commerce API</h3>
-                        <p>Backend completo em Python para gestão de vendas em tempo real.</p>
-                        <span class="github-link">Ver no GitHub →</span>
-                    </a>
-                    <a href="https://github.com/Andrey/projeto2" target="_blank" class="project-card glass-blue">
-                        <h3>Task Master</h3>
-                        <p>App de produtividade com interface Glassmorphism e persistência de dados.</p>
-                        <span class="github-link">Ver no GitHub →</span>
-                    </a>
-                    <a href="https://github.com/Andrey/projeto3" target="_blank" class="project-card glass-blue">
-                        <h3>Data Visualizer</h3>
-                        <p>Dashboard interativo para análise de métricas financeiras complexas.</p>
-                        <span class="github-link">Ver no GitHub →</span>
+                <h2 class="section-title">Destaque</h2>
+                
+                <div class="project-single">
+                    <div class="project-header">
+                        <h3>BigStreet</h3>
+                    </div>
+                    
+                    <p class="project-desc">
+                        O BigStreet é uma solução integrada desenvolvida para otimizar a visualização e gestão de dados urbanos. Focado em escalabilidade, o projeto une uma arquitetura backend sólida com uma interface intuitiva para processamento de informações em larga escala.
+                    </p>
+
+                    <div class="tech-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Django</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">React</span>
+                        <span class="tag">API REST</span>
+                    </div>
+
+                    <a href="https://github.com/Andrey/bigstreet" target="_blank" class="btn-github">
+                        Explorar Repositório no GitHub →
                     </a>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer glass">
-        <p>&copy; 2026 Andrey. Todos os direitos reservados.</p>
+    <footer>
+        <p>&copy; 2026 Andrey. Made in the stars.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Starfield Engine
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            stars = [];
+            const starCount = Math.floor(window.innerWidth * 0.15); // Densidade baseada na tela
+            for (let i = 0; i < starCount; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 1.8,
+                    speed: Math.random() * 0.4 + 0.1,
+                    opacity: Math.random()
+                });
+            }
+        }
+
+        function drawStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(star => {
+                ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                ctx.fill();
+                
+                star.y += star.speed;
+                if (star.y > canvas.height) {
+                    star.y = 0;
+                    star.x = Math.random() * canvas.width;
+                }
+            });
+            requestAnimationFrame(drawStars);
+        }
+
+        window.addEventListener('resize', initCanvas);
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        initCanvas();
+        drawStars();
+    </script>
 </body>
 </html>
