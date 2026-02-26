@@ -1,315 +1,189 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="no-js">
+<html lang="pt-br" class="no-js">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Portfolio de Andrey - Engenheiro de Software Full Stack especializado em Python e JS.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Andrey - Full Stack Developer Portfolio. Especialista em Python, JavaScript e Soluções Modernas.">
+    <meta name="keywords" content="Developer, Full Stack, Python, Portfolio, Andrey, Glassmorphism">
     <meta name="author" content="Andrey">
     
-    <meta property="og:title" content="Andrey | Full Stack Architect">
-    <meta property="og:description" content="Sistemas escaláveis e interfaces de alta performance.">
-    <meta property="og:type" content="website">
-    
+    <title>Andrey | Full Stack Engineering & UI/UX</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@100;300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        body { background: #020205; color: #fff; overflow-x: hidden; }
+        .loader { position: fixed; inset: 0; background: #020205; z-index: 9999; display: flex; align-items: center; justify-content: center; }
+    </style>
     
     <link rel="stylesheet" href="style.css">
-    <title>ANDREY // SOFTWARE_ARCHITECT</title>
 </head>
-<body class="is-loading system-dark-mode">
+<body>
 
-    <div id="sys-preloader" class="preloader-overlay">
-        <div class="preloader-content">
-            <div class="terminal-header">
-                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                <span class="terminal-title">boot_sequence.exe</span>
-            </div>
-            <div class="terminal-output">
-                <p class="t-line">Initializing Andrey_OS v3.0...</p>
-                <p class="t-line">Loading core_modules... [OK]</p>
-                <p class="t-line">Mapping neural_network... [OK]</p>
-                <p class="t-line">Injecting starfield_background... [OK]</p>
-                <p class="t-line">Accessing GitHub_API_V3... [OK]</p>
-                <div class="loader-bar-container">
-                    <div class="loader-bar-fill"></div>
-                </div>
-            </div>
+    <div class="loader" id="loader">
+        <div class="terminal-loader">
+            <span class="root">root@andrey:</span>
+            <span class="path">~</span>
+            <span class="cursor">_</span>
         </div>
     </div>
 
-    <div class="canvas-container" aria-hidden="true">
-        <canvas id="star-canvas"></canvas>
-        <div class="scanline"></div>
-        <div class="vignette"></div>
-    </div>
+    <canvas id="starfield" aria-hidden="true"></canvas>
 
-    <header id="global-nav" class="nav-fixed">
-        <div class="nav-wrapper">
-            <a href="#home" class="nav-logo">
-                <div class="logo-box">
-                    <span class="logo-char">A</span>
-                </div>
-                <div class="logo-info">
-                    <span class="logo-name">ANDREY</span>
-                    <span class="logo-status">AVAILABLE_FOR_WORK</span>
-                </div>
-            </a>
+    <header id="main-header">
+        <nav class="nav-container">
+            <div class="logo">
+                <span class="bracket">&lt;</span>
+                <span class="name">ANDREY</span>
+                <span class="bracket">/&gt;</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-item">01. Home</a></li>
+                <li><a href="#about" class="nav-item">02. Sobre</a></li>
+                <li><a href="#specialties" class="nav-item">03. Stack</a></li>
+                <li><a href="#projects" class="nav-item">04. Projetos</a></li>
+                <li><a href="#contact" class="nav-item btn-contact">Contato</a></li>
+            </ul>
 
-            <nav class="desktop-nav" role="navigation" aria-label="Menu Principal">
-                <ul class="nav-list">
-                    <li class="nav-item">
-                        <a href="#home" class="nav-link">
-                            <span class="nav-num">01.</span>
-                            <span class="nav-txt">START</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#specs" class="nav-link">
-                            <span class="nav-num">02.</span>
-                            <span class="nav-txt">SPECS</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#projects" class="nav-link">
-                            <span class="nav-num">03.</span>
-                            <span class="nav-txt">PRODUCTION</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#contact" class="nav-link btn-connect">
-                            <span class="nav-txt">CONNECT_INIT</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-
-            <button class="mobile-toggle" aria-expanded="false">
-                <span class="line"></span><span class="line"></span>
-            </button>
-        </div>
+            <div class="mobile-menu" id="mobile-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </nav>
     </header>
 
-    <main id="main-content">
-
-        <section id="home" class="section hero-section">
-            <div class="container hero-layout">
-                <div class="hero-text-content">
-                    <h1 class="glitch-text" data-text="FULLSTACK">FULLSTACK</h1>
-                    <h2 class="hero-sub">Architecting Digital Infrastructure</h2>
-                    <p class="hero-description">
-                        Especialista em criar sistemas robustos com **Python**, **Node.js** e interfaces modernas 
-                        com estética **Glassmorphism**. Transformando lógica pura em experiência de utilizador.
-                    </p>
-                    <div class="hero-actions">
-                        <a href="#projects" class="btn-main">VIEW_ARCHIVE</a>
-                        <a href="https://github.com/asRamoos" target="_blank" class="btn-sec">GITHUB_PROFILE</a>
-                    </div>
-                </div>
-
-                <div class="hero-code-window" data-tilt>
-                    <div class="editor-header">
+    <main>
+        <section id="home" class="hero-section">
+            <div class="container center-vh">
+                <div class="code-window shadow-xl" data-tilt>
+                    <div class="window-header">
                         <div class="dots"><span class="r"></span><span class="y"></span><span class="g"></span></div>
-                        <div class="tab">developer.py</div>
+                        <div class="tab">developer_profile.py</div>
                     </div>
-                    <div class="editor-body">
-                        <pre><code>
-<span class="k">class</span> <span class="c">Developer</span>:
-    <span class="f">def</span> <span class="m">__init__</span>(<span class="s">self</span>):
+                    <div class="code-content">
+                        <pre>
+<span class="c"># Andrey's Professional Profile</span>
+<span class="k">class</span> <span class="cl">AndreyDev</span>:
+    <span class="k">def</span> <span class="f">__init__</span>(<span class="s">self</span>):
         <span class="s">self</span>.name = <span class="v">"Andrey"</span>
-        <span class="s">self</span>.alias = <span class="v">"asRamoos"</span>
-        <span class="s">self</span>.focus = [<span class="v">"Backend"</span>, <span class="v">"UX"</span>, <span class="v">"Cloud"</span>]
+        <span class="s">self</span>.role = <span class="v">"Full Stack Developer"</span>
+        <span class="s">self</span>.focus = <span class="v">"Scalable Architecture"</span>
+        <span class="s">self</span>.location = <span class="v">"Brazil"</span>
 
-    <span class="f">def</span> <span class="m">get_status</span>(<span class="s">self</span>):
-        <span class="k">return</span> <span class="v">"Solving complex problems..."</span>
+    <span class="k">def</span> <span class="f">get_motivation</span>(<span class="s">self</span>):
+        <span class="k">return</span> <span class="v">"Turning coffee into clean code"</span>
 
-<span class="c"># Instantiating the profile</span>
-andrey = Developer()
-print(andrey.get_status())
-                        </code></pre>
+    <span class="k">def</span> <span class="f">is_available_for_hire</span>(<span class="s">self</span>):
+        <span class="k">return</span> <span class="v">True</span>
+
+<span class="c"># Instantiate professional</span>
+me = AndreyDev()
+<span class="p">print</span>(me.get_motivation())
+                        </pre>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="specs" class="section specs-section">
+        <section id="about" class="about-section">
             <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">/TECHNOLOGIES</span>
-                    <h2 class="section-title">Technical_Specifications</h2>
-                </div>
-
-                <div class="specs-grid">
-                    <article class="spec-card glass-morph">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                            </svg>
-                        </div>
-                        <div class="card-body">
-                            <h3>Python / Backend</h3>
-                            <p>Domínio em Django, FastAPI e processamento de dados massivos de forma assíncrona.</p>
-                            <div class="skill-tags">
-                                <span>AsyncIO</span><span>FastAPI</span><span>PyTest</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="spec-card glass-morph">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-                            </svg>
-                        </div>
-                        <div class="card-body">
-                            <h3>JavaScript / Frontend</h3>
-                            <p>Criação de SPAs modernas, animações procedurais e gestão de estado complexa.</p>
-                            <div class="skill-tags">
-                                <span>ES6+</span><span>Canvas API</span><span>DOM Engine</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="spec-card glass-morph">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
-                                <path d="M3 5V19C3 20.66 7.03 22 12 22C16.97 22 21 20.66 21 19V5"></path>
-                                <path d="M3 12C3 13.66 7.03 15 12 15C16.97 15 21 13.66 21 12"></path>
-                            </svg>
-                        </div>
-                        <div class="card-body">
-                            <h3>Banco de Dados</h3>
-                            <p>Modelagem SQL avançada, otimização de queries e integração com bases NoSQL.</p>
-                            <div class="skill-tags">
-                                <span>PostgreSQL</span><span>Redis</span><span>MongoDB</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="spec-card glass-morph">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                                <line x1="8" y1="21" x2="16" y2="21"></line>
-                                <line x1="12" y1="17" x2="12" y2="21"></line>
-                            </svg>
-                        </div>
-                        <div class="card-body">
-                            <h3>Arquitetura de APIs</h3>
-                            <p>Desenvolvimento de RESTful APIs seguras com autenticação JWT e documentação Swagger.</p>
-                            <div class="skill-tags">
-                                <span>REST</span><span>OAuth2</span><span>Microservices</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="spec-card glass-morph">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M22 12L2 12"></path>
-                                <path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"></path>
-                            </svg>
-                        </div>
-                        <div class="card-body">
-                            <h3>Cloud & DevOps</h3>
-                            <p>Containerização com Docker e CI/CD para deploy contínuo e escalabilidade.</p>
-                            <div class="skill-tags">
-                                <span>Docker</span><span>GitHub Actions</span><span>Linux</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="spec-card glass-morph">
-                        <div class="card-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                                <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                                <line x1="15" y1="9" x2="15.01" y2="9"></line>
-                            </svg>
-                        </div>
-                        <div class="card-body">
-                            <h3>Interface Engine</h3>
-                            <p>Foco em performance de renderização e animações suaves a 60fps.</p>
-                            <div class="skill-tags">
-                                <span>CSS Grid</span><span>Framer Motion</span><span>GSAP</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="section projects-section">
-            <div class="container">
-                <div class="section-header center">
-                    <span class="section-tag">/OUTPUT</span>
-                    <h2 class="section-title">Production_Log</h2>
-                    <p class="section-subtitle">Repositórios sincronizados em tempo real via GitHub API.</p>
-                </div>
-                
-                <div id="repos" class="github-grid">
-                    <div class="skeleton-card"></div>
-                    <div class="skeleton-card"></div>
-                    <div class="skeleton-card"></div>
-                    <div class="skeleton-card"></div>
-                    <div class="skeleton-card"></div>
-                    <div class="skeleton-card"></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="section contact-section">
-            <div class="container">
-                <div class="contact-card glass-morph">
-                    <div class="contact-header">
-                        <h3>START_CONNECTION</h3>
-                        <p>Pronto para o próximo desafio técnico?</p>
+                <div class="about-grid">
+                    <div class="text-block">
+                        <h2 class="section-title">Sobre Mim</h2>
+                        <p>Iniciei minha jornada no mundo do desenvolvimento focado em resolver problemas lógicos complexos. Hoje, atuo como desenvolvedor Full Stack, unindo a robustez do Python no back-end com a fluidez do ecossistema JavaScript no front-end.</p>
+                        <p>Meu foco é criar sistemas que não apenas funcionem, mas que sejam resilientes e fáceis de escalar.</p>
                     </div>
-                    <form id="contact-form" class="terminal-form">
-                        <div class="form-group">
-                            <label for="name">> USER_NAME:</label>
-                            <input type="text" id="name" name="name" placeholder="Inserir nome..." required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">> USER_EMAIL:</label>
-                            <input type="email" id="email" name="email" placeholder="Inserir email..." required>
-                        </div>
-                        <div class="form-group">
-                            <label for="msg">> MESSAGE_CONTENT:</label>
-                            <textarea id="msg" name="msg" placeholder="Escrever mensagem..." rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn-submit">EXECUTE_SEND()</button>
-                    </form>
+                    </div>
+            </div>
+        </section>
+
+        <section id="specialties" class="specialties-section">
+            <div class="container">
+                <h2 class="section-title centered">Minha Stack</h2>
+                <div class="spec-grid">
+                    <article class="spec-card glass" data-aos="fade-up">
+                        <div class="card-icon">🐍</div>
+                        <h3>Python</h3>
+                        <p>Desenvolvimento ágil com Django e FastAPI. Foco em automação, processamento de dados e APIs RESTful de alta performance.</p>
+                        <ul class="tag-list">
+                            <li>Django</li><li>FastAPI</li><li>PyTest</li>
+                        </ul>
+                    </article>
+
+                    <article class="spec-card glass" data-aos="fade-up" data-delay="100">
+                        <div class="card-icon">⚙️</div>
+                        <h3>Back-End</h3>
+                        <p>Arquitetura de microserviços, Docker e gestão de filas. Garantindo que o motor da aplicação nunca pare.</p>
+                        <ul class="tag-list">
+                            <li>Node.js</li><li>Redis</li><li>Docker</li>
+                        </ul>
+                    </article>
+
+                    <article class="spec-card glass" data-aos="fade-up" data-delay="200">
+                        <div class="card-icon">💻</div>
+                        <h3>Front-End</h3>
+                        <p>Interfaces modernas utilizando React e Next.js. Foco total em Componentização e State Management.</p>
+                        <ul class="tag-list">
+                            <li>React</li><li>Redux</li><li>TypeScript</li>
+                        </ul>
+                    </article>
+
+                    <article class="spec-card glass" data-aos="fade-up" data-delay="300">
+                        <div class="card-icon">🗄️</div>
+                        <h3>Banco de Dados</h3>
+                        <p>Modelagem relacional e não-relacional. Otimização de queries e indexação para grandes volumes de dados.</p>
+                        <ul class="tag-list">
+                            <li>PostgreSQL</li><li>MongoDB</li><li>SQLAlchemy</li>
+                        </ul>
+                    </article>
+
+                    <article class="spec-card glass" data-aos="fade-up" data-delay="400">
+                        <div class="card-icon">🎨</div>
+                        <h3>CSS Moderno</h3>
+                        <p>Domínio de Flexbox, Grid e animações. Glassmorphism, Neumorphism e UI/UX responsiva.</p>
+                        <ul class="tag-list">
+                            <li>Tailwind</li><li>SASS</li><li>Animations</li>
+                        </ul>
+                    </article>
+
+                    <article class="spec-card glass" data-aos="fade-up" data-delay="500">
+                        <div class="card-icon">JS</div>
+                        <h3>JavaScript</h3>
+                        <p>Lógica avançada de ES6+, manipulação de DOM assíncrona e integração completa com APIs externas.</p>
+                        <ul class="tag-list">
+                            <li>ES6</li><li>Promises</li><li>WebSockets</li>
+                        </ul>
+                    </article>
                 </div>
             </div>
         </section>
+
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <h2 class="section-title">Projetos em Destaque</h2>
+                <div class="projects-grid">
+                    <a href="https://github.com/Andrey/project-alpha" target="_blank" class="project-item glass-blue">
+                        <div class="proj-content">
+                            <span class="proj-category">Back-end / AI</span>
+                            <h3>Project Alpha Stream</h3>
+                            <p>Processador de dados em tempo real utilizando Python e Kafka.</p>
+                            <div class="proj-footer">Ver no GitHub ↗</div>
+                        </div>
+                    </a>
+                    </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+             </section>
 
     </main>
 
-    <footer class="footer-system">
-        <div class="container footer-layout">
-            <div class="footer-col info">
-                <p class="copyright">© 2026 ANDREY_CORE_UNIT. ALL_RIGHTS_RESERVED.</p>
-                <div class="system-pills">
-                    <span class="pill">V3.4.1</span>
-                    <span class="pill status">STABLE</span>
-                    <span class="pill-glow">ENCRYPTED</span>
-                </div>
-            </div>
-            <div class="footer-col social">
-                <a href="#" class="social-link">LN</a>
-                <a href="#" class="social-link">GH</a>
-                <a href="#" class="social-link">TW</a>
-            </div>
-        </div>
+    <footer class="main-footer">
+        <p>&copy; 2026 Andrey Developer - Todos os direitos reservados.</p>
     </footer>
 
-    <div id="notification-center"></div>
-    <div id="cursor-follower"></div>
-
-    <script src="script.js"></script>
-</body>
+    </body>
 </html>
