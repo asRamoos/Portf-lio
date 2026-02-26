@@ -4,127 +4,311 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="theme-color" content="#020617">
-    <title>Andrey | Senior Full Stack Developer & Systems Architect</title>
+    <meta name="description" content="Portfolio de Andrey - Engenheiro de Software Full Stack especializado em Python e JS.">
+    <meta name="author" content="Andrey">
+    
+    <meta property="og:title" content="Andrey | Full Stack Architect">
+    <meta property="og:description" content="Sistemas escaláveis e interfaces de alta performance.">
+    <meta property="og:type" content="website">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&family=Plus+Jakarta+Sans:wght@200;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@100;300;400;600;700;900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
+    <title>ANDREY // SOFTWARE_ARCHITECT</title>
 </head>
-<body class="theme-dark core-engine-active">
+<body class="is-loading system-dark-mode">
 
-    <div id="app-preloader" role="status" aria-live="polite">
-        <div class="terminal-loader">
-            <div class="loader-header"><span>system_boot_sequence</span></div>
-            <div class="loader-terminal-body">
-                <p class="line" data-line="0">Establishing secure connection...</p>
-                <p class="line" data-line="1">Loading neural_interface.dll...</p>
-                <p class="line" data-line="2">Synchronizing starfield_engine...</p>
-                <div class="progress-container">
-                    <div class="progress-bar"></div>
+    <div id="sys-preloader" class="preloader-overlay">
+        <div class="preloader-content">
+            <div class="terminal-header">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                <span class="terminal-title">boot_sequence.exe</span>
+            </div>
+            <div class="terminal-output">
+                <p class="t-line">Initializing Andrey_OS v3.0...</p>
+                <p class="t-line">Loading core_modules... [OK]</p>
+                <p class="t-line">Mapping neural_network... [OK]</p>
+                <p class="t-line">Injecting starfield_background... [OK]</p>
+                <p class="t-line">Accessing GitHub_API_V3... [OK]</p>
+                <div class="loader-bar-container">
+                    <div class="loader-bar-fill"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="canvas-wrapper">
+    <div class="canvas-container" aria-hidden="true">
         <canvas id="star-canvas"></canvas>
-        <div class="noise-grain"></div>
+        <div class="scanline"></div>
+        <div class="vignette"></div>
     </div>
 
-    <nav class="main-navigation" id="global-nav">
-        <div class="nav-inner">
-            <div class="nav-logo">
-                <svg width="40" height="40" viewBox="0 0 50 50">
-                    <path d="M25 5 L45 40 L5 40 Z" fill="none" stroke="#3b82f6" stroke-width="2"/>
-                    <path d="M25 15 L35 35 L15 35 Z" fill="#3b82f6"/>
-                </svg>
-                <span class="logo-txt">ANDREY_<span>ARCH</span></span>
-            </div>
-            
-            <ul class="nav-menu" role="menubar">
-                <li role="none"><a href="#hero" class="nav-link active" role="menuitem">01. // START</a></li>
-                <li role="none"><a href="#specs" class="nav-link" role="menuitem">02. // SPECS</a></li>
-                <li role="none"><a href="#work" class="nav-link" role="menuitem">03. // PRODUCTION</a></li>
-                <li role="none"><a href="#contact" class="nav-link btn-terminal" role="menuitem">04. // CONNECT</a></li>
-            </ul>
+    <header id="global-nav" class="nav-fixed">
+        <div class="nav-wrapper">
+            <a href="#home" class="nav-logo">
+                <div class="logo-box">
+                    <span class="logo-char">A</span>
+                </div>
+                <div class="logo-info">
+                    <span class="logo-name">ANDREY</span>
+                    <span class="logo-status">AVAILABLE_FOR_WORK</span>
+                </div>
+            </a>
 
-            <div class="system-status">
-                <div class="status-dot"></div>
-                <span>SYSTEM_ONLINE</span>
-            </div>
+            <nav class="desktop-nav" role="navigation" aria-label="Menu Principal">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link">
+                            <span class="nav-num">01.</span>
+                            <span class="nav-txt">START</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#specs" class="nav-link">
+                            <span class="nav-num">02.</span>
+                            <span class="nav-txt">SPECS</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#projects" class="nav-link">
+                            <span class="nav-num">03.</span>
+                            <span class="nav-txt">PRODUCTION</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link btn-connect">
+                            <span class="nav-txt">CONNECT_INIT</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <button class="mobile-toggle" aria-expanded="false">
+                <span class="line"></span><span class="line"></span>
+            </button>
         </div>
-    </nav>
+    </header>
 
-    <main class="smooth-scroll-container">
-        <section id="hero" class="v-section hero-core">
-            <div class="hero-layout">
-                <div class="code-container glass-container" data-tilt>
-                    <div class="window-controls">
-                        <span class="ctrl-btn close"></span>
-                        <span class="ctrl-btn min"></span>
-                        <span class="ctrl-btn max"></span>
+    <main id="main-content">
+
+        <section id="home" class="section hero-section">
+            <div class="container hero-layout">
+                <div class="hero-text-content">
+                    <h1 class="glitch-text" data-text="FULLSTACK">FULLSTACK</h1>
+                    <h2 class="hero-sub">Architecting Digital Infrastructure</h2>
+                    <p class="hero-description">
+                        Especialista em criar sistemas robustos com **Python**, **Node.js** e interfaces modernas 
+                        com estética **Glassmorphism**. Transformando lógica pura em experiência de utilizador.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn-main">VIEW_ARCHIVE</a>
+                        <a href="https://github.com/asRamoos" target="_blank" class="btn-sec">GITHUB_PROFILE</a>
                     </div>
-                    <div class="editor-pane">
-                        <div class="gutter">
-                            <span>01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span><span>07</span><span>08</span><span>09</span><span>10</span>
+                </div>
+
+                <div class="hero-code-window" data-tilt>
+                    <div class="editor-header">
+                        <div class="dots"><span class="r"></span><span class="y"></span><span class="g"></span></div>
+                        <div class="tab">developer.py</div>
+                    </div>
+                    <div class="editor-body">
+                        <pre><code>
+<span class="k">class</span> <span class="c">Developer</span>:
+    <span class="f">def</span> <span class="m">__init__</span>(<span class="s">self</span>):
+        <span class="s">self</span>.name = <span class="v">"Andrey"</span>
+        <span class="s">self</span>.alias = <span class="v">"asRamoos"</span>
+        <span class="s">self</span>.focus = [<span class="v">"Backend"</span>, <span class="v">"UX"</span>, <span class="v">"Cloud"</span>]
+
+    <span class="f">def</span> <span class="m">get_status</span>(<span class="s">self</span>):
+        <span class="k">return</span> <span class="v">"Solving complex problems..."</span>
+
+<span class="c"># Instantiating the profile</span>
+andrey = Developer()
+print(andrey.get_status())
+                        </code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="specs" class="section specs-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">/TECHNOLOGIES</span>
+                    <h2 class="section-title">Technical_Specifications</h2>
+                </div>
+
+                <div class="specs-grid">
+                    <article class="spec-card glass-morph">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
                         </div>
-                        <pre><code><span class="token-k">class</span> <span class="token-c">Andrey</span>:
-    <span class="token-f">def</span> <span class="token-m">__init__</span>(<span class="token-s">self</span>):
-        <span class="token-s">self</span>.name = <span class="token-v">"Andrey"</span>
-        <span class="token-s">self</span>.role = <span class="token-v">"Full Stack Architect"</span>
-        <span class="token-s">self</span>.stack = [<span class="token-v">"Python"</span>, <span class="token-v">"JavaScript"</span>, <span class="token-v">"SQL"</span>]
-
-    <span class="token-f">def</span> <span class="token-m">mission_statement</span>(<span class="token-s">self</span>):
-        <span class="token-k">return</span> <span class="token-v">"Criar soluções escaláveis com estética superior."</span></code></pre>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="specs" class="v-section specs-grid-system">
-            <div class="section-title">
-                <h2 data-text="TECNOLOGIAS_CORE">TECNOLOGIAS_CORE</h2>
-            </div>
-            
-            <div class="grid-layout">
-                <article class="spec-card-v3">
-                    <div class="card-bg-glow"></div>
-                    <div class="card-content">
-                        <div class="spec-icon">
+                        <div class="card-body">
+                            <h3>Python / Backend</h3>
+                            <p>Domínio em Django, FastAPI e processamento de dados massivos de forma assíncrona.</p>
+                            <div class="skill-tags">
+                                <span>AsyncIO</span><span>FastAPI</span><span>PyTest</span>
                             </div>
-                        <h3>Python Ecosystem</h3>
-                        <p>Desenvolvimento de motores de processamento assíncrono e APIs de alta disponibilidade.</p>
-                        <div class="skill-meter"><div class="fill" style="width: 95%"></div></div>
-                    </div>
-                </article>
-                </div>
-        </section>
+                        </div>
+                    </article>
 
-        <section id="work" class="v-section production-log">
-            <div id="repos" class="project-masonry-layout">
-                <div class="skeleton-card"></div>
-                <div class="skeleton-card"></div>
-                <div class="skeleton-card"></div>
+                    <article class="spec-card glass-morph">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                            </svg>
+                        </div>
+                        <div class="card-body">
+                            <h3>JavaScript / Frontend</h3>
+                            <p>Criação de SPAs modernas, animações procedurais e gestão de estado complexa.</p>
+                            <div class="skill-tags">
+                                <span>ES6+</span><span>Canvas API</span><span>DOM Engine</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="spec-card glass-morph">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                <path d="M3 5V19C3 20.66 7.03 22 12 22C16.97 22 21 20.66 21 19V5"></path>
+                                <path d="M3 12C3 13.66 7.03 15 12 15C16.97 15 21 13.66 21 12"></path>
+                            </svg>
+                        </div>
+                        <div class="card-body">
+                            <h3>Banco de Dados</h3>
+                            <p>Modelagem SQL avançada, otimização de queries e integração com bases NoSQL.</p>
+                            <div class="skill-tags">
+                                <span>PostgreSQL</span><span>Redis</span><span>MongoDB</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="spec-card glass-morph">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </div>
+                        <div class="card-body">
+                            <h3>Arquitetura de APIs</h3>
+                            <p>Desenvolvimento de RESTful APIs seguras com autenticação JWT e documentação Swagger.</p>
+                            <div class="skill-tags">
+                                <span>REST</span><span>OAuth2</span><span>Microservices</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="spec-card glass-morph">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M22 12L2 12"></path>
+                                <path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"></path>
+                            </svg>
+                        </div>
+                        <div class="card-body">
+                            <h3>Cloud & DevOps</h3>
+                            <p>Containerização com Docker e CI/CD para deploy contínuo e escalabilidade.</p>
+                            <div class="skill-tags">
+                                <span>Docker</span><span>GitHub Actions</span><span>Linux</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="spec-card glass-morph">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                                <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                                <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                            </svg>
+                        </div>
+                        <div class="card-body">
+                            <h3>Interface Engine</h3>
+                            <p>Foco em performance de renderização e animações suaves a 60fps.</p>
+                            <div class="skill-tags">
+                                <span>CSS Grid</span><span>Framer Motion</span><span>GSAP</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
             </div>
         </section>
+
+        <section id="projects" class="section projects-section">
+            <div class="container">
+                <div class="section-header center">
+                    <span class="section-tag">/OUTPUT</span>
+                    <h2 class="section-title">Production_Log</h2>
+                    <p class="section-subtitle">Repositórios sincronizados em tempo real via GitHub API.</p>
+                </div>
+                
+                <div id="repos" class="github-grid">
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                    <div class="skeleton-card"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <div class="contact-card glass-morph">
+                    <div class="contact-header">
+                        <h3>START_CONNECTION</h3>
+                        <p>Pronto para o próximo desafio técnico?</p>
+                    </div>
+                    <form id="contact-form" class="terminal-form">
+                        <div class="form-group">
+                            <label for="name">> USER_NAME:</label>
+                            <input type="text" id="name" name="name" placeholder="Inserir nome..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">> USER_EMAIL:</label>
+                            <input type="email" id="email" name="email" placeholder="Inserir email..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="msg">> MESSAGE_CONTENT:</label>
+                            <textarea id="msg" name="msg" placeholder="Escrever mensagem..." rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">EXECUTE_SEND()</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <footer class="core-footer">
-        <div class="footer-grid">
-            <div class="col">
-                <p>LATENCY: <span id="ping">14ms</span></p>
+    <footer class="footer-system">
+        <div class="container footer-layout">
+            <div class="footer-col info">
+                <p class="copyright">© 2026 ANDREY_CORE_UNIT. ALL_RIGHTS_RESERVED.</p>
+                <div class="system-pills">
+                    <span class="pill">V3.4.1</span>
+                    <span class="pill status">STABLE</span>
+                    <span class="pill-glow">ENCRYPTED</span>
+                </div>
             </div>
-            <div class="col center">
-                <p>&copy; 2026 ANDREY_DEV_UNIT. ALL_RIGHTS_RESERVED.</p>
-            </div>
-            <div class="col right">
-                <p>BUILD: v3.4.2-STABLE</p>
+            <div class="footer-col social">
+                <a href="#" class="social-link">LN</a>
+                <a href="#" class="social-link">GH</a>
+                <a href="#" class="social-link">TW</a>
             </div>
         </div>
     </footer>
+
+    <div id="notification-center"></div>
+    <div id="cursor-follower"></div>
 
     <script src="script.js"></script>
 </body>
