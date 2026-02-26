@@ -2,30 +2,55 @@
 <html lang="pt-br" class="no-js">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Andrey - Full Stack Developer Portfolio. Especialista em Python, JavaScript e Soluções Modernas.">
-    <meta name="keywords" content="Developer, Full Stack, Python, Portfolio, Andrey, Glassmorphism">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Andrey - Full Stack Developer Portfolio. Especialista em Python, JavaScript, Arquitetura de Software e Interfaces Modernas com Glassmorphism.">
+    <meta name="keywords" content="Desenvolvedor Full Stack, Python, Django, React, Node.js, Portfólio, Andrey, UI/UX, Glassmorphism, CSS Avançado">
     <meta name="author" content="Andrey">
+    <meta name="robots" content="index, follow">
     
-    <title>Andrey | Full Stack Engineering & UI/UX</title>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://seusite.com/">
+    <meta property="og:title" content="Andrey | Full Stack Engineering & UI/UX">
+    <meta property="og:description" content="Explore o portfólio de Andrey, um desenvolvedor focado em soluções escaláveis e design moderno.">
+    <meta property="og:image" content="https://seusite.com/og-image.jpg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://seusite.com/">
+    <meta property="twitter:title" content="Andrey | Full Stack Engineering & UI/UX">
+    <meta property="twitter:description" content="Explore o portfólio de Andrey, focado em Python, React e Glassmorphism.">
+    <meta property="twitter:image" content="https://seusite.com/og-image.jpg">
+
+    <title>Andrey | Full Stack Engineering & Modern UI</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
     <style>
-        body { background: #020205; color: #fff; overflow-x: hidden; }
-        .loader { position: fixed; inset: 0; background: #020205; z-index: 9999; display: flex; align-items: center; justify-content: center; }
+        :root { --bg-dark: #020308; --white: #fff; }
+        body { background: var(--bg-dark); color: var(--white); margin: 0; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .loader { position: fixed; inset: 0; background: var(--bg-dark); z-index: 10000; display: flex; align-items: center; justify-content: center; transition: opacity 0.5s ease; }
+        .loader.hidden { opacity: 0; pointer-events: none; }
+        .terminal-loader { font-family: 'Fira Code', monospace; color: #00d2ff; }
+        .cursor { animation: blink 1s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
     </style>
     
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="loader" id="loader">
+    <div class="loader" id="loader" role="alert" aria-busy="true" aria-label="Carregando portfólio">
         <div class="terminal-loader">
-            <span class="root">root@andrey:</span>
+            <span class="root">andrey@dev:</span>
             <span class="path">~</span>
+            <span class="command">$ boot_portfolio --verbose</span>
             <span class="cursor">_</span>
         </div>
     </div>
@@ -33,34 +58,35 @@
     <canvas id="starfield" aria-hidden="true"></canvas>
 
     <header id="main-header">
-        <nav class="nav-container">
-            <div class="logo">
-                <span class="bracket">&lt;</span>
+        <nav class="nav-container" aria-label="Navegação Principal">
+            <div class="logo" tabindex="0">
+                <span class="bracket" aria-hidden="true">&lt;</span>
                 <span class="name">ANDREY</span>
-                <span class="bracket">/&gt;</span>
+                <span class="bracket" aria-hidden="true">/&gt;</span>
             </div>
             
             <ul class="nav-links">
-                <li><a href="#home" class="nav-item">01. Home</a></li>
-                <li><a href="#about" class="nav-item">02. Sobre</a></li>
-                <li><a href="#specialties" class="nav-item">03. Stack</a></li>
-                <li><a href="#projects" class="nav-item">04. Projetos</a></li>
+                <li><a href="#home" class="nav-item"><span>01.</span> Home</a></li>
+                <li><a href="#specialties" class="nav-item"><span>02.</span> Stack</a></li>
+                <li><a href="#projects" class="nav-item"><span>03.</span> Projetos</a></li>
                 <li><a href="#contact" class="nav-item btn-contact">Contato</a></li>
             </ul>
 
-            <div class="mobile-menu" id="mobile-toggle">
-                <span></span><span></span><span></span>
-            </div>
+            <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="nav-links">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </button>
         </nav>
     </header>
 
     <main>
-        <section id="home" class="hero-section">
+        <section id="home" class="hero-section" aria-label="Apresentação">
             <div class="container center-vh">
-                <div class="code-window shadow-xl" data-tilt>
+                <div class="code-window shadow-xl" data-tilt data-tilt-max="5" data-tilt-speed="400">
                     <div class="window-header">
                         <div class="dots"><span class="r"></span><span class="y"></span><span class="g"></span></div>
                         <div class="tab">developer_profile.py</div>
+                        <div class="copy-icon" id="copy-code" aria-label="Copiar código">
+                            </div>
                     </div>
                     <div class="code-content">
                         <pre>
@@ -69,121 +95,151 @@
     <span class="k">def</span> <span class="f">__init__</span>(<span class="s">self</span>):
         <span class="s">self</span>.name = <span class="v">"Andrey"</span>
         <span class="s">self</span>.role = <span class="v">"Full Stack Developer"</span>
-        <span class="s">self</span>.focus = <span class="v">"Scalable Architecture"</span>
-        <span class="s">self</span>.location = <span class="v">"Brazil"</span>
+        <span class="s">self</span>.specialty = <span class="v">"Scalable Backends & Modern UIs"</span>
+        <span class="s">self</span>.mission = <span class="v">"Turning complexity into elegant code."</span>
+        <span class="s">self</span>.is_available = <span class="v">True</span>
 
-    <span class="k">def</span> <span class="f">get_motivation</span>(<span class="s">self</span>):
-        <span class="k">return</span> <span class="v">"Turning coffee into clean code"</span>
+    <span class="k">def</span> <span class="f">get_tech_stack</span>(<span class="s">self</span>):
+        <span class="k">return</span> [<span class="v">"Python"</span>, <span class="v">"Django"</span>, <span class="v">"React"</span>, <span class="v">"Docker"</span>, <span class="v">"AWS"</span>]
 
-    <span class="k">def</span> <span class="f">is_available_for_hire</span>(<span class="s">self</span>):
-        <span class="k">return</span> <span class="v">True</span>
-
-<span class="c"># Instantiate professional</span>
+<span class="c"># Instantiate professional object</span>
 me = AndreyDev()
-<span class="p">print</span>(me.get_motivation())
+<span class="p">print</span>(me.mission)
                         </pre>
                     </div>
                 </div>
             </div>
+            <a href="#specialties" class="scroll-down" aria-label="Rolar para baixo">
+                <span class="mouse"></span>
+            </span>
+            </a>
         </section>
 
-        <section id="about" class="about-section">
+        <section id="specialties" class="specialties-section" aria-label="Minhas Especialidades">
             <div class="container">
-                <div class="about-grid">
-                    <div class="text-block">
-                        <h2 class="section-title">Sobre Mim</h2>
-                        <p>Iniciei minha jornada no mundo do desenvolvimento focado em resolver problemas lógicos complexos. Hoje, atuo como desenvolvedor Full Stack, unindo a robustez do Python no back-end com a fluidez do ecossistema JavaScript no front-end.</p>
-                        <p>Meu foco é criar sistemas que não apenas funcionem, mas que sejam resilientes e fáceis de escalar.</p>
-                    </div>
-                    </div>
-            </div>
-        </section>
-
-        <section id="specialties" class="specialties-section">
-            <div class="container">
-                <h2 class="section-title centered">Minha Stack</h2>
+                <h2 class="section-title centered reveal-text">Habilidades Técnicas</h2>
+                <p class="section-subtitle centered reveal-text">Uma visão geral da minha stack tecnológica e competências.</p>
+                
                 <div class="spec-grid">
-                    <article class="spec-card glass" data-aos="fade-up">
+                    <article class="spec-card glass-bright" data-aos="fade-up" tabindex="0">
                         <div class="card-icon">🐍</div>
-                        <h3>Python</h3>
-                        <p>Desenvolvimento ágil com Django e FastAPI. Foco em automação, processamento de dados e APIs RESTful de alta performance.</p>
+                        <h3>Python Ecosystem</h3>
+                        <p>Desenvolvimento robusto com Django, FastAPI e Flask. Foco em arquitetura MVC, APIs RESTful performáticas, automação e scripts de processamento de dados.</p>
                         <ul class="tag-list">
-                            <li>Django</li><li>FastAPI</li><li>PyTest</li>
+                            <li>Django</li><li>FastAPI</li><li>PyTest</li><li>Celery</li>
                         </ul>
                     </article>
 
-                    <article class="spec-card glass" data-aos="fade-up" data-delay="100">
+                    <article class="spec-card glass-bright" data-aos="fade-up" data-delay="100" tabindex="0">
                         <div class="card-icon">⚙️</div>
-                        <h3>Back-End</h3>
-                        <p>Arquitetura de microserviços, Docker e gestão de filas. Garantindo que o motor da aplicação nunca pare.</p>
+                        <h3>Backend Engineering</h3>
+                        <p>Desenvolvimento de microsserviços escaláveis, integração de APIs de terceiros, autenticação JWT/OAuth2 e gestão de filas de tarefas assíncronas.</p>
                         <ul class="tag-list">
-                            <li>Node.js</li><li>Redis</li><li>Docker</li>
+                            <li>Node.js</li><li>Go (Básico)</li><li>Docker</li><li>REST</li>
                         </ul>
                     </article>
 
-                    <article class="spec-card glass" data-aos="fade-up" data-delay="200">
+                    <article class="spec-card glass-bright" data-aos="fade-up" data-delay="200" tabindex="0">
                         <div class="card-icon">💻</div>
-                        <h3>Front-End</h3>
-                        <p>Interfaces modernas utilizando React e Next.js. Foco total em Componentização e State Management.</p>
+                        <h3>Frontend Mastery</h3>
+                        <p>Interfaces reativas e Single Page Applications (SPA) com React.js e Next.js. Gerenciamento de estado complexo e foco na experiência do usuário (UX).</p>
                         <ul class="tag-list">
-                            <li>React</li><li>Redux</li><li>TypeScript</li>
+                            <li>React</li><li>Redux/Zustand</li><li>Next.js</li><li>TS</li>
                         </ul>
                     </article>
 
-                    <article class="spec-card glass" data-aos="fade-up" data-delay="300">
+                    <article class="spec-card glass-bright" data-aos="fade-up" data-delay="300" tabindex="0">
                         <div class="card-icon">🗄️</div>
-                        <h3>Banco de Dados</h3>
-                        <p>Modelagem relacional e não-relacional. Otimização de queries e indexação para grandes volumes de dados.</p>
+                        <h3>Database Solutions</h3>
+                        <p>Modelagem de dados relacional e NoSQL. Otimização de queries complexas, indexação e administração básica de servidores de banco de dados.</p>
                         <ul class="tag-list">
-                            <li>PostgreSQL</li><li>MongoDB</li><li>SQLAlchemy</li>
+                            <li>PostgreSQL</li><li>MongoDB</li><li>Redis</li><li>SQLAlchemy</li>
                         </ul>
                     </article>
 
-                    <article class="spec-card glass" data-aos="fade-up" data-delay="400">
+                    <article class="spec-card glass-bright" data-aos="fade-up" data-delay="400" tabindex="0">
                         <div class="card-icon">🎨</div>
-                        <h3>CSS Moderno</h3>
-                        <p>Domínio de Flexbox, Grid e animações. Glassmorphism, Neumorphism e UI/UX responsiva.</p>
+                        <h3>Modern UI & CSS</h3>
+                        <p>Domínio avançado de layouts responsivos (Grid, Flexbox), animações `@keyframes` de alta performance, Glassmorphism e SASS.</p>
                         <ul class="tag-list">
-                            <li>Tailwind</li><li>SASS</li><li>Animations</li>
+                            <li>SASS</li><li>Tailwind</li><li>Framer Motion</li><li>SVG</li>
                         </ul>
                     </article>
 
-                    <article class="spec-card glass" data-aos="fade-up" data-delay="500">
+                    <article class="spec-card glass-bright" data-aos="fade-up" data-delay="500" tabindex="0">
                         <div class="card-icon">JS</div>
-                        <h3>JavaScript</h3>
-                        <p>Lógica avançada de ES6+, manipulação de DOM assíncrona e integração completa com APIs externas.</p>
+                        <h3>Core JavaScript</h3>
+                        <p>Lógica de programação avançada com ES6+. Manipulação assíncrona do DOM, Promises, Async/Await e integração via WebSockets.</p>
                         <ul class="tag-list">
-                            <li>ES6</li><li>Promises</li><li>WebSockets</li>
+                            <li>ES6+</li><li>TypeScript</li><li>Webpack</li><li>Vite</li>
                         </ul>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="projects-section">
+        <section id="projects" class="projects-section" aria-label="Meus Projetos">
             <div class="container">
-                <h2 class="section-title">Projetos em Destaque</h2>
+                <h2 class="section-title centered reveal-text">Projetos em Destaque</h2>
+                
                 <div class="projects-grid">
-                    <a href="https://github.com/Andrey/project-alpha" target="_blank" class="project-item glass-blue">
+                    <article class="project-item glass-blue" data-aos="zoom-in">
                         <div class="proj-content">
                             <span class="proj-category">Back-end / AI</span>
                             <h3>Project Alpha Stream</h3>
-                            <p>Processador de dados em tempo real utilizando Python e Kafka.</p>
-                            <div class="proj-footer">Ver no GitHub ↗</div>
+                            <p>Plataforma de processamento de dados em tempo real utilizando Python, Kafka e microserviços Dockerizados.</p>
+                            <div class="proj-tags">
+                                <span>Python</span><span>Docker</span><span>Kafka</span>
+                            </div>
+                            <div class="proj-links">
+                                <a href="https://github.com/Andrey/project-alpha" target="_blank" rel="noopener noreferrer" aria-label="Ver código no GitHub">
+                                    GitHub ↗
+                                </a>
+                                <a href="#" class="btn-demo" aria-label="Ver demonstração ao vivo">Demo</a>
+                            </div>
                         </div>
-                    </a>
+                    </article>
                     </div>
+                
+                <div class="centered mt-60">
+                    <a href="https://github.com/Andrey" target="_blank" rel="noopener noreferrer" class="btn-primary glass-bright">
+                        Ver Mais no GitHub
+                    </a>
+                </div>
             </div>
         </section>
 
-        <section id="contact" class="contact-section">
-             </section>
+        <section id="contact" class="contact-section" aria-label="Entre em Contato">
+            <div class="container">
+                <div class="contact-grid glass-bright">
+                    <div class="contact-info">
+                        <h2>Vamos Conversar?</h2>
+                        <p>Estou aberto a novas oportunidades, colaborações em projetos open-source ou apenas para trocar uma ideia sobre tecnologia.</p>
+                        <ul class="contact-list">
+                            <li>
+                                <span class="icon">📧</span>
+                                <a href="mailto:andrey@dev.com">andrey@dev.com</a>
+                            </li>
+                            </ul>
+                    </div>
+                    <form class="contact-form" id="contact-form">
+                        </form>
+                </div>
+            </div>
+        </section>
 
     </main>
 
-    <footer class="main-footer">
-        <p>&copy; 2026 Andrey Developer - Todos os direitos reservados.</p>
+    <footer class="main-footer glass-bright">
+        <div class="container footer-grid">
+            <p>&copy; 2026 Andrey Developer. Criado com dedicação e muito café.</p>
+            <div class="social-links">
+                <a href="#" aria-label="GitHub">GH</a>
+                <a href="#" aria-label="LinkedIn">LI</a>
+            </div>
+        </div>
     </footer>
 
-    </body>
+    <script src="script.js"></script>
+</body>
 </html>
