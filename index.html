@@ -1,136 +1,149 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Andrey - Full Stack Developer Portfolio">
+    <title>Andrey | Full Stack Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Portfólio de Andrey</title>
 </head>
 <body>
-    <header>
-        <h1>Portfólio de Andrey</h1>
-        <nav>
-            <ul>
-                <li><a href="#hero">Início</a></li>
-                <li><a href="#sobre">Sobre Mim</a></li>
-                <li><a href="#especialidades">Especialidades</a></li>
-                <li><a href="#projetos">Projetos</a></li>
-                <li><a href="#depoimentos">Depoimentos</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-        </nav>
+
+    <canvas id="star-canvas"></canvas>
+
+    <header id="main-header">
+        <div class="header-container">
+            <div class="brand">
+                <span class="bracket">{</span> Andrey <span class="bracket">}</span>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#hero" class="nav-link">Home</a></li>
+                    <li><a href="#about-code" class="nav-link">Sobre</a></li>
+                    <li><a href="#specialties" class="nav-link">Especialidades</a></li>
+                    <li><a href="#projects" class="nav-link">Projetos</a></li>
+                    <li><a href="#contact" class="nav-link">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="social-icons">
+                <a href="#">GH</a>
+                <a href="#">LN</a>
+            </div>
+        </div>
     </header>
-    
-    <section class="hero" id="hero">
-        <div class="code-block">
-            <code>
-                class Developer:<br>
-                &nbsp;&nbsp;&nbsp;name = "Andrey"<br>
-                &nbsp;&nbsp;&nbsp;role = "Full Stack Developer"<br>
-                &nbsp;&nbsp;&nbsp;about = "Desenvolvedor apaixonado por tecnologia e inovação."
-            </code>
-        </div>
-        <h2>Sobre Mim</h2>
-        <p>Sou um desenvolvedor full stack com experiência em diversas tecnologias. Meu objetivo é criar soluções inovadoras e eficientes.</p>
-    </section>
 
-    <section class="specialties" id="especialidades">
-        <h2>Especialidades</h2>
-        <div class="card-container">
-            <div class="card">
-                <h3>Python</h3>
-                <p>Desenvolvimento de aplicações robustas e escaláveis.</p>
-            </div>
-            <div class="card">
-                <h3>Back-End</h3>
-                <p>Integração e gerenciamento de dados em servidores.</p>
-            </div>
-            <div class="card">
-                <h3>Front-End</h3>
-                <p>Criação de interfaces interativas e responsivas.</p>
-            </div>
-            <div class="card">
-                <h3>Banco de Dados</h3>
-                <p>Gerenciamento de informações e otimização de consultas.</p>
-            </div>
-            <div class="card">
-                <h3>CSS</h3>
-                <p>Estilização moderna e responsiva para web.</p>
-            </div>
-            <div class="card">
-                <h3>JavaScript</h3>
-                <p>Interatividade e dinamicidade nas páginas web.</p>
-            </div>
-        </div>
-    </section>
+    <main>
+        <section id="hero" class="fullscreen-section">
+            <div class="code-box-wrapper">
+                <div class="terminal-bar">
+                    <div class="buttons">
+                        <span class="t-dot close"></span>
+                        <span class="t-dot minimize"></span>
+                        <span class="t-dot expand"></span>
+                    </div>
+                    <div class="t-title">developer.py</div>
+                </div>
+                <div class="code-content">
+                    <pre><code><span class="p-kw">class</span> <span class="p-cl">Developer</span>:
+    <span class="p-def">def</span> <span class="p-fn">__init__</span>(<span class="p-self">self</span>):
+        <span class="p-self">self</span>.<span class="p-prop">name</span> = <span class="p-str">"Andrey"</span>
+        <span class="p-self">self</span>.<span class="p-prop">role</span> = <span class="p-str">"Full Stack Developer"</span>
+        <span class="p-self">self</span>.<span class="p-prop">status</span> = <span class="p-str">"Disponível para Projetos"</span>
 
-    <section class="projects" id="projetos">
-        <h2>Projetos</h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <a href="https://github.com/seu-repositorio" target="_blank">Projeto 1</a>
-                <p>Descrição do Projeto 1.</p>
-            </div>
-            <div class="project-card">
-                <a href="https://github.com/seu-repositorio" target="_blank">Projeto 2</a>
-                <p>Descrição do Projeto 2.</p>
-            </div>
-            <div class="project-card">
-                <a href="https://github.com/seu-repositorio" target="_blank">Projeto 3</a>
-                <p>Descrição do Projeto 3.</p>
-            </div>
-            <div class="project-card">
-                <a href="https://github.com/seu-repositorio" target="_blank">Projeto 4</a>
-                <p>Descrição do Projeto 4.</p>
-            </div>
-            <div class="project-card">
-                <a href="https://github.com/seu-repositorio" target="_blank">Projeto 5</a>
-                <p>Descrição do Projeto 5.</p>
-            </div>
-            <div class="project-card">
-                <a href="https://github.com/seu-repositorio" target="_blank">Projeto 6</a>
-                <p>Descrição do Projeto 6.</p>
-            </div>
-        </div>
-    </section>
+    <span class="p-def">def</span> <span class="p-fn">get_mission</span>(<span class="p-self">self</span>):
+        <span class="p-kw">return</span> <span class="p-str">"Construir sistemas escaláveis e rápidos."</span>
 
-    <section class="testimonials" id="depoimentos">
-        <h2>Depoimentos</h2>
-        <div class="testimonial-container">
-            <div class="testimonial">
-                <p>"Andrey é um desenvolvedor excepcional! Ele trouxe nossas ideias à vida com eficiência."</p>
-                <cite>- Cliente 1</cite>
+<span class="p-cmt"># Iniciando objeto...</span>
+andrey = Developer()
+<span class="p-fn">print</span>(andrey.get_mission())</code></pre>
+                </div>
             </div>
-            <div class="testimonial">
-                <p>"Trabalhar com Andrey foi uma experiência incrível. Ele é muito dedicado e talentoso."</p>
-                <cite>- Cliente 2</cite>
-            </div>
-            <div class="testimonial">
-                <p>"Recomendo Andrey para qualquer projeto. Sua habilidade em resolver problemas é impressionante."</p>
-                <cite>- Cliente 3</cite>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="contact" id="contato">
-        <h2>Contato</h2>
-        <form id="contact-form">
-            <label for="name">Nome:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="message">Mensagem:</label>
-            <textarea id="message" name="message" required></textarea>
-            
-            <button type="submit">Enviar</button>
-        </form>
-    </section>
+        <section id="about-code" class="section-padding">
+            <div class="container">
+                <div class="tags-container">
+                    <div class="tag-row"><span class="html-tag">&lt;section id="sobre-mim"&gt;</span></div>
+                    <div class="tag-content">
+                        <h2>Desenvolvedor apaixonado por <span class="highlight">arquitetura limpa</span>.</h2>
+                        <p>Trabalho transformando requisitos complexos em código elegante. Especialista em resolver problemas que outros consideram impossíveis.</p>
+                    </div>
+                    <div class="tag-row"><span class="html-tag">&lt;/section&gt;</span></div>
+                </div>
+            </div>
+        </section>
 
-    <footer>
-        <p>Contato: <a href="mailto:andrey@email.com">andrey@email.com</a></p>
-        <p>&copy; 2026 Andrey. Todos os direitos reservados.</p>
+        <section id="specialties" class="section-padding">
+            <div class="container">
+                <h2 class="section-heading">Minhas Especialidades</h2>
+                <div class="skills-grid">
+                    <div class="skill-card glass">
+                        <div class="icon-box">🐍</div>
+                        <h3>Python Expert</h3>
+                        <p>Desenvolvimento de backend de alta performance, automações inteligentes e integração de APIs complexas.</p>
+                    </div>
+                    <div class="skill-card glass">
+                        <div class="icon-box">🚀</div>
+                        <h3>Back-End</h3>
+                        <p>Domínio de Node.js e frameworks modernos. Arquitetura de microsserviços e segurança em primeiro lugar.</p>
+                    </div>
+                    <div class="skill-card glass">
+                        <div class="icon-box">💻</div>
+                        <h3>Front-End</h3>
+                        <p>Interfaces reativas com React e Next.js. Foco total em usabilidade (UX) e design pixel-perfect.</p>
+                    </div>
+                    <div class="skill-card glass">
+                        <div class="icon-box">📊</div>
+                        <h3>Bancos de Dados</h3>
+                        <p>Otimização de queries SQL e gerenciamento de dados NoSQL para grandes volumes de informação.</p>
+                    </div>
+                    <div class="skill-card glass">
+                        <div class="icon-box">📜</div>
+                        <h3>JavaScript ES6+</h3>
+                        <p>Programação funcional, assíncrona e domínio do ecossistema moderno para web e servidores.</p>
+                    </div>
+                    <div class="skill-card glass">
+                        <div class="icon-box">🎨</div>
+                        <h3>Modern CSS</h3>
+                        <p>Animações avançadas, Layouts Grid/Flexbox e implementação técnica de Design Systems.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section-padding">
+            <div class="container">
+                <h2 class="section-heading">Projetos Recentes</h2>
+                <div class="projects-grid">
+                    <div class="project-box glass-blue">
+                        <div class="project-inner">
+                            <h3>Gestor de Fluxo</h3>
+                            <p>Sistema ERP completo com dashboards em tempo real.</p>
+                            <a href="#" class="git-link">Acessar GitHub &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="project-box glass-blue">
+                        <div class="project-inner">
+                            <h3>Nexus API</h3>
+                            <p>Middleware escalável para processamento de pagamentos.</p>
+                            <a href="#" class="git-link">Acessar GitHub &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="project-box glass-blue">
+                        <div class="project-inner">
+                            <h3>Astro UI</h3>
+                            <p>Biblioteca de componentes baseada em glassmorphism.</p>
+                            <a href="#" class="git-link">Acessar GitHub &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <p>&copy; 2026 Andrey. All rights reserved. <span class="highlight">Built with Coffee & Code.</span></p>
     </footer>
 
     <script src="script.js"></script>
