@@ -1,333 +1,130 @@
 <!DOCTYPE html>
-<html lang="pt-BR" prefix="og: http://ogp.me/ns#">
+<html lang="pt-BR" class="no-js">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#020617">
+    <title>Andrey | Senior Full Stack Developer & Systems Architect</title>
     
-    <title>Andrey | Engenheiro de Software Full-Stack | Python & JavaScript</title>
-    <meta name="description" content="Engenheiro de Software com foco em sistemas distribuídos, arquitetura de microsserviços e interfaces de alta performance.">
-    <meta name="keywords" content="Software Engineer, Full-Stack, Python Specialist, React Architect, DevOps, Andrey Developer">
-    <meta name="author" content="Andrey">
-    <meta name="robots" content="index, follow">
-
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Andrey | Engenheiro de Software Full-Stack">
-    <meta property="og:description" content="Especialista em transformar lógica complexa em experiências digitais fluidas.">
-    <meta property="og:url" content="https://andrey.dev">
-    <meta property="og:image" content="https://andrey.dev/assets/cover.jpg">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&family=Plus+Jakarta+Sans:wght@200;400;600;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Andrey",
-      "jobTitle": "Full Stack Developer",
-      "url": "https://andrey.dev",
-      "sameAs": [
-        "https://github.com/andrey",
-        "https://linkedin.com/in/andrey"
-      ]
-    }
-    </script>
 </head>
-<body class="dark-theme">
+<body class="theme-dark core-engine-active">
 
-    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
-
-    <div id="app-loader" class="loader-container" role="alert" aria-busy="true">
-        <div class="loader-content">
-            <svg viewBox="0 0 100 100" class="main-svg-loader">
-                <circle cx="50" cy="50" r="45" stroke="currentColor" fill="none" stroke-width="2" />
-            </svg>
-            <span class="loader-text">Initializing Andrey.OS...</span>
+    <div id="app-preloader" role="status" aria-live="polite">
+        <div class="terminal-loader">
+            <div class="loader-header"><span>system_boot_sequence</span></div>
+            <div class="loader-terminal-body">
+                <p class="line" data-line="0">Establishing secure connection...</p>
+                <p class="line" data-line="1">Loading neural_interface.dll...</p>
+                <p class="line" data-line="2">Synchronizing starfield_engine...</p>
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <canvas id="starfield-canvas" aria-hidden="true"></canvas>
+    <div class="canvas-wrapper">
+        <canvas id="star-canvas"></canvas>
+        <div class="noise-grain"></div>
+    </div>
 
-    <header id="site-header" class="header-fixed">
-        <div class="container nav-wrapper">
-            <div class="logo-area">
-                <a href="/" class="logo-link" aria-label="Home">
-                    <span class="logo-bracket">[</span>
-                    <span class="logo-name">Andrey</span>
-                    <span class="logo-bracket">]</span>
-                </a>
+    <nav class="main-navigation" id="global-nav">
+        <div class="nav-inner">
+            <div class="nav-logo">
+                <svg width="40" height="40" viewBox="0 0 50 50">
+                    <path d="M25 5 L45 40 L5 40 Z" fill="none" stroke="#3b82f6" stroke-width="2"/>
+                    <path d="M25 15 L35 35 L15 35 Z" fill="#3b82f6"/>
+                </svg>
+                <span class="logo-txt">ANDREY_<span>ARCH</span></span>
             </div>
+            
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="#hero" class="nav-link active" role="menuitem">01. // START</a></li>
+                <li role="none"><a href="#specs" class="nav-link" role="menuitem">02. // SPECS</a></li>
+                <li role="none"><a href="#work" class="nav-link" role="menuitem">03. // PRODUCTION</a></li>
+                <li role="none"><a href="#contact" class="nav-link btn-terminal" role="menuitem">04. // CONNECT</a></li>
+            </ul>
 
-            <nav id="main-navigation" class="nav-menu" aria-label="Navegação Principal">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="#hero" class="nav-link"><span class="nav-num">01.</span> Home</a></li>
-                    <li class="nav-item"><a href="#about" class="nav-link"><span class="nav-num">02.</span> Sobre</a></li>
-                    <li class="nav-item"><a href="#services" class="nav-link"><span class="nav-num">03.</span> Serviços</a></li>
-                    <li class="nav-item"><a href="#stack" class="nav-link"><span class="nav-num">04.</span> Stack</a></li>
-                    <li class="nav-item"><a href="#projects" class="nav-link"><span class="nav-num">05.</span> Projetos</a></li>
-                    <li class="nav-item"><a href="#experience" class="nav-link"><span class="nav-num">06.</span> Experiência</a></li>
-                    <li class="nav-item"><a href="#contact" class="nav-link btn-primary-nav">Contato</a></li>
-                </ul>
-            </nav>
-
-            <div class="mobile-toggle">
-                <button id="menu-button" aria-expanded="false" aria-controls="main-navigation" aria-label="Abrir menu">
-                    <span class="hamburger"></span>
-                </button>
+            <div class="system-status">
+                <div class="status-dot"></div>
+                <span>SYSTEM_ONLINE</span>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <main id="main-content">
-
-        <section id="hero" class="hero-section" aria-labelledby="hero-title">
-            <div class="container hero-grid">
-                <div class="hero-text-content">
-                    <p class="hero-mono-intro">print("Hello, World!")</p>
-                    <h1 id="hero-title" class="glitch" data-text="Andrey">Andrey</h1>
-                    <h2 class="hero-subtitle">Engenheiro de Software & Arquiteto de Soluções</h2>
-                    <p class="hero-description">
-                        Especializado em construir sistemas escaláveis com **Python** e interfaces imersivas com **JavaScript**. 
-                        Focado em performance, segurança e código limpo.
-                    </p>
-                    <div class="hero-actions">
-                        <a href="#projects" class="btn btn-main">Explorar Projetos</a>
-                        <a href="#contact" class="btn btn-ghost">Download CV</a>
+    <main class="smooth-scroll-container">
+        <section id="hero" class="v-section hero-core">
+            <div class="hero-layout">
+                <div class="code-container glass-container" data-tilt>
+                    <div class="window-controls">
+                        <span class="ctrl-btn close"></span>
+                        <span class="ctrl-btn min"></span>
+                        <span class="ctrl-btn max"></span>
                     </div>
-                </div>
-
-                <div class="hero-visual">
-                    <div class="terminal-mockup">
-                        <div class="terminal-header">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
-                            <span class="terminal-tab">andrey_profile.py</span>
+                    <div class="editor-pane">
+                        <div class="gutter">
+                            <span>01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span><span>07</span><span>08</span><span>09</span><span>10</span>
                         </div>
-                        <div class="terminal-body">
-                            <pre class="code-editor">
-<code><span class="code-keyword">class</span> <span class="code-class">Developer</span>:
-    <span class="code-keyword">def</span> <span class="code-func">__init__</span>(self):
-        self.name = <span class="code-str">"Andrey"</span>
-        self.skills = [<span class="code-str">"Python"</span>, <span class="code-str">"React"</span>, <span class="code-str">"AWS"</span>]
-        self.hard_worker = <span class="code-keyword">True</span>
+                        <pre><code><span class="token-k">class</span> <span class="token-c">Andrey</span>:
+    <span class="token-f">def</span> <span class="token-m">__init__</span>(<span class="token-s">self</span>):
+        <span class="token-s">self</span>.name = <span class="token-v">"Andrey"</span>
+        <span class="token-s">self</span>.role = <span class="token-v">"Full Stack Architect"</span>
+        <span class="token-s">self</span>.stack = [<span class="token-v">"Python"</span>, <span class="token-v">"JavaScript"</span>, <span class="token-v">"SQL"</span>]
 
-    <span class="code-keyword">def</span> <span class="code-func">build_future</span>(self):
-        <span class="code-keyword">while</span> <span class="code-keyword">True</span>:
-            self.code()
-            self.test()
-            self.deploy()</code></pre>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="scroll-indicator" aria-hidden="true">
-                <div class="mouse"></div>
-                <span>Role para baixo</span>
-            </div>
-        </section>
-
-        <section id="about" class="section-container">
-            <div class="container grid-layout">
-                <header class="section-header">
-                    <span class="section-number">02.</span>
-                    <h2 class="section-title">Sobre Mim</h2>
-                    <div class="header-line"></div>
-                </header>
-                <div class="about-content">
-                    <div class="text-block">
-                        <p>Olá! Meu nome é Andrey e eu gosto de criar coisas que vivem na internet. Meu interesse por desenvolvimento web começou em 2018, quando decidi criar um sistema para automatizar tarefas repetitivas no meu dia a dia.</p>
-                        <p>Hoje, tive o privilégio de trabalhar em agências de publicidade, startups e grandes empresas de tecnologia. Meu foco principal hoje em dia é construir produtos acessíveis e inclusivos para uma variedade de clientes.</p>
-                        <p>Aqui estão algumas tecnologias com as quais tenho trabalhado recentemente:</p>
-                        <ul class="skills-list">
-                            <li>Python (Django/FastAPI)</li>
-                            <li>JavaScript (ES6+)</li>
-                            <li>React / Next.js</li>
-                            <li>TypeScript</li>
-                            <li>Node.js</li>
-                            <li>PostgreSQL</li>
-                        </ul>
-                    </div>
-                    <div class="image-block">
-                        <div class="profile-wrapper">
-                            <div class="img-overlay"></div>
-                            <img src="https://via.placeholder.com/400" alt="Foto de Perfil de Andrey" class="profile-img">
-                        </div>
+    <span class="token-f">def</span> <span class="token-m">mission_statement</span>(<span class="token-s">self</span>):
+        <span class="token-k">return</span> <span class="token-v">"Criar soluções escaláveis com estética superior."</span></code></pre>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="services" class="section-container bg-dark-2">
-            <div class="container">
-                <header class="section-header center">
-                    <h2 class="section-title">O que eu faço</h2>
-                </header>
-                <div class="services-grid">
-                    <article class="service-card">
-                        <div class="card-icon">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
-                            </svg>
-                        </div>
-                        <h3>Backend Development</h3>
-                        <p>Criação de APIs robustas, escaláveis e seguras utilizando Python e Node.js. Foco em arquitetura limpa e alta disponibilidade.</p>
-                        <ul class="card-features">
-                            <li>APIs REST & GraphQL</li>
-                            <li>Microservices</li>
-                            <li>Segurança & OAuth2</li>
-                        </ul>
-                    </article>
-                    <article class="service-card">
-                        <div class="card-icon">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                                <path d="M8 21h8" />
-                                <path d="M12 17v4" />
-                            </svg>
-                        </div>
-                        <h3>Frontend Imersivo</h3>
-                        <p>Interfaces reativas e performáticas com React e Vue. Experiências focadas no usuário e em design de alta fidelidade.</p>
-                        <ul class="card-features">
-                            <li>Next.js / SSR</li>
-                            <li>Design Systems</li>
-                            <li>State Management</li>
-                        </ul>
-                    </article>
-                    <article class="service-card">
-                        <div class="card-icon">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <ellipse cx="12" cy="5" rx="9" ry="3" />
-                                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
-                                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
-                            </svg>
-                        </div>
-                        <h3>Database Design</h3>
-                        <p>Modelagem de dados complexos, otimização de queries e gerenciamento de bancos relacionais e NoSQL.</p>
-                        <ul class="card-features">
-                            <li>Query Optimization</li>
-                            <li>Data Governance</li>
-                            <li>Redis Caching</li>
-                        </ul>
-                    </article>
-                    </div>
+        <section id="specs" class="v-section specs-grid-system">
+            <div class="section-title">
+                <h2 data-text="TECNOLOGIAS_CORE">TECNOLOGIAS_CORE</h2>
             </div>
-        </section>
-
-        <section id="experience" class="section-container">
-            <div class="container">
-                <header class="section-header">
-                    <span class="section-number">04.</span>
-                    <h2 class="section-title">Onde Trabalhei</h2>
-                </header>
-                <div class="timeline-wrapper">
-                    <div class="timeline-tabs">
-                        <button class="tab-btn active" data-target="job-1">Empresa Alpha</button>
-                        <button class="tab-btn" data-target="job-2">Startup Beta</button>
-                        <button class="tab-btn" data-target="job-3">Agência Gamma</button>
-                    </div>
-                    <div class="timeline-content">
-                        <div id="job-1" class="job-pane active">
-                            <h3>Engenheiro de Software Sênior <span class="company">@ Alpha Corp</span></h3>
-                            <p class="job-date">Janeiro 2022 - Presente</p>
-                            <ul class="job-details">
-                                <li>Liderei o desenvolvimento de uma plataforma de análise de dados em tempo real usando Python e AWS.</li>
-                                <li>Reduzi o tempo de resposta das APIs em 40% através de refatoração de código e implementação de Redis.</li>
-                                <li>Mentoria de desenvolvedores juniores e definição de padrões de código (Style Guides).</li>
-                            </ul>
-                        </div>
-                        </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="section-container">
-            <div class="container">
-                <header class="section-header">
-                    <span class="section-number">05.</span>
-                    <h2 class="section-title">Algumas Coisas que Construí</h2>
-                </header>
-
-                <article class="featured-project">
-                    <div class="project-img-container">
-                        <img src="project-1.jpg" alt="Preview do Projeto 1">
-                    </div>
-                    <div class="project-info">
-                        <p class="p-type">Projeto em Destaque</p>
-                        <h3>Nexus CRM Dashboard</h3>
-                        <div class="p-description glass">
-                            <p>Um sistema de CRM completo com análise preditiva de vendas. Integrado com Stripe para pagamentos e SendGrid para automação de marketing. Utiliza algoritmos de regressão para prever churn de clientes.</p>
-                        </div>
-                        <ul class="p-stack">
-                            <li>Django</li>
-                            <li>React</li>
-                            <li>PostgreSQL</li>
-                            <li>Docker</li>
-                        </ul>
-                        <div class="p-links">
-                            <a href="#" aria-label="Github"><svg>...</svg></a>
-                            <a href="#" aria-label="Link Externo"><svg>...</svg></a>
-                        </div>
+            
+            <div class="grid-layout">
+                <article class="spec-card-v3">
+                    <div class="card-bg-glow"></div>
+                    <div class="card-content">
+                        <div class="spec-icon">
+                            </div>
+                        <h3>Python Ecosystem</h3>
+                        <p>Desenvolvimento de motores de processamento assíncrono e APIs de alta disponibilidade.</p>
+                        <div class="skill-meter"><div class="fill" style="width: 95%"></div></div>
                     </div>
                 </article>
-
                 </div>
         </section>
 
-        <section id="contact" class="section-container center-text">
-            <div class="container small-container">
-                <span class="section-number">06. Qual o próximo passo?</span>
-                <h2 class="section-title big">Entre em contato</h2>
-                <p>Estou sempre aberto a novas oportunidades e parcerias. Se você tem uma pergunta ou apenas quer dizer oi, minha caixa de entrada está sempre aberta!</p>
-                
-                <form id="contact-form" class="main-form">
-                    <div class="input-row">
-                        <div class="input-group">
-                            <label for="name">Seu Nome</label>
-                            <input type="text" id="name" name="name" required placeholder="Ex: Andrey">
-                        </div>
-                        <div class="input-group">
-                            <label for="email">Seu Email</label>
-                            <input type="email" id="email" name="email" required placeholder="seu@email.com">
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label for="message">Mensagem</label>
-                        <textarea id="message" name="message" rows="8" placeholder="O que você está pensando?"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-main large">Diga Olá</button>
-                </form>
+        <section id="work" class="v-section production-log">
+            <div id="repos" class="project-masonry-layout">
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
             </div>
         </section>
-
     </main>
 
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <span class="logo-text">Andrey.dev</span>
-                    <p>Desenvolvendo soluções para o futuro digital.</p>
-                </div>
-                <div class="footer-social">
-                    <a href="https://github.com/andrey">GitHub</a>
-                    <a href="https://linkedin.com/andrey">LinkedIn</a>
-                    <a href="https://twitter.com/andrey">Twitter</a>
-                </div>
+    <footer class="core-footer">
+        <div class="footer-grid">
+            <div class="col">
+                <p>LATENCY: <span id="ping">14ms</span></p>
             </div>
-            <div class="footer-legal">
-                <p>Desenhado e Construído por Andrey &copy; 2026</p>
-                <p>Construído com <span class="accent">HTML5</span>, <span class="accent">CSS3</span> e <span class="accent">JS</span>.</p>
+            <div class="col center">
+                <p>&copy; 2026 ANDREY_DEV_UNIT. ALL_RIGHTS_RESERVED.</p>
+            </div>
+            <div class="col right">
+                <p>BUILD: v3.4.2-STABLE</p>
             </div>
         </div>
     </footer>
-
-    <div id="modal-project-1" class="modal-root" aria-hidden="true">
-        </div>
 
     <script src="script.js"></script>
 </body>
