@@ -1,1 +1,101 @@
-window.addEventListener('scroll',function(){const header=document.getElementById('header');if(window.scrollY>100){header.style.opacity='1';header.style.pointerEvents='auto';}else{header.style.opacity='0';header.style.pointerEvents='none';}});const cards=document.querySelectorAll('.card');const projetos=document.querySelectorAll('.projeto-card');const fadeIn=()=>{const triggerBottom=window.innerHeight*0.9;cards.forEach(card=>{const boxTop=card.getBoundingClientRect().top;if(boxTop<triggerBottom){card.style.opacity='1';card.style.transform='translateY(0) scale(1)';}});projetos.forEach(proj=>{const boxTop=proj.getBoundingClientRect().top;if(boxTop<triggerBottom){proj.style.opacity='1';proj.style.transform='translateY(0) scale(1)';}});};window.addEventListener('scroll',fadeIn);cards.forEach(card=>{card.style.opacity='0';card.style.transform='translateY(50px) scale(0.95)';card.style.transition='all 0.6s ease';});projetos.forEach(proj=>{proj.style.opacity='0';proj.style.transform='translateY(50px) scale(0.95)';proj.style.transition='all 0.6s ease';});const createStars=()=>{const stars=document.getElementById('stars');for(let i=0;i<200;i++){const star=document.createElement('div');star.classList.add('star');star.style.top=Math.random()*100+'%';star.style.left=Math.random()*100+'%';star.style.width=Math.random()*2+'px';star.style.height=Math.random()*2+'px';star.style.background='white';star.style.position='absolute';star.style.borderRadius='50%';star.style.animation='twinkle '+(Math.random()*5+5)+'s infinite';stars.appendChild(star);}};createStars();const style=document.createElement('style');style.innerHTML=`@keyframes twinkle{0%,100%{opacity:0.2;}50%{opacity:1;}}`;document.head.appendChild(style);
+// CONFIGURAÇÃO DO FUNDO ESPACIAL
+const canvas = document.getElementById('starfield');
+const ctx = canvas.getContext('2d');
+
+let stars = [];
+const starCount = 400;
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+class Star {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 1.5;
+        this.speedX = (Math.random() - 0.5) * 0.2;
+        this.speedY = Math.random() * 0.3 + 0.1;
+        this.opacity = Math.random();
+    }
+
+    update() {
+        this.y += this.speedY;
+        this.x += this.speedX;
+
+        if (this.y > canvas.height) {
+            this.y = -10;
+            this.x = Math.random() * canvas.width;
+        }
+    }
+
+    draw() {
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+// Inicializar estrelas
+for (let i = 0; i < starCount; i++) {
+    stars.push(new Star());
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    stars.forEach(star => {
+        star.update();
+        star.draw();
+    });
+    requestAnimationFrame(animate);
+}
+animate();
+
+// LÓGICA DO HEADER AO ROLAR
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// ANIMAÇÃO DE ENTRADA (OBSERVER)
+const observerOptions = {
+    threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.spec-card, .project-card').forEach(el => {
+    el.style.opacity = "0";
+    el.style.transform = "translateY(30px)";
+    el.style.transition = "all 0.6s ease-out";
+    observer.observe(el);
+});
+
+// Adicionando efeito visual de visibilidade via script para simplificar o CSS
+const style = document.createElement('style');
+style.innerHTML = `
+    .visible {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+`;
+document.head.appendChild(style);
