@@ -1,18 +1,15 @@
-/* SISTEMA DE DESIGN - ANDREY PORTFOLIO
-   Versão: 2.1.0
-   Autor: Andrey
-*/
+/* --- ANDREY PORTFOLIO DESIGN SYSTEM v3.0 --- */
 
+/* 1. RESET E FUNDAMENTOS */
 :root {
-    /* Cores Nucleares */
-    --space-black: #020308;
+    /* Paleta Core (Deep Space) */
+    --bg-dark: #020308;
+    --bg-deep: #050a14;
     --deep-blue: #0a192f;
     --electric-blue: #00d2ff;
     --cyan: #64ffda;
-    --white: #e6f1ff;
-    --slate: #8892b0;
     
-    /* Cores de Código (Dracula Theme) */
+    /* Cores de Código (Dracula) */
     --code-bg: #1e1e2e;
     --code-keyword: #c678dd;
     --code-class: #e5c07b;
@@ -21,220 +18,166 @@
     --code-var: #d19a66;
     --code-comment: #5c6370;
 
-    /* Efeitos */
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --blue-glass: rgba(0, 210, 255, 0.05);
+    /* Interface */
+    --white: #e6f1ff;
+    --slate: #8892b0;
+    --light-slate: #a8b2d1;
     
-    /* Espaçamentos */
-    --sec-padding: 120px;
-    --container-width: 1200px;
+    /* Efeitos de Vidro (Glassmorphism) */
+    --glass-bg-bright: rgba(255, 255, 255, 0.04);
+    --glass-border-bright: rgba(255, 255, 255, 0.12);
+    --glass-bg-blue: rgba(0, 210, 255, 0.05);
+    --glass-border-blue: rgba(0, 210, 255, 0.2);
     
-    /* Transições */
+    /* Configurações */
+    --font-main: 'Inter', sans-serif;
+    --font-code: 'Fira Code', monospace;
     --trans-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --trans-bounce: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --container-width: 1280px;
+    --header-height: 80px;
 }
 
-/* Reset de Fábrica */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    outline: none;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
 
 html {
     scroll-behavior: smooth;
     scrollbar-width: thin;
-    scrollbar-color: var(--electric-blue) var(--space-black);
+    scrollbar-color: var(--electric-blue) var(--bg-dark);
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--space-black);
+    font-family: var(--font-main);
+    background-color: var(--bg-dark);
     color: var(--white);
     line-height: 1.6;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* --- FUNDO ANIMADO --- */
+/* 2. UTILITÁRIOS E LAYOUT GLOBAL */
+.container { max-width: var(--container-width); margin: 0 auto; padding: 0 40px; width: 100%; }
+.centered { text-align: center; justify-content: center; align-items: center; display: flex; flex-direction: column; }
+.mt-60 { margin-top: 60px; }
+.shadow-xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7); }
+
+/* 3. MICRO-INTERAÇÃO: FUNDO ESPACIAL */
 #starfield {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    background: radial-gradient(circle at center, #0a192f 0%, #020205 100%);
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -2;
+    background: radial-gradient(circle at center, var(--deep-blue) 0%, var(--bg-dark) 100%);
 }
 
-/* --- HEADER & NAV --- */
+/* 4. HEADER & NAV (FIXED & SCROLLED EFFECT) */
 header {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    transition: var(--trans-smooth);
-    padding: 20px 0;
+    position: fixed; top: 0; width: 100%; height: var(--header-height);
+    z-index: 1000; transition: var(--trans-smooth); padding: 20px 0;
 }
 
 header.scrolled {
-    background: rgba(2, 2, 5, 0.85);
+    background: rgba(2, 3, 8, 0.8);
     backdrop-filter: blur(15px);
-    padding: 10px 0;
-    border-bottom: 1px solid var(--glass-border);
+    height: 70px;
+    border-bottom: 1px solid var(--glass-border-bright);
 }
 
-.nav-container {
-    max-width: var(--container-width);
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 40px;
-}
+.nav-container { display: flex; justify-content: space-between; align-items: center; }
 
-.logo {
-    font-family: 'Fira Code', monospace;
-    font-weight: 700;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
+.logo { font-family: var(--font-code); font-weight: 700; font-size: 1.6rem; color: var(--electric-blue); }
 
-.logo .name { color: var(--electric-blue); }
+.nav-links { display: flex; gap: 35px; list-style: none; }
+.nav-item { text-decoration: none; color: var(--light-slate); font-family: var(--font-code); font-size: 0.95rem; transition: var(--trans-smooth); }
+.nav-item span { color: var(--electric-blue); margin-right: 5px; font-weight: 300; }
+.nav-item:hover { color: var(--electric-blue); transform: translateY(-2px); }
 
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-}
-
-.nav-item {
-    text-decoration: none;
-    color: var(--white);
-    font-family: 'Fira Code', monospace;
-    font-size: 0.9rem;
-    transition: var(--trans-smooth);
-}
-
-.nav-item:hover { color: var(--electric-blue); }
-
-/* --- HERO SECTION --- */
-.center-vh {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 20px;
-}
+/* 5. HERO SECTION (PYTHON CODE GLASS WINDOW) */
+.hero-section { height: 100vh; position: relative; }
+.center-vh { height: 100%; display: flex; justify-content: center; align-items: center; }
 
 .code-window {
-    width: 100%;
-    max-width: 800px;
-    background: var(--code-bg);
-    border-radius: 12px;
+    width: 100%; max-width: 850px;
+    background: rgba(18, 18, 30, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 12px; border: 1px solid var(--glass-border-bright);
     overflow: hidden;
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    transition: var(--trans-smooth);
 }
 
 .window-header {
-    background: #282c34;
-    padding: 12px 20px;
-    display: flex;
-    align-items: center;
+    background: rgba(40, 44, 52, 0.5); padding: 12px 20px;
+    display: grid; grid-template-columns: auto 1fr auto; align-items: center;
 }
 
-.dots { display: flex; gap: 8px; margin-right: 20px; }
+.dots { display: flex; gap: 8px; }
 .dots span { width: 12px; height: 12px; border-radius: 50%; }
 .r { background: #ff5f56; } .y { background: #ffbd2e; } .g { background: #27c93f; }
+.tab { text-align: center; color: var(--slate); font-family: var(--font-code); font-size: 0.9rem; }
 
-.code-content {
-    padding: 30px;
-    font-family: 'Fira Code', monospace;
-    font-size: 1.1rem;
-    line-height: 1.7;
-}
+.code-content { padding: 35px; font-family: var(--font-code); font-size: 1.15rem; line-height: 1.7; overflow-x: auto; }
 
 /* Sintaxe do Código */
-.k { color: var(--code-keyword); }
-.cl { color: var(--code-class); }
-.f { color: var(--code-func); }
-.v { color: var(--code-string); }
-.s { color: var(--code-var); }
+.k { color: var(--code-keyword); } .cl { color: var(--code-class); } .f { color: var(--code-func); }
+.v { color: var(--code-string); } .s { color: var(--code-var); } .p { color: #f8f8f2; }
 .c { color: var(--code-comment); font-style: italic; }
 
-/* --- SEÇÃO ESPECIALIDADES (2X3) --- */
+/* MICRO-INTERAÇÃO: SCROLL DOWN MOUSE */
+.scroll-down { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); animation: bounce 2s infinite; }
+.mouse { width: 30px; height: 50px; border: 2px solid var(--slate); border-radius: 15px; display: block; position: relative; }
+.mouse::before { content: ''; position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; background: var(--electric-blue); border-radius: 50%; animation: scrollDown 2s infinite; }
+
+/* 6. ESPECIALIDADES (GRID 2x3 & GLASSMORPHISM BRIGHT) */
+.specialties-section { padding: 120px 0; }
+
 .spec-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, auto);
-    gap: 30px;
-    margin-top: 60px;
+    grid-template-columns: repeat(3, 1fr); gap: 30px;
+    margin-top: 80px;
+}
+
+.glass-bright {
+    background: var(--glass-bg-bright);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border-bright);
+    transition: var(--trans-bounce);
 }
 
 .spec-card {
-    padding: 40px;
-    border-radius: 20px;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(10px);
-    transition: var(--trans-smooth);
-    position: relative;
-    overflow: hidden;
+    padding: 50px 40px; border-radius: 20px;
+    position: relative; overflow: hidden;
 }
 
-.spec-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 4px;
-    background: linear-gradient(90deg, transparent, var(--electric-blue), transparent);
-    transform: translateX(-100%);
-    transition: 0.6s;
+/* MICRO-INTERAÇÃO HOVER CARD */
+.spec-card:hover, .spec-card:focus {
+    transform: translateY(-15px) scale(1.02);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 30px 60px -15px rgba(0,0,0,0.5);
 }
 
-.spec-card:hover {
-    transform: translateY(-12px);
-    background: rgba(255, 255, 255, 0.07);
-    border-color: var(--electric-blue);
-    box-shadow: 0 20px 40px rgba(0, 210, 255, 0.1);
-}
+.card-icon { font-size: 3rem; margin-bottom: 25px; display: block; }
+.spec-card h3 { font-size: 1.6rem; color: var(--white); margin-bottom: 15px; font-weight: 600; }
+.spec-card p { color: var(--slate); font-size: 1rem; margin-bottom: 20px; }
 
-.spec-card:hover::before { transform: translateX(100%); }
+.tag-list { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; }
+.tag-list li { font-family: var(--font-code); font-size: 0.8rem; color: var(--cyan); background: rgba(100, 255, 218, 0.1); padding: 5px 12px; border-radius: 15px; }
 
-/* --- PROJETOS GRID --- */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 40px;
-}
+/* 7. PROJETOS GRID (GLASS BLUE) */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 40px; margin-top: 60px; }
 
 .project-item {
-    height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 30px;
-    border-radius: 20px;
-    border: 1px solid rgba(0, 210, 255, 0.3);
+    min-height: 380px; display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 35px; border-radius: 20px;
+    border: 1px solid var(--glass-border-blue);
     background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0, 210, 255, 0.1) 100%);
-    transition: var(--trans-smooth);
-    text-decoration: none;
+    transition: var(--trans-bounce); text-decoration: none;
 }
 
+/* MICRO-INTERAÇÃO HOVER PROJETO */
 .project-item:hover {
-    transform: scale(1.02);
+    transform: scale(1.03);
     border-color: var(--electric-blue);
-    background: rgba(0, 210, 255, 0.15);
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0, 210, 255, 0.2) 100%);
+    box-shadow: 0 20px 50px -10px rgba(0, 210, 255, 0.3);
 }
 
-/* Responsividade */
-@media (max-width: 992px) {
-    .spec-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 768px) {
-    .spec-grid { grid-template-columns: 1fr; }
-    .nav-links { display: none; }
-}
-
-/* [Mais centenas de linhas de Keyframes de animação e utilitários] */
+/* [Mais centenas de linhas de Keyframes, Responsividade e Contato omitidas] */
