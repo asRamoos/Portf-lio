@@ -1,118 +1,137 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andrey | Full Stack Developer</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Portfólio de Andrey</title>
 </head>
 <body>
-    <canvas id="starfield"></canvas>
-
-    <header id="header">
-        <nav class="container">
-            <div class="logo"><span><</span> Andrey <span>/></span></div>
-            <ul class="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#specialties">Especialidades</a></li>
-                <li><a href="#projects">Projetos</a></li>
-                <li><a href="#contact">Contato</a></li>
+    <header>
+        <h1>Portfólio de Andrey</h1>
+        <nav>
+            <ul>
+                <li><a href="#hero">Início</a></li>
+                <li><a href="#sobre">Sobre Mim</a></li>
+                <li><a href="#especialidades">Especialidades</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato">Contato</a></li>
             </ul>
         </nav>
     </header>
+    
+    <section class="hero" id="hero">
+        <div class="code-block">
+            <code>
+                class Developer:<br>
+                &nbsp;&nbsp;&nbsp;name = "Andrey"<br>
+                &nbsp;&nbsp;&nbsp;role = "Full Stack Developer"<br>
+                &nbsp;&nbsp;&nbsp;about = "Desenvolvedor apaixonado por tecnologia e inovação."
+            </code>
+        </div>
+        <h2>Sobre Mim</h2>
+        <p>Sou um desenvolvedor full stack com experiência em diversas tecnologias. Meu objetivo é criar soluções inovadoras e eficientes.</p>
+    </section>
 
-    <main>
-        <section id="hero">
-            <div class="glass-terminal animate-in">
-                <div class="terminal-header">
-                    <span class="dot red"></span>
-                    <span class="dot yellow"></span>
-                    <span class="dot green"></span>
-                    <span class="terminal-title">andrey_dev.py</span>
-                </div>
-                <div class="terminal-body">
-                    <pre id="typewriter-code">
-<span class="k">class</span> <span class="nc">Developer</span>:
-    <span class="k">def</span> <span class="nf">__init__</span>(<span class="bp">self</span>):
-        <span class="bp">self</span>.<span class="v">name</span> = <span class="s">"Andrey"</span>
-        <span class="bp">self</span>.<span class="v">role</span> = <span class="s">"Full Stack Developer"</span>
-        <span class="bp">self</span>.<span class="v">stack</span> = [<span class="s">"Python"</span>, <span class="s">"JS"</span>, <span class="s">"SQL"</span>]
-
-    <span class="k">def</span> <span class="nf">get_about</span>(<span class="bp">self</span>):
-        <span class="k">return</span> <span class="s">"""
-        Especialista em criar soluções escaláveis 
-        e interfaces de alto impacto visual.
-        """</span>
-
-<span class="c"># Inicializando o sistema...</span>
-andrey = Developer()
-print(andrey.get_about())
-                    </pre>
-                </div>
+    <section class="specialties" id="especialidades">
+        <h2>Especialidades</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Python</h3>
+                <p>Desenvolvimento de aplicações robustas e escaláveis.</p>
             </div>
-        </section>
-
-        <section id="specialties">
-            <div class="container">
-                <h2 class="section-title">Especialidades</h2>
-                <div class="specialties-grid">
-                    <div class="spec-card">
-                        <div class="icon">🐍</div>
-                        <h3>Python</h3>
-                        <p>Automação, Data Science e APIs robustas com Django/FastAPI.</p>
-                    </div>
-                    <div class="spec-card">
-                        <div class="icon">⚙️</div>
-                        <h3>Back-End</h3>
-                        <p>Arquiteturas escaláveis, microsserviços e segurança de dados.</p>
-                    </div>
-                    <div class="spec-card">
-                        <div class="icon">🎨</div>
-                        <h3>Front-End</h3>
-                        <p>Interfaces modernas, responsivas e focadas na experiência do usuário.</p>
-                    </div>
-                    <div class="spec-card">
-                        <div class="icon">🗄️</div>
-                        <h3>Banco de Dados</h3>
-                        <p>Modelagem otimizada em PostgreSQL, MySQL e bancos NoSQL.</p>
-                    </div>
-                    <div class="spec-card">
-                        <div class="icon">📜</div>
-                        <h3>JavaScript</h3>
-                        <p>Lógica avançada, manipulação de DOM e ecossistema Node.js.</p>
-                    </div>
-                    <div class="spec-card">
-                        <div class="icon">💎</div>
-                        <h3>CSS Moderno</h3>
-                        <p>Animações, Flexbox/Grid e layouts complexos em Glassmorphism.</p>
-                    </div>
-                </div>
+            <div class="card">
+                <h3>Back-End</h3>
+                <p>Integração e gerenciamento de dados em servidores.</p>
             </div>
-        </section>
-
-        <section id="projects">
-            <div class="container">
-                <h2 class="section-title">Projetos em Destaque</h2>
-                <div class="projects-grid">
-                    <article class="project-card">
-                        <div class="project-content">
-                            <h3>E-commerce API</h3>
-                            <p>Sistema completo de pagamentos e controle de estoque via Python.</p>
-                            <a href="https://github.com/seu-user/repo" target="_blank" class="github-link">GitHub ↗</a>
-                        </div>
-                    </article>
-                    <article class="project-card">
-                        <div class="project-content">
-                            <h3>Dashboards Real-time</h3>
-                            <p>Visualização de dados em tempo real utilizando WebSockets.</p>
-                            <a href="https://github.com/seu-user/repo" target="_blank" class="github-link">GitHub ↗</a>
-                        </div>
-                    </article>
-                </div>
+            <div class="card">
+                <h3>Front-End</h3>
+                <p>Criação de interfaces interativas e responsivas.</p>
             </div>
-        </section>
-    </main>
+            <div class="card">
+                <h3>Banco de Dados</h3>
+                <p>Gerenciamento de informações e otimização de consultas.</p>
+            </div>
+            <div class="card">
+                <h3>CSS</h3>
+                <p>Estilização moderna e responsiva para web.</p>
+            </div>
+            <div class="card">
+                <h3>JavaScript</h3>
+                <p>Interatividade e dinamicidade nas páginas web.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects" id="projetos">
+        <h2>Projetos</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <a href="https://github.com/seu-repositorio" target="_blank">Projeto 1</a>
+                <p>Descrição do Projeto 1.</p>
+            </div>
+            <div class="project-card">
+                <a href="https://github.com/seu-repositorio" target="_blank">Projeto 2</a>
+                <p>Descrição do Projeto 2.</p>
+            </div>
+            <div class="project-card">
+                <a href="https://github.com/seu-repositorio" target="_blank">Projeto 3</a>
+                <p>Descrição do Projeto 3.</p>
+            </div>
+            <div class="project-card">
+                <a href="https://github.com/seu-repositorio" target="_blank">Projeto 4</a>
+                <p>Descrição do Projeto 4.</p>
+            </div>
+            <div class="project-card">
+                <a href="https://github.com/seu-repositorio" target="_blank">Projeto 5</a>
+                <p>Descrição do Projeto 5.</p>
+            </div>
+            <div class="project-card">
+                <a href="https://github.com/seu-repositorio" target="_blank">Projeto 6</a>
+                <p>Descrição do Projeto 6.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="depoimentos">
+        <h2>Depoimentos</h2>
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <p>"Andrey é um desenvolvedor excepcional! Ele trouxe nossas ideias à vida com eficiência."</p>
+                <cite>- Cliente 1</cite>
+            </div>
+            <div class="testimonial">
+                <p>"Trabalhar com Andrey foi uma experiência incrível. Ele é muito dedicado e talentoso."</p>
+                <cite>- Cliente 2</cite>
+            </div>
+            <div class="testimonial">
+                <p>"Recomendo Andrey para qualquer projeto. Sua habilidade em resolver problemas é impressionante."</p>
+                <cite>- Cliente 3</cite>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contato">
+        <h2>Contato</h2>
+        <form id="contact-form">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Mensagem:</label>
+            <textarea id="message" name="message" required></textarea>
+            
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>Contato: <a href="mailto:andrey@email.com">andrey@email.com</a></p>
+        <p>&copy; 2026 Andrey. Todos os direitos reservados.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
